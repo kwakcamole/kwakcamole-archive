@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kwakcamole.archive — works</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="page-works">
+  <!-- top fixed header -->
+  <header class="top">
+    <div class="top-left" id="favHeart">fav ♥</div>
+
+    <a class="top-title" href="index.html">Kwakcamole.archive</a>
+
+    <a class="top-right" href="index.html" aria-label="home">
+      <img src="images/집.png" alt="home icon">
+    </a>
+  </header>
+
+  <main class="works-wrap">
+    <section class="works-grid">
+
+      <article class="work-card">
+        <img class="work-img" src="images/doll house.jpg" alt="work 1">
+        <h3 class="work-title">Doll House : Soft Structure</h3>
+        <p class="work-sub">AI-generated digital image, 2026</p>
+      </article>
+
+      <article class="work-card">
+        <img class="work-img" src="images/딸기.jpg" alt="work 2">
+        <h3 class="work-title">Strawberry house : Soft Architecture</h3>
+        <p class="work-sub">AI-generated digital image, 2026</p>
+      </article>
+
+      <article class="work-card">
+        <img class="work-img" src="images/cup.jpg" alt="work 3">
+        <h3 class="work-title">A soft sculptural cup</h3>
+        <p class="work-sub">AI-generated digital image, 2026</p>
+      </article>
+
+      <article class="work-card">
+        <img class="work-img" src="images/A cup.jpg" alt="work 4">
+        <h3 class="work-title">A Cup as Soft Object</h3>
+        <p class="work-sub">AI-generated digital image, 2026</p>
+      </article>
+
+      <article class="work-card">
+        <img class="work-img" src="images/cute.jpg" alt="work 5">
+        <h3 class="work-title">A Soft Dwelling I</h3>
+        <p class="work-sub">AI-generated digital image, 2026</p>
+      </article>
+
+      <article class="work-card">
+        <img class="work-img" src="images/cutie.jpg" alt="work 6">
+        <h3 class="work-title">A Soft Dwelling II</h3>
+        <p class="work-sub">AI-generated digital image, 2026</p>
+      </article>
+
+       <article class="work-card">
+        <img class="work-img" src="images/젤리곰.jpg" alt="work 7">
+        <h3 class="work-title">Gummy Bloom</h3>
+        <p class="work-sub">AI-generated digital image, 2026</p>
+      </article>
+
+      <article class="work-card">
+        <img class="work-img" src="images/하리보.jpg" alt="work 8">
+        <h3 class="work-title">Gummy Candy Lab</h3>
+        <p class="work-sub">AI-generated digital image, 2026</p>
+      </article>
+
+       <article class="work-card">
+        <img class="work-img" src="images/mushroom1.jpg" alt="work 9">
+        <h3 class="work-title">Be My Valentine ♡‧₊˚</h3>
+        <p class="work-sub">AI-generated digital image, 2026</p>
+      </article>
+
+       <article class="work-card">
+        <img class="work-img" src="images/sofa1.jpg" alt="work 10">
+        <h3 class="work-title">Sugarcoat Sofa</h3>
+        <p class="work-sub">AI-generated digital image, 2026</p>
+      </article>
+
+       <article class="work-card">
+        <img class="work-img" src="images/모빌.jpg" alt="work 11">
+        <h3 class="work-title">For Those Who Need Rest</h3>
+        <p class="work-sub">AI-generated digital image, 2026</p>
+      </article>
+
+      <article class="work-card">
+        <img class="work-img" src="images/앨범.png" alt="work 12">
+        <h3 class="work-title">A sugar-lit carnival ⋆｡°✩</h3>
+        <p class="work-sub">AI-generated digital image, 2026</p>
+      </article>
+
+       <article class="work-card">
+        <img class="work-img" src="images/스노우볼1.png" alt="work 13">
+        <h3 class="work-title">A Little House to Rest ˚✧</h3>
+        <p class="work-sub">AI-generated digital image, 2026</p>
+      </article>
+
+       <article class="work-card">
+        <img class="work-img" src="images/스노우볼2.png" alt="work 14">
+        <h3 class="work-title">A Little House to Rest ˚✧</h3>
+        <p class="work-sub">AI-generated digital image, 2026</p>
+      </article>
+
+    </section>
+  </main>
+
+  <!-- ✅ WORKS MODAL: 딱 1개만 -->
+  <div class="modal" id="imgModal" aria-hidden="true">
+    <div class="modal-backdrop" data-close="1"></div>
+
+    <div class="modal-panel" role="dialog" aria-modal="true">
+      <button class="modal-close" data-close="1" aria-label="close">×</button>
+
+      <button class="modal-nav prev" type="button" aria-label="previous">‹</button>
+      <button class="modal-nav next" type="button" aria-label="next">›</button>
+
+      <img class="modal-img" id="modalImg" alt="">
+      <div class="modal-caption" id="modalCaption"></div>
+    </div>
+  </div>
+
+  <!-- ✅ script는 body 끝에서 1번만 -->
+  <script src="script.js"></script>
+</body>
+</html>

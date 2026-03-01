@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact | Kwakcamole.archive</title>
+
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* 상단 제목 + fav → 미니피자 */
+    .brand,
+    .fav {
+      font-family: 'MiniPizza';
+    }
+
+    :root{
+      --bg:#ffffff;
+      --text:#111111;
+      --muted:#777;
+      --max:1100px;
+      --gap:56px;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans KR", sans-serif;
+    }
+
+    /* 페이지 래퍼 */
+    .page{
+      min-height:100%;
+      padding:28px 28px 64px;
+    }
+
+    /* 메인 레이아웃 */
+    .main{
+      max-width:var(--max);
+      margin:0 auto;
+      margin-top: 75px;  
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:var(--gap);
+      align-items:center;
+    }
+
+    .copy{
+      max-width:520px;
+      padding-left:30px;
+    }
+
+    /* ✅ Paperlogy 적용 영역 */
+    .contact-text,
+    .contact-email,
+    .contact-note{
+      font-family: 'Paperlogy', sans-serif;
+    }
+
+    .contact-text{
+      font-size:18px;
+      line-height:1.35;
+      margin-bottom:20px;
+    }
+
+    .contact-email{
+      display:inline-block;
+      font-size:18px;
+      font-weight:600;
+      color:#111;
+      text-decoration:none;
+      margin-bottom:10px;
+    }
+
+    .contact-email:hover{
+      text-decoration:underline;
+      text-underline-offset:6px;
+    }
+
+    .contact-note{
+      font-size:14px;
+      color:var(--muted);
+    }
+
+    /* 오른쪽 프레임 */
+    .frame{
+      width:min(520px,100%);
+      aspect-ratio:4/3;
+      border-radius:18px;
+      background:#f6f6f6;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .frame::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:url("images/contact.png") center / contain no-repeat;
+    }
+
+    /* 반응형 */
+    @media (max-width: 920px){
+      .main{ grid-template-columns:1fr; gap:36px; }
+    }
+
+    @media (max-width: 520px){
+      .contact-text{ font-size:16px; }
+      .contact-email{ font-size:17px; }
+    }
+    
+  </style>
+  
+</head>
+
+<body>
+  <div class="page">
+
+    <header class="top">
+      <div class="top-left" id="favHeart">fav ♥</div>
+
+      <a class="top-title" href="index.html">Kwakcamole.archive</a>
+
+      <a class="top-right" href="index.html" aria-label="home">
+        <img src="images/집.png" alt="home icon">
+      </a>
+    </header>
+
+    <main class="main">
+      <section class="copy">
+        <p class="contact-text">
+          For conversations, collaborations,<br/>
+          or questions about my work :
+        </p>
+
+        <a class="contact-email" href="mailto:kwakcamole.archive@gmail.com">
+          kwakcamole.archive@gmail.com
+        </a>
+
+        <p class="contact-note">
+        
+        </p>
+      </section>
+
+      <section>
+        <div class="frame"></div>
+      </section>
+    </main>
+
+  </div>
+
+  <!-- script는 body 맨 아래가 안전 -->
+  <script src="script.js"></script>
+</body>
+</html>
