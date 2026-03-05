@@ -2042,13 +2042,13 @@ a:active,
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    width: min(30vw) !important; /* 2열 느낌 */
+    width: min(35vw) !important; /* 2열 느낌 */
     text-decoration: none;
   }
 
   /* 폴더 이미지 크기: 화면에 맞게 */
   img.folder-img{
-    width: clamp(56px, 18vw, 78px) !important;
+    width: clamp(70px, 20vw, 90px) !important;
     height: auto !important;
     display: block;
   }
