@@ -2378,3 +2378,96 @@ a:active,
     transform-origin: top center !important;
   }
 }
+/* ========= MOBILE FINAL OVERRIDE (HOME) ========= */
+@media (max-width: 768px){
+
+  /* 홈 컨테이너 */
+  main#home.stage{
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  /* 소개문장 */
+  main#home.stage section.intro{
+    order: 1 !important;
+    width: 100% !important;
+    text-align: center !important;
+    margin: 14px 0 10px !important;
+    padding: 0 18px !important;
+  }
+
+  /* ✅ 폴더 3개: GRID로 강제 */
+  main#home.stage nav.folder-cluster{
+    order: 2 !important;
+
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    justify-items: center !important;
+    align-items: start !important;
+
+    gap: 14px !important;
+    width: 100% !important;
+    max-width: 420px !important;
+    margin: 0 auto !important;
+    padding: 10px 14px 8px !important;
+
+    position: relative !important;
+    text-align: initial !important;
+  }
+
+  /* ✅ grid 안에 들어가는 ‘진짜 폴더 3개’만 지정 */
+  main#home.stage nav.folder-cluster > a.folder-item{
+    width: 100% !important;
+    margin: 0 !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+  }
+
+  /* 폴더 이미지/이름 */
+  main#home.stage nav.folder-cluster img.folder-img{
+    width: clamp(66px, 18vw, 86px) !important;
+    height: auto !important;
+    display: block !important;
+  }
+  main#home.stage nav.folder-cluster .folder-name{
+    margin-top: 7px !important;
+    font-size: 13px !important;
+    line-height: 1.2 !important;
+    text-align: center !important;
+  }
+
+  /* ✅ 혹시 ghost 폴더(div)가 모바일에서 줄을 깨면 숨김 */
+  main#home.stage .folder-item.ghost{
+    display: none !important;
+  }
+
+  /* 마스코트: 폴더 아래 작게 */
+  main#home.stage section.mascot-area{
+    order: 3 !important;
+    margin-top: 10px !important;
+    transform: scale(0.78) !important;
+    transform-origin: top center !important;
+    opacity: 0.95 !important;
+  }
+
+  main#home.stage .bubble,
+  main#home.stage img.me{
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    margin: 0 auto !important;
+  }
+}
