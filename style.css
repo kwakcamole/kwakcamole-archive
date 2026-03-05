@@ -2631,3 +2631,19 @@ body.page-works .work-item p{
     font-size: 12px !important;
   }
 }
+/* WORKS FORCE OVERRIDE */
+@media (max-width:768px){
+  .works-grid{
+    display:grid !important;
+    grid-template-columns:1fr !important;
+    width:100% !important;
+    max-width:100% !important;
+    padding:24px 18px 90px !important;
+    gap:60px !important;
+  }
+  .works-grid .work-item img{
+    width:100% !important;
+    height:auto !important;
+    display:block !important;
+  }
+}
