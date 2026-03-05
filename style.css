@@ -2201,143 +2201,84 @@ a:active,
   }
 }
 /* =========================
-   MOBILE FINAL: folders are the hero
-   (paste at END of style.css)
+   PORTFOLIO CSS CLEAN PACK
+   Home + Works (mobile optimized)
+   Paste at END of style.css
    ========================= */
-@media (max-width: 768px) {
 
-  /* 1) 소개 문장: 위에 얌전히 */
-  section.intro{
-    order: 1 !important;
-    width: 100% !important;
-    text-align: center !important;
-    margin: 14px 0 10px !important;
-    padding: 0 18px !important;
-  }
-  section.intro p{
-    margin: 0 auto !important;
-    max-width: 320px !important;
-    line-height: 1.6 !important;
-  }
-
-  /* 2) 폴더: 주인공(가로로, 큼직하게, 여백 줄이기) */
-  nav.folder-cluster{
-    order: 2 !important;
-    position: relative !important;
-    display: flex !important;
-    flex-wrap: nowrap !important;          /* 한 줄 유지 */
-    justify-content: center !important;
-    align-items: flex-start !important;
-    gap: 14px !important;
-    width: 100% !important;
-    padding: 8px 10px 6px !important;
-    margin: 0 !important;
-  }
-
-  a.folder-item{
-    position: static !important;
-    top: auto !important;
-    left: auto !important;
-    transform: none !important;
-
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-
-    width: 30vw !important;                /* 3개가 가로로 들어가게 */
-    max-width: 140px !important;
-    text-decoration: none !important;
-  }
-
-  /* p1/p2/p3 좌표 배치 무력화(겹침 방지) */
-  a.folder-item.p1,
-  a.folder-item.p2,
-  a.folder-item.p3,
-  a.folder-item.p4{
-    position: static !important;
-    top: auto !important;
-    left: auto !important;
-    transform: none !important;
-  }
-
-  img.folder-img{
-    width: clamp(68px, 20vw, 92px) !important; /* 폴더 큼직하게 */
-    height: auto !important;
-    display: block !important;
-  }
-  .folder-name{
-    margin-top: 7px !important;
-    font-size: 14px !important;
-    line-height: 1.2 !important;
-    text-align: center !important;
-  }
-
-  /* 3) 마스코트: 폴더 아래에 작게 ‘장식’처럼 */
-  section.mascot-area{
-    order: 3 !important;
-    width: 100% !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-
-    margin-top: 10px !important;          /* 폴더랑 가까이 */
-    padding: 0 0 10px !important;
-
-    transform: scale(0.78) !important;    /* 전체 작게 */
-    transform-origin: top center !important;
-    opacity: 0.95 !important;
-  }
-
-  .bubble,
-  img.me{
-    position: relative !important;
-    top: auto !important;
-    left: auto !important;
-    right: auto !important;
-    bottom: auto !important;
-    transform: none !important;
-    margin: 0 auto !important;
-  }
-
-  .bubble{
-    max-width: 260px !important;
-    text-align: center !important;
-  }
-  img.me{
-    width: clamp(90px, 26vw, 130px) !important;
-    height: auto !important;
-    display: block !important;
-  }
+/* ---------- Base spacing / typography polish ---------- */
+:root{
+  --page-max: 1100px;
+  --pad: 20px;
 }
-/* ===== Mobile: folders 3 in a row (HERO) ===== */
+
+main.stage{
+  width: 100%;
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 0 var(--pad);
+}
+
+/* 이미지 기본 */
+img{ max-width: 100%; height: auto; display:block; }
+
+/* 링크 밑줄/색 튀는거 방지(필요시) */
+a{ text-decoration: none; }
+
+/* ---------- HOME (mobile) ---------- */
 @media (max-width: 768px){
 
-  /* 폴더 영역을 grid로 고정 */
-  nav.folder-cluster{
-    order: 2 !important;
-    display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important; /* 3개 가로 */
-    gap: 14px !important;
-    width: 100% !important;
-    max-width: 420px !important;
-    padding: 10px 14px 6px !important;
-    margin: 0 auto !important;
-
-    /* 기존 정렬 규칙 무력화 */
-    position: relative !important;
-    float: none !important;
-    text-align: initial !important;
-  }
-
-  /* 폴더 아이템이 한 칸 안에 들어가게 */
-  a.folder-item{
-    width: 100% !important;
+  /* 홈: 섹션 간격을 “일관되게” */
+  main#home.stage{
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     justify-content: flex-start !important;
+    gap: 16px !important;
+    padding-top: 6px !important;
+  }
 
-    /* 좌표 배치/변형 무력화 */
+  /* 소개 문장 */
+  main#home.stage section.intro{
+    order: 1 !important;
+    width: 100% !important;
+    text-align: center !important;
+    margin: 10px 0 4px !important;
+    padding: 0 14px !important;
+  }
+  main#home.stage section.intro p{
+    margin: 0 auto !important;
+    max-width: 340px !important;
+    line-height: 1.6 !important;
+  }
+
+  /* 폴더 3개: 작고 단정하게 */
+  main#home.stage nav.folder-cluster{
+    order: 2 !important;
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    justify-items: center !important;
+    align-items: start !important;
+
+    gap: 12px !important;
+    width: 100% !important;
+    max-width: 420px !important;
+
+    margin: 0 auto !important;
+    padding: 6px 10px 0 !important;
+
+    position: relative !important;
+    text-align: initial !important;
+  }
+
+  main#home.stage nav.folder-cluster > a.folder-item{
+    width: 100% !important;
+    margin: 0 !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+
     position: static !important;
     top: auto !important;
     left: auto !important;
@@ -2346,315 +2287,95 @@ a:active,
     transform: none !important;
   }
 
-  /* p1/p2/p3 같은 위치 클래스 무력화 */
-  a.folder-item.p1,
-  a.folder-item.p2,
-  a.folder-item.p3,
-  a.folder-item.p4{
-    position: static !important;
-    top: auto !important;
-    left: auto !important;
-    transform: none !important;
+  main#home.stage nav.folder-cluster img.folder-img{
+    width: clamp(62px, 16vw, 78px) !important; /* ✅ 폴더 조금 줄임 */
   }
-
-  img.folder-img{
-    width: clamp(66px, 18vw, 86px) !important;
-    height: auto !important;
-    display: block !important;
-  }
-
-  .folder-name{
-    margin-top: 7px !important;
+  main#home.stage nav.folder-cluster .folder-name{
+    margin-top: 6px !important;
     font-size: 13px !important;
     line-height: 1.2 !important;
     text-align: center !important;
   }
 
-  /* 마스코트는 폴더 아래에 작게 */
-  section.mascot-area{
-    order: 3 !important;
-    margin-top: 10px !important;
-    transform: scale(0.78) !important;
-    transform-origin: top center !important;
-  }
-}
-/* ========= MOBILE FINAL OVERRIDE (HOME) ========= */
-@media (max-width: 768px){
+  /* ghost 숨김 */
+  main#home.stage .folder-item.ghost{ display:none !important; }
 
-  /* 홈 전체 정렬 */
-  main#home.stage{
-    display:flex !important;
-    flex-direction:column !important;
-    align-items:center !important;
-    justify-content:flex-start !important;
-    gap:14px !important;
-  }
-
-  /* 소개 문장 */
-  main#home.stage section.intro{
-    order:1 !important;
-    width:100% !important;
-    text-align:center !important;
-    margin:12px 0 6px !important;
-    padding:0 18px !important;
-  }
-
-  /* 폴더 3개 */
-  main#home.stage nav.folder-cluster{
-    order:2 !important;
-
-    display:grid !important;
-    grid-template-columns:repeat(3,1fr) !important;
-
-    justify-items:center !important;
-    align-items:start !important;
-
-    gap:12px !important;
-    width:100% !important;
-    max-width:420px !important;
-
-    margin:0 auto !important;
-    padding:6px 12px 0 !important;
-
-    position:relative !important;
-    text-align:initial !important;
-  }
-
-  /* 폴더 아이템 */
-  main#home.stage nav.folder-cluster > a.folder-item{
-    width:100% !important;
-    margin:0 !important;
-
-    display:flex !important;
-    flex-direction:column !important;
-    align-items:center !important;
-
-    position:static !important;
-    transform:none !important;
-  }
-
-  /* 폴더 이미지 */
-  main#home.stage nav.folder-cluster img.folder-img{
-    width:clamp(68px,18vw,86px) !important;
-    height:auto !important;
-    display:block !important;
-  }
-
-  /* 폴더 텍스트 */
-  main#home.stage nav.folder-cluster .folder-name{
-    margin-top:6px !important;
-    font-size:13px !important;
-    line-height:1.2 !important;
-    text-align:center !important;
-  }
-
-  /* ghost 폴더 숨김 */
-  main#home.stage .folder-item.ghost{
-    display:none !important;
-  }
-
-  /* 마스코트 영역 */
+  /* 마스코트: “크기 과대” 해결 (말풍선/인형 직접 사이즈 조절) */
   main#home.stage section.mascot-area{
-    order:3 !important;
-    margin-top:4px !important;
-    padding-top:4px !important;
-    opacity:0.95 !important;
-    transform:none !important;
+    order: 3 !important;
+    margin-top: 6px !important;   /* ✅ 폴더랑 더 붙이기 */
+    padding-top: 0 !important;
+    opacity: 0.95 !important;
+    transform: none !important;   /* ✅ 간격 착시 원인 제거 */
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 10px !important;
   }
 
-  /* 말풍선 */
+  /* ✅ 말풍선: “길게”는 유지하되 과하지 않게 */
   main#home.stage .bubble{
-    width:min(92vw,520px) !important;
-    max-width:none !important;
-
-    padding:14px 18px !important;
-
-    text-align:center !important;
-    margin:0 auto !important;
+    width: min(84vw, 420px) !important;     /* ✅ 92vw → 84vw로 줄임 */
+    max-width: none !important;
+    padding: 12px 16px !important;
+    text-align: center !important;
+    margin: 0 auto !important;
+    border-radius: 999px !important;        /* 더 ‘말풍선 스티커’ 느낌 */
   }
 
-  /* 인형 */
+  /* ✅ 인형: 확실히 작게 */
   main#home.stage img.me{
-    width:clamp(110px,32vw,160px) !important;
-    height:auto !important;
-
-    margin:6px auto 0 !important;
+    width: clamp(92px, 22vw, 120px) !important; /* ✅ 크게 줄임 */
+    margin: 0 auto !important;
   }
-
 }
-/* ===============================
-   WORKS PAGE FINAL LAYOUT
-   desktop: 2 columns
-   mobile: big single column
-   =============================== */
 
+/* ---------- WORKS (portfolio grid) ---------- */
+/* PC: 2열, Mobile: 1열 큰 이미지 */
 .works-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:80px 60px;
-  max-width:1100px;
-  margin:0 auto;
-  padding:60px 40px 120px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 80px 60px;
+  width: 100%;
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 60px var(--pad) 120px;
 }
 
-/* 작품 카드 */
-.work-item{
-  display:block;
-}
+.work-item{ display:block; }
 
-/* 이미지 */
+/* 이미지: 포트폴리오 느낌(둥글게 + 살짝 떠있게) */
 .work-item img{
-  width:100%;
-  height:auto;
-  display:block;
-  border-radius:20px;
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  transition: transform .25s ease;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
+.work-item:hover img{ transform: scale(1.02); }
 
-/* 제목 */
 .work-item h3{
-  margin-top:16px;
-  font-size:16px;
-  line-height:1.3;
+  margin: 16px 0 6px;
+  line-height: 1.25;
+  font-size: 16px;
 }
-
-/* 설명 */
 .work-item p{
-  margin-top:4px;
-  font-size:13px;
-  opacity:0.75;
+  margin: 0;
+  opacity: 0.75;
+  font-size: 13px;
+  line-height: 1.35;
 }
 
-/* hover (PC에서만 살짝 확대) */
-.work-item img{
-  transition:transform .25s ease;
-}
-
-.work-item:hover img{
-  transform:scale(1.02);
-}
-
-
-/* ===============================
-   MOBILE
-   =============================== */
-
-@media (max-width:768px){
-
-  .works-grid{
-    grid-template-columns:1fr;
-    gap:60px;
-
-    max-width:100%;
-    padding:24px 18px 90px;
-  }
-
-  .work-item img{
-    width:100%;
-    border-radius:16px;
-  }
-
-  .work-item h3{
-    font-size:15px;
-  }
-
-  .work-item p{
-    font-size:12px;
-  }
-
-}
-/* ========= WORKS FINAL OVERRIDE (force) ========= */
-#works .works-grid,
-main#works .works-grid,
-body.page-works .works-grid{
-  display: grid !important;
-  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-  gap: 80px 60px !important;
-  width: 100% !important;
-  max-width: 1100px !important;
-  margin: 0 auto !important;
-  padding: 60px 40px 120px !important;
-}
-
-#works .work-item,
-main#works .work-item,
-body.page-works .work-item{
-  display: block !important;
-}
-
-#works .work-item img,
-main#works .work-item img,
-body.page-works .work-item img{
-  width: 100% !important;
-  height: auto !important;
-  display: block !important;
-  border-radius: 20px !important;
-  transition: transform .25s ease !important;
-}
-
-#works .work-item:hover img,
-main#works .work-item:hover img,
-body.page-works .work-item:hover img{
-  transform: scale(1.02) !important;
-}
-
-#works .work-item h3,
-main#works .work-item h3,
-body.page-works .work-item h3{
-  margin-top: 16px !important;
-  font-size: 16px !important;
-  line-height: 1.3 !important;
-}
-
-#works .work-item p,
-main#works .work-item p,
-body.page-works .work-item p{
-  margin-top: 4px !important;
-  font-size: 13px !important;
-  opacity: 0.75 !important;
-}
-
-/* Mobile: big single column */
 @media (max-width: 768px){
-  #works .works-grid,
-  main#works .works-grid,
-  body.page-works .works-grid{
-    grid-template-columns: 1fr !important;
-    gap: 60px !important;
-    max-width: 100% !important;
-    padding: 24px 18px 90px !important;
-  }
-
-  #works .work-item img,
-  main#works .work-item img,
-  body.page-works .work-item img{
-    border-radius: 16px !important;
-  }
-
-  #works .work-item h3,
-  main#works .work-item h3,
-  body.page-works .work-item h3{
-    font-size: 15px !important;
-  }
-
-  #works .work-item p,
-  main#works .work-item p,
-  body.page-works .work-item p{
-    font-size: 12px !important;
-  }
-}
-/* WORKS FORCE OVERRIDE */
-@media (max-width:768px){
   .works-grid{
-    display:grid !important;
-    grid-template-columns:1fr !important;
-    width:100% !important;
-    max-width:100% !important;
-    padding:24px 18px 90px !important;
-    gap:60px !important;
+    grid-template-columns: 1fr;
+    gap: 56px;
+    padding: 26px 18px 90px;
+    max-width: 100%;
   }
-  .works-grid .work-item img{
-    width:100% !important;
-    height:auto !important;
-    display:block !important;
+  .work-item img{
+    border-radius: 16px;
   }
+  .work-item h3{ font-size: 15px; }
+  .work-item p{ font-size: 12px; }
 }
