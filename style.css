@@ -2471,70 +2471,40 @@ a:active,
     margin: 0 auto !important;
   }
 }
-/* =========================
-   WORKS PAGE - responsive grid
-   mobile: small 2-col thumbnails
-   desktop: roomy 2-col
-   ========================= */
+/* WORKS LAYOUT */
 
-/* works 그리드 컨테이너 */
 .works-grid{
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px;
-  width: 100%;
-  max-width: 980px;
-  margin: 0 auto;
-  padding: 24px 18px 80px;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:60px;
+  max-width:1000px;
+  margin:0 auto;
+  padding:40px 20px 120px;
 }
 
-/* 작품 카드(링크/figure/div 어떤 태그여도 그 안의 이미지가 반응형이 되게) */
 .works-grid img{
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 18px;
+  width:100%;
+  height:auto;
+  display:block;
+  border-radius:20px;
 }
 
-/* 작품 제목/설명 줄간격 예쁘게 */
-.works-grid h3,
-.works-grid .title{
-  margin: 10px 0 6px;
-  line-height: 1.25;
+.work-item h3{
+  margin-top:14px;
+  font-size:16px;
 }
 
-.works-grid p,
-.works-grid .meta{
-  margin: 0;
-  line-height: 1.35;
-  opacity: 0.85;
+.work-item p{
+  font-size:13px;
+  opacity:0.8;
 }
 
-/* ✅ 모바일: “작게, 촘촘하게, 두 칼럼 유지” */
-@media (max-width: 768px){
+/* 모바일 */
+@media (max-width:768px){
+
   .works-grid{
-    gap: 16px;
-    padding: 14px 14px 60px;
+    grid-template-columns:1fr;
+    gap:40px;
   }
 
-  .works-grid img{
-    border-radius: 14px;
-  }
-
-  .works-grid h3,
-  .works-grid .title{
-    font-size: 13px;
-  }
-
-  .works-grid p,
-  .works-grid .meta{
-    font-size: 11px;
-  }
-}
-
-/* ✅ 아주 작은 폰: 2열이 너무 좁으면 1열로 자동 */
-@media (max-width: 360px){
-  .works-grid{
-    grid-template-columns: 1fr;
-  }
 }
