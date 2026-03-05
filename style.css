@@ -2022,3 +2022,44 @@ a:active,
   transform: translateY(0);
 }
 .work-img{ pointer-events: auto; }
+/* --- Mobile: folder overlap fix --- */
+@media (max-width: 768px) {
+
+  /* 폴더 네비 전체를 흐름에 맞게 */
+  nav.folder-cluster{
+    position: relative !important;  /* absolute/fixed였다면 해제 */
+    display: flex !important;
+    flex-wrap: wrap !important;     /* 줄바꿈 */
+    justify-content: center !important;
+    align-items: flex-start !important;
+    gap: 14px !important;
+    padding: 16px 12px !important;
+  }
+
+  /* 폴더 하나(링크)를 카드처럼 */
+  a.folder-item{
+    position: static !important;    /* top/left로 찍어놓은 거 있으면 무력화 */
+    transform: none !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: min(42vw, 160px) !important; /* 2열 느낌 */
+    text-decoration: none;
+  }
+
+  /* 폴더 이미지 크기: 화면에 맞게 */
+  img.folder-img{
+    width: clamp(56px, 18vw, 78px) !important;
+    height: auto !important;
+    display: block;
+  }
+
+  /* 폴더 이름이 겹치지 않게 */
+  .folder-name{
+    margin-top: 8px !important;
+    font-size: 14px !important;
+    line-height: 1.2 !important;
+    text-align: center !important;
+    white-space: normal !important;
+  }
+}
