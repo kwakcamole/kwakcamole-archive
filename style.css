@@ -2309,3 +2309,72 @@ a:active,
     display: block !important;
   }
 }
+/* ===== Mobile: folders 3 in a row (HERO) ===== */
+@media (max-width: 768px){
+
+  /* 폴더 영역을 grid로 고정 */
+  nav.folder-cluster{
+    order: 2 !important;
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important; /* 3개 가로 */
+    gap: 14px !important;
+    width: 100% !important;
+    max-width: 420px !important;
+    padding: 10px 14px 6px !important;
+    margin: 0 auto !important;
+
+    /* 기존 정렬 규칙 무력화 */
+    position: relative !important;
+    float: none !important;
+    text-align: initial !important;
+  }
+
+  /* 폴더 아이템이 한 칸 안에 들어가게 */
+  a.folder-item{
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+
+    /* 좌표 배치/변형 무력화 */
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+  }
+
+  /* p1/p2/p3 같은 위치 클래스 무력화 */
+  a.folder-item.p1,
+  a.folder-item.p2,
+  a.folder-item.p3,
+  a.folder-item.p4{
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+  }
+
+  img.folder-img{
+    width: clamp(66px, 18vw, 86px) !important;
+    height: auto !important;
+    display: block !important;
+  }
+
+  .folder-name{
+    margin-top: 7px !important;
+    font-size: 13px !important;
+    line-height: 1.2 !important;
+    text-align: center !important;
+  }
+
+  /* 마스코트는 폴더 아래에 작게 */
+  section.mascot-area{
+    order: 3 !important;
+    margin-top: 10px !important;
+    transform: scale(0.78) !important;
+    transform-origin: top center !important;
+  }
+}
