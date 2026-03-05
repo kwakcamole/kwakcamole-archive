@@ -2172,3 +2172,32 @@ a:active,
     display: block !important;
   }
 }
+/* --- Mobile: bubble/me 완전 초기화 (왼쪽에 박히는 문제 해결) --- */
+@media (max-width: 768px) {
+
+  section.mascot-area{
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+  }
+
+  .bubble,
+  img.me{
+    position: relative !important;  /* fixed/absolute 무력화 */
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    margin: 0 auto !important;      /* 가운데 정렬 */
+    transform: none !important;
+    z-index: 1 !important;
+  }
+
+  /* 말풍선이 화면 밖으로 나가지 않게 */
+  .bubble{
+    max-width: 320px !important;
+    width: fit-content !important;
+  }
+}
