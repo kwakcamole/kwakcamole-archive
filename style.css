@@ -2063,3 +2063,112 @@ a:active,
     white-space: normal !important;
   }
 }
+/* =========================
+   MOBILE HOME LAYOUT FIX
+   intro(위) → folders(중간) → mascot(아래)
+   ========================= */
+@media (max-width: 768px) {
+
+  /* 홈 전체를 flex로 만들어 order 적용 */
+  main#home.stage{
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  /* 1) 소개 문장 맨 위로 */
+  section.intro{
+    order: 1 !important;
+    width: 100% !important;
+    text-align: center !important;
+    margin: 18px 0 22px !important;
+    padding: 0 18px !important;
+  }
+  section.intro p{
+    margin: 0 auto !important;
+    max-width: 320px !important;
+    line-height: 1.6 !important;
+    word-break: keep-all !important;
+  }
+
+  /* 2) 폴더 3개를 그 아래로 + 겹침 방지 */
+  nav.folder-cluster{
+    order: 2 !important;
+    position: relative !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    gap: 14px !important;
+    width: 100% !important;
+    padding: 8px 12px 24px !important;
+    margin: 0 !important;
+  }
+
+  /* 폴더 아이템(링크) - 모바일에서 좌표 배치 해제 */
+  a.folder-item{
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+
+    width: min(42vw, 160px) !important; /* 2열 느낌 */
+    text-decoration: none !important;
+  }
+
+  /* p1/p2/p3 같은 포지션 클래스가 있으면 강제로 무력화 */
+  a.folder-item.p1,
+  a.folder-item.p2,
+  a.folder-item.p3,
+  a.folder-item.p4{
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+  }
+
+  img.folder-img{
+    width: clamp(56px, 18vw, 78px) !important;
+    height: auto !important;
+    display: block !important;
+  }
+  .folder-name{
+    margin-top: 8px !important;
+    font-size: 14px !important;
+    line-height: 1.2 !important;
+    text-align: center !important;
+    white-space: normal !important;
+  }
+
+  /* 3) 인형 + 말풍선을 맨 아래로 */
+  section.mascot-area{
+    order: 3 !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 10px !important;
+    padding: 26px 0 10px !important;
+  }
+
+  /* 말풍선/인형 크기 & 위치 안정화 */
+  .bubble{
+    position: relative !important;   /* fixed/absolute였다면 안정화 */
+    transform: none !important;
+    max-width: 320px !important;
+    text-align: center !important;
+  }
+  img.me{
+    position: relative !important;   /* fixed/absolute였다면 안정화 */
+    transform: none !important;
+    width: clamp(120px, 40vw, 180px) !important;
+    height: auto !important;
+    display: block !important;
+  }
+}
