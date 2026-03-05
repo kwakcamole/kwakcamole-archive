@@ -2662,3 +2662,33 @@ body.page-works .work-item p{
     display:block !important;
   }
 }
+/* ===== HOME mobile mascot/bubble SAFE PATCH (only) ===== */
+@media (max-width: 768px){
+
+  /* 마스코트 영역: transform 쓰지 말고 실제 크기/간격만 조절 */
+  main#home.stage section.mascot-area{
+    transform: none !important;        /* 간격 뻥튀기 원인 제거 */
+    margin-top: 6px !important;        /* 폴더랑 가까이 */
+    padding-top: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 10px !important;
+  }
+
+  /* 말풍선: 가로로 길게, 하지만 과하게 크지 않게 */
+  main#home.stage .bubble{
+    width: min(84vw, 420px) !important; /* 적당히 길게 */
+    max-width: none !important;
+    padding: 12px 16px !important;
+    text-align: center !important;
+    margin: 0 auto !important;
+  }
+
+  /* 인형: 너무 커진 거 확 줄이기 */
+  main#home.stage img.me{
+    width: clamp(92px, 22vw, 120px) !important;
+    height: auto !important;
+    margin: 0 auto !important;
+  }
+}
