@@ -1575,7 +1575,6 @@ a{
 }
 
 /* 말풍선 기본 상태 (안 보임) */
-/* 말풍선 기본 상태 (안 보임) */
 .about-bubble {
   position: absolute;
   top: 50%;
@@ -2043,7 +2042,7 @@ a:active,
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    width: min(42vw, 160px) !important; /* 2열 느낌 */
+    width: min(30vw) !important; /* 2열 느낌 */
     text-decoration: none;
   }
 
