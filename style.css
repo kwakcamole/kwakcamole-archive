@@ -2364,3 +2364,80 @@ nav.folder-cluster a.folder-item:focus-visible{
     display: block !important;
   }
 }
+/* ===== MOBILE WORKS OVERFLOW FIX - REAL FINAL ===== */
+@media (max-width: 768px){
+
+  html, body{
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+  }
+
+  body.page-works{
+    overflow-x: hidden !important;
+  }
+
+  .works-wrap{
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    overflow-x: hidden !important;
+    box-sizing: border-box !important;
+  }
+
+  .works-grid{
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 56px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    padding: 24px 16px 90px !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+  }
+
+  .work-card{
+    width: 100% !important;
+    max-width: calc(100vw - 32px) !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    text-align: center !important;
+    overflow: hidden !important;
+  }
+
+  .work-img{
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    margin: 0 auto 14px !important;
+    border-radius: 16px !important;
+    box-sizing: border-box !important;
+  }
+
+  .work-title{
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto 8px !important;
+    font-size: clamp(15px, 4.3vw, 22px) !important;
+    line-height: 1.25 !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    box-sizing: border-box !important;
+  }
+
+  .work-sub{
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    font-size: clamp(13px, 3.6vw, 16px) !important;
+    line-height: 1.4 !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+  }
+}
