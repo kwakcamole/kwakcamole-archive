@@ -2228,44 +2228,6 @@ body.page-works .work-item p{
     padding: 24px 18px 90px !important;
   }
 
-  #works .work-item,
-  main#works .work-item,
-  body.page-works .work-item{
-    text-align: center !important;
-  }
-
-  #works .work-item img,
-  main#works .work-item img,
-  body.page-works .work-item img{
-    width: 100% !important;
-    max-width: 100% !important;
-    height: auto !important;
-    display: block !important;
-    margin: 0 auto 14px !important;
-    border-radius: 16px !important;
-  }
-
-  #works .work-item h3,
-  main#works .work-item h3,
-  body.page-works .work-item h3{
-    margin: 14px auto 6px !important;
-    font-size: clamp(16px, 4.6vw, 22px) !important;
-    line-height: 1.2 !important;
-    text-align: center !important;
-    white-space: nowrap !important;
-  }
-
-  #works .work-item p,
-  main#works .work-item p,
-  body.page-works .work-item p{
-    margin: 0 auto !important;
-    font-size: clamp(13px, 3.8vw, 17px) !important;
-    line-height: 1.35 !important;
-    text-align: center !important;
-    opacity: 0.75 !important;
-  }
-}
-
 /* ===== Folder interaction ===== */
 nav.folder-cluster a.folder-item{
   transition: transform .18s ease, filter .18s ease, opacity .18s ease;
@@ -2322,12 +2284,31 @@ nav.folder-cluster a.folder-item:focus-visible{
     padding: 24px 18px 90px !important;
   }
 
-  .work-item{
+/* ===== WORKS MOBILE EXACT FIX ===== */
+@media (max-width: 768px){
+
+  .works-wrap{
     width: 100% !important;
+  }
+
+  .works-grid{
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 56px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 24px 18px 90px !important;
+    margin: 0 auto !important;
+  }
+
+  .work-card{
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
     text-align: center !important;
   }
 
-  .work-item img{
+  .work-img{
     width: 100% !important;
     max-width: 100% !important;
     height: auto !important;
@@ -2336,26 +2317,20 @@ nav.folder-cluster a.folder-item:focus-visible{
     border-radius: 16px !important;
   }
 
-  .work-item h1,
-  .work-item h2,
-  .work-item h3,
-  .work-item h4{
-    display: block !important;
+  .work-title{
     width: 100% !important;
     margin: 0 auto 8px !important;
     text-align: center !important;
-    font-size: clamp(20px, 5vw, 28px) !important;
-    line-height: 1.2 !important;
+    font-size: clamp(18px, 4.8vw, 24px) !important;
+    line-height: 1.25 !important;
     white-space: nowrap !important;
   }
 
-  .work-item p,
-  .work-item .meta,
-  .work-item .description{
+  .work-sub{
     width: 100% !important;
     margin: 0 auto !important;
     text-align: center !important;
-    font-size: clamp(14px, 4vw, 18px) !important;
+    font-size: clamp(14px, 3.8vw, 17px) !important;
     line-height: 1.4 !important;
   }
 }
