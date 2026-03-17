@@ -2663,7 +2663,6 @@ body.page-works .work-item p{
   }
 }
 /* ===== HOME mobile mascot/bubble SAFE PATCH (only) ===== */
-@media (max-width: 768px){
 
   /* 마스코트 영역: transform 쓰지 말고 실제 크기/간격만 조절 */
   main#home.stage section.mascot-area{
@@ -2692,6 +2691,12 @@ body.page-works .work-item p{
     margin: 0 auto !important;
   }
 }
+@media (max-width: 768px){
+  main#home.stage section.mascot-area{
+    display: none !important;
+  }
+}
+
 /* ===== works mobile image size fix ===== */
 @media (max-width:768px){
 
