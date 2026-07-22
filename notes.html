@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
 
 <head>
   <meta charset="utf-8" />
@@ -9,301 +9,382 @@
     content="width=device-width, initial-scale=1"
   />
 
-  <title>Kwakcamole.archive — works</title>
+  <title>Kwakcamole.archive — notes</title>
 
   <!-- 기존 사이트 공통 스타일 -->
   <link
     rel="stylesheet"
-    href="style.css?v=works-filter-final-1"
+    href="style.css?v=notes-final-1"
   />
 
-
-  <!-- Works 페이지에서만 적용되는 스타일 -->
+  <!-- NOTES 페이지 전용 스타일 -->
   <style>
     /* =========================================
-       WORKS PAGE ONLY
-       HOME / ABOUT / CONTACT에는 영향 없음
+       NOTES PAGE ONLY
+       다른 페이지에는 영향을 주지 않음
     ========================================= */
 
-    body.page-works {
+    body.page-notes {
       margin: 0;
       padding: 0;
+
+      background: #ffffff;
+      color: #111111;
     }
 
 
-    /* Works 전체 영역 */
-    body.page-works #worksPageWrap {
-      width: 100% !important;
-      max-width: none !important;
-
-      margin: 0 !important;
-      padding: 145px 32px 140px !important;
-
-      box-sizing: border-box !important;
-    }
-
-
-    /* =========================================
-       CATEGORY FILTER
-    ========================================= */
-
-    body.page-works .works-filter {
-      width: 100%;
-      max-width: 1800px;
-
-      margin: 0 auto 38px;
-      padding: 0;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-
-      column-gap: 26px;
-      row-gap: 12px;
-
+    body.page-notes * {
       box-sizing: border-box;
     }
 
 
-    body.page-works .filter-button {
-      position: relative;
+    /* =========================================
+       NOTES 전체 영역
+    ========================================= */
+
+    body.page-notes .notes-wrap {
+      width: calc(100% - 64px);
+      max-width: 1180px;
+
+      margin: 0 auto;
+      padding: 150px 0 140px;
+
+      font-family: "Paperlogy", sans-serif;
+    }
+
+
+    /* =========================================
+       PAGE INTRO
+    ========================================= */
+
+    body.page-notes .notes-intro {
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1fr)
+        minmax(280px, 420px);
+
+      align-items: end;
+      column-gap: 60px;
+
+      margin-bottom: 72px;
+      padding-bottom: 36px;
+
+      border-bottom: 1px solid #eeeeee;
+    }
+
+
+    body.page-notes .notes-label {
+      margin: 0 0 12px;
+
+      color: #ef94bd;
+
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.4;
+      letter-spacing: 0.08em;
+
+      text-transform: lowercase;
+    }
+
+
+    body.page-notes .notes-title {
+      margin: 0;
+
+      font-family: "Paperlogy", sans-serif;
+      font-size: clamp(46px, 7vw, 88px);
+      font-weight: 800;
+      line-height: 0.95;
+      letter-spacing: -0.055em;
+
+      word-break: keep-all;
+    }
+
+
+    body.page-notes .notes-description {
+      max-width: 420px;
 
       margin: 0;
-      padding: 3px 0 5px;
+      padding-bottom: 4px;
 
-      border: 0;
-      border-bottom: 1px solid transparent;
+      color: #555555;
 
-      background: transparent;
+      font-family: "Paperlogy", sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.85;
+
+      word-break: keep-all;
+    }
+
+
+    /* =========================================
+       NOTE LIST
+    ========================================= */
+
+    body.page-notes .note-list {
+      display: flex;
+      flex-direction: column;
+
+      gap: 82px;
+    }
+
+
+    body.page-notes .note-entry {
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1.25fr)
+        minmax(280px, 0.75fr);
+
+      align-items: start;
+      column-gap: 42px;
+
+      padding-bottom: 82px;
+
+      border-bottom: 1px solid #eeeeee;
+    }
+
+
+    /* =========================================
+       NOTE IMAGE
+    ========================================= */
+
+    body.page-notes .note-visual {
+      width: 100%;
+      min-width: 0;
+    }
+
+
+    body.page-notes .note-image {
+      display: block;
+
+      width: 100%;
+      height: auto;
+
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+
+      border-radius: 16px;
+    }
+
+
+    body.page-notes .note-image-caption {
+      margin: 10px 2px 0;
+
       color: #999999;
+
+      font-family: "Paperlogy", sans-serif;
+      font-size: 10px;
+      font-weight: 400;
+      line-height: 1.5;
+      letter-spacing: 0.02em;
+    }
+
+
+    /* =========================================
+       NOTE CONTENT
+    ========================================= */
+
+    body.page-notes .note-content {
+      padding-top: 2px;
+    }
+
+
+    body.page-notes .note-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+
+      margin-bottom: 24px;
+
+      color: #999999;
+
+      font-family: "Paperlogy", sans-serif;
+      font-size: 11px;
+      font-weight: 400;
+      line-height: 1.4;
+      letter-spacing: 0.04em;
+    }
+
+
+    body.page-notes .note-number {
+      color: #ef94bd;
+      font-weight: 700;
+    }
+
+
+    body.page-notes .note-title {
+      margin: 0 0 22px;
+
+      font-family: "Paperlogy", sans-serif;
+      font-size: 29px;
+      font-weight: 700;
+      line-height: 1.25;
+      letter-spacing: -0.025em;
+
+      word-break: keep-all;
+    }
+
+
+    body.page-notes .note-lead {
+      margin: 0 0 18px;
+
+      color: #222222;
+
+      font-family: "Paperlogy", sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.75;
+
+      word-break: keep-all;
+    }
+
+
+    body.page-notes .note-text {
+      margin: 0 0 18px;
+
+      color: #666666;
 
       font-family: "Paperlogy", sans-serif;
       font-size: 13px;
       font-weight: 400;
-      line-height: 1.3;
+      line-height: 1.9;
+
+      word-break: keep-all;
+    }
+
+
+    /* =========================================
+       KEYWORDS
+    ========================================= */
+
+    body.page-notes .note-tags {
+      display: flex;
+      flex-wrap: wrap;
+
+      gap: 7px;
+
+      margin-top: 28px;
+    }
+
+
+    body.page-notes .note-tag {
+      display: inline-flex;
+      align-items: center;
+
+      min-height: 28px;
+
+      padding: 6px 11px;
+
+      border: 1px solid #f4bad4;
+      border-radius: 999px;
+
+      background: #fff7fb;
+      color: #d97eaa;
+
+      font-family: "Paperlogy", sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      line-height: 1;
       letter-spacing: 0.02em;
-
-      cursor: pointer;
-
-      transition:
-        color 0.2s ease,
-        border-color 0.2s ease,
-        opacity 0.2s ease;
-    }
-
-
-    body.page-works .filter-button:hover {
-      color: #111111;
-    }
-
-
-    body.page-works .filter-button.is-active {
-      color: #111111;
-      border-bottom-color: #111111;
-    }
-
-
-    body.page-works .filter-button:focus-visible {
-      outline: 1px dashed #f6a1c6;
-      outline-offset: 6px;
     }
 
 
     /* =========================================
-       4 COLUMN WORK GRID
+       MOBILE
     ========================================= */
 
-    body.page-works #worksGrid {
-      display: grid !important;
+    @media screen and (max-width: 760px) {
 
-      grid-template-columns:
-        repeat(4, minmax(0, 1fr)) !important;
+      body.page-notes .notes-wrap {
+        width: calc(100% - 32px);
 
-      column-gap: 24px !important;
-      row-gap: 56px !important;
-
-      width: 100% !important;
-      max-width: 1800px !important;
-
-      margin: 0 auto !important;
-      padding: 0 !important;
-
-      align-items: start !important;
-      justify-items: stretch !important;
-
-      box-sizing: border-box !important;
-    }
-
-
-    body.page-works #worksGrid .work-card {
-      display: block !important;
-
-      width: 100% !important;
-      max-width: none !important;
-      min-width: 0 !important;
-
-      margin: 0 !important;
-      padding: 0 !important;
-
-      text-align: center !important;
-
-      box-sizing: border-box !important;
-
-      opacity: 1;
-      transform: translateY(0);
-
-      transition:
-        opacity 0.22s ease,
-        transform 0.22s ease;
-    }
-
-
-    /* 필터 선택 시 숨겨지는 카드 */
-    body.page-works #worksGrid .work-card.is-hidden {
-      display: none !important;
-    }
-
-
-    body.page-works #worksGrid .work-img {
-      display: block !important;
-
-      width: 100% !important;
-      max-width: none !important;
-      height: auto !important;
-
-      margin: 0 0 15px !important;
-      padding: 0 !important;
-
-      aspect-ratio: 3 / 2 !important;
-      object-fit: cover !important;
-
-      border-radius: 12px !important;
-
-      cursor: pointer;
-
-      transition:
-        transform 0.25s ease,
-        opacity 0.25s ease;
-    }
-
-
-    body.page-works
-    #worksGrid
-    .work-card:hover
-    .work-img {
-      transform: translateY(-3px);
-      opacity: 0.96;
-    }
-
-
-    body.page-works #worksGrid .work-title {
-      margin: 0 0 4px !important;
-      padding: 0 4px !important;
-
-      font-family: "Paperlogy", sans-serif !important;
-      font-size: 15px !important;
-      line-height: 1.3 !important;
-      font-weight: 700 !important;
-      letter-spacing: 0.01em !important;
-
-      text-align: center !important;
-      word-break: keep-all !important;
-    }
-
-
-    body.page-works #worksGrid .work-sub {
-      margin: 0 !important;
-      padding: 0 4px !important;
-
-      color: #777777 !important;
-
-      font-family: "Paperlogy", sans-serif !important;
-      font-size: 12px !important;
-      line-height: 1.4 !important;
-      font-weight: 400 !important;
-
-      text-align: center !important;
-      opacity: 1 !important;
-    }
-
-
-    /* =========================================
-       TABLET / MOBILE
-    ========================================= */
-
-    @media screen and (max-width: 700px) {
-
-      body.page-works #worksPageWrap {
-        padding: 100px 16px 80px !important;
+        padding: 110px 0 90px;
       }
 
 
-      body.page-works .works-filter {
-        margin-bottom: 28px;
+      body.page-notes .notes-intro {
+        grid-template-columns: 1fr;
 
-        column-gap: 18px;
-        row-gap: 10px;
+        row-gap: 28px;
+
+        margin-bottom: 50px;
+        padding-bottom: 28px;
       }
 
 
-      body.page-works .filter-button {
-        font-size: 12px;
+      body.page-notes .notes-title {
+        font-size: 52px;
       }
 
 
-      body.page-works #worksGrid {
-        grid-template-columns:
-          repeat(2, minmax(0, 1fr)) !important;
-
-        column-gap: 14px !important;
-        row-gap: 42px !important;
+      body.page-notes .notes-description {
+        max-width: 100%;
       }
 
 
-      body.page-works #worksGrid .work-img {
-        margin-bottom: 12px !important;
-        border-radius: 10px !important;
+      body.page-notes .note-list {
+        gap: 58px;
       }
 
 
-      body.page-works #worksGrid .work-title {
-        font-size: 13px !important;
+      body.page-notes .note-entry {
+        grid-template-columns: 1fr;
+
+        row-gap: 25px;
+
+        padding-bottom: 58px;
       }
 
 
-      body.page-works #worksGrid .work-sub {
-        font-size: 11px !important;
+      body.page-notes .note-image {
+        border-radius: 12px;
+      }
+
+
+      body.page-notes .note-meta {
+        margin-bottom: 18px;
+      }
+
+
+      body.page-notes .note-title {
+        font-size: 24px;
       }
     }
 
 
-    /* 아주 작은 휴대폰 */
     @media screen and (max-width: 420px) {
 
-      body.page-works #worksGrid {
-        grid-template-columns: 1fr !important;
-        row-gap: 44px !important;
+      body.page-notes .notes-title {
+        font-size: 45px;
       }
 
 
-      body.page-works #worksGrid .work-title {
-        font-size: 14px !important;
+      body.page-notes .note-title {
+        font-size: 22px;
       }
 
 
-      body.page-works #worksGrid .work-sub {
-        font-size: 12px !important;
+      body.page-notes .note-lead {
+        font-size: 14px;
+      }
+
+
+      body.page-notes .note-text {
+        font-size: 12px;
       }
     }
   </style>
 </head>
 
 
-<body class="page-works">
+<body class="page-notes">
 
   <!-- =========================================
        TOP FIXED HEADER
+       기존 사이트와 동일
   ========================================== -->
 
   <header class="top">
@@ -339,877 +420,141 @@
 
 
   <!-- =========================================
-       WORKS PAGE
+       NOTES PAGE
   ========================================== -->
 
-  <main
-    class="works-wrap"
-    id="worksPageWrap"
-  >
+  <main class="notes-wrap">
+
+    <!-- PAGE TITLE -->
+
+    <section class="notes-intro">
+
+      <div>
+        <p class="notes-label">
+          research archive
+        </p>
+
+        <h1 class="notes-title">
+          Soft Notes
+        </h1>
+      </div>
 
 
-    <!-- CATEGORY FILTER -->
+      <p class="notes-description">
+        작업이 완성되기 전의 생각과 이미지,
+        소재 실험과 실패의 흔적을 천천히 기록합니다.
+        완성된 결과보다 그 사이에서 발견한 감각을 모으는 공간입니다.
+      </p>
 
-    <nav
-      class="works-filter"
-      aria-label="Filter works by category"
-    >
-
-      <button
-        class="filter-button is-active"
-        type="button"
-        data-filter="all"
-        aria-pressed="true"
-      >
-        All
-      </button>
+    </section>
 
 
-      <button
-        class="filter-button"
-        type="button"
-        data-filter="soft-spaces"
-        aria-pressed="false"
-      >
-        Soft Spaces
-      </button>
+    <!-- =========================================
+         NOTE LIST
+    ========================================== -->
 
-
-      <button
-        class="filter-button"
-        type="button"
-        data-filter="soft-objects"
-        aria-pressed="false"
-      >
-        Soft Objects
-      </button>
-
-
-      <button
-        class="filter-button"
-        type="button"
-        data-filter="visual-stories"
-        aria-pressed="false"
-      >
-        Visual Stories
-      </button>
-
-    </nav>
-
-
-    <!-- WORK GRID -->
-
-    <section
-      class="works-grid"
-      id="worksGrid"
-    >
+    <section class="note-list">
 
 
       <!-- =====================================
-           SOFT SPACES
+           NOTE 001
       ====================================== -->
 
+      <article class="note-entry">
 
-      <!-- WORK 01 -->
-      <article
-        class="work-card"
-        data-category="soft-spaces"
-      >
-        <img
-          class="work-img"
-          src="images/doll house.jpg"
-          alt="Doll House Soft Structure"
-        >
+        <div class="note-visual">
 
-        <h3 class="work-title">
-          Doll House : Soft Structure
-        </h3>
+          <img
+            class="note-image"
+            src="images/textile-pieces.png"
+            alt="Textile Pieces research process"
+          >
 
-        <p class="work-sub">
-          AI-generated digital image, 2026
-        </p>
-      </article>
+          <p class="note-image-caption">
+            Textile Pieces, visual experiment, 2026
+          </p>
+
+        </div>
 
 
-      <!-- WORK 02 -->
-      <article
-        class="work-card"
-        data-category="soft-spaces"
-      >
-        <img
-          class="work-img"
-          src="images/딸기.jpg"
-          alt="Strawberry House Soft Architecture"
-        >
+        <div class="note-content">
 
-        <h3 class="work-title">
-          Strawberry House : Soft Architecture
-        </h3>
+          <div class="note-meta">
 
-        <p class="work-sub">
-          AI-generated digital image, 2026
-        </p>
-      </article>
+            <span class="note-number">
+              No. 001
+            </span>
 
-      <!-- WORK 15 -->
-      <article
-        class="work-card"
-        data-category="soft-spaces"
-      >
-        <img
-          class="work-img"
-          src="images/gelee-house.png"
-          alt="Gelée House"
-        >
+            <time datetime="2026-07-22">
+              22 July 2026
+            </time>
 
-        <h3 class="work-title">
-          Gelée House
-        </h3>
-
-        <p class="work-sub">
-          AI-generated digital image, 2026
-        </p>
-      </article>
-
-        <!-- WORK 16 -->
-      <article
-        class="work-card"
-        data-category="soft-spaces"
-      >
-        <img
-          class="work-img"
-          src="images/petal-construction.png"
-          alt="Petal Construction"
-        >
-
-        <h3 class="work-title">
-          Petal Construction
-        </h3>
-
-        <p class="work-sub">
-          AI-generated digital image, 2026
-        </p>
-      </article>
-
-        <!-- WORK 17 -->
-      <article
-        class="work-card"
-        data-category="soft-spaces"
-      >
-        <img
-          class="work-img"
-          src="images/shirring-hills.png"
-          alt="Shirring Hills"
-        >
-
-        <h3 class="work-title">
-          Shirring Hills
-        </h3>
-
-        <p class="work-sub">
-          AI-generated digital image, 2026
-        </p>
-      </article>
-
-      <!-- WORK 18 -->
-      <article
-        class="work-card"
-        data-category="soft-spaces"
-      >
-        <img
-          class="work-img"
-          src="images/soft-landscape.png"
-          alt="A Landscape Made to Wander"
-        >
-
-        <h3 class="work-title">
-          A Landscape Made to Wander
-        </h3>
-
-        <p class="work-sub">
-          AI-generated digital image, 2026
-        </p>
-      </article>
-
-       <!-- WORK 19 -->
-      <article
-        class="work-card"
-        data-category="soft-spaces"
-      >
-        <img
-          class="work-img"
-          src="images/cloud-architecture.png"
-          alt="Cloud Architecture"
-        >
-
-        <h3 class="work-title">
-          Cloud Architecture
-        </h3>
-
-        <p class="work-sub">
-          AI-generated digital image, 2026
-        </p>
-      </article>
-
-        <!-- WORK 20 -->
-      <article
-        class="work-card"
-        data-category="soft-spaces"
-      >
-        <img
-          class="work-img"
-          src="images/cake-architecture.png"
-          alt="Cake Architecture"
-        >
-
-        <h3 class="work-title">
-          Cake Architecture
-        </h3>
-
-        <p class="work-sub">
-          AI-generated digital image, 2026
-        </p>
-      </article>
-      
-      <!-- =====================================
-           SOFT OBJECTS
-      ====================================== -->
+          </div>
 
 
-      <!-- WORK 03 -->
-      <article
-        class="work-card"
-        data-category="soft-objects"
-      >
-        <img
-          class="work-img"
-          src="images/cup.jpg"
-          alt="A Soft Sculptural Cup"
-        >
-
-        <h3 class="work-title">
-          A Soft Sculptural Cup
-        </h3>
-
-        <p class="work-sub">
-          AI-generated digital image, 2026
-        </p>
-      </article>
+          <h2 class="note-title">
+            Textile Pieces — Process Note
+          </h2>
 
 
-      <!-- WORK 04 -->
-      <article
-        class="work-card"
-        data-category="soft-objects"
-      >
-        <img
-          class="work-img"
-          src="images/A cup.jpg"
-          alt="A Cup as Soft Object"
-        >
-
-        <h3 class="work-title">
-          A Cup as Soft Object
-        </h3>
-
-        <p class="work-sub">
-          AI-generated digital image, 2026
-        </p>
-      </article>
-
-      <!-- WORK 21 -->
-      <article
-        class="work-card"
-        data-category="soft-objects"
-      >
-        <img
-          class="work-img"
-          src="images/granulated-fantasy.png"
-          alt="Granulated Fantasy"
-        >
-
-        <h3 class="work-title">
-          Granulated Fantasy
-        </h3>
-
-        <p class="work-sub">
-          AI-generated digital image, 2026
-        </p>
-      </article>
-
-      <!-- WORK 22 -->
-      <article
-        class="work-card"
-        data-category="soft-objects"
-      >
-        <img
-          class="work-img"
-          src="images/sugar-dream-room.png"
-          alt="A Tiny Room for Sugar Dreams"
-        >
-
-        <h3 class="work-title">
-          A Tiny Room for Sugar Dreams
-        </h3>
-
-        <p class="work-sub">
-          AI-generated digital image, 2026
-        </p>
-      </article>
-
-      <!-- WORK 23 -->
-      <article
-        class="work-card"
-        data-category="soft-objects"
-      >
-        <img
-          class="work-img"
-          src="images/sweetness-without-sugar.png"
-          alt="˚₊‧꒰ა Sweetness Without Sugar ໒꒱ ‧₊˚ "
-        >
-
-        <h3 class="work-title">
-          ˚₊‧꒰ა Sweetness Without Sugar ໒꒱ ‧₊˚ 
-        </h3>
-
-        <p class="work-sub">
-          AI-generated digital image, 2026
-        </p>
-      </article>
-
-      <!-- WORK 24 -->
-      <article
-        class="work-card"
-        data-category="soft-objects"
-      >
-        <img
-          class="work-img"
-          src="images/textile-course.png"
-          alt="Today's Textile Course 🍽️"
-        >
-
-        <h3 class="work-title">
-          Today's Textile Course 🍽️
-        </h3>
-
-        <p class="work-sub">
-          AI-generated digital image, 2026
-        </p>
-      </article>
-      
-      <!-- WORK 25 -->
-      <article
-        class="work-card"
-        data-category="soft-objects"
-      >
-        <img
-          class="work-img"
-          src="images/gelee.png"
-          alt="Gelée 🍮"
-        >
-
-        <h3 class="work-title">
-          Gelée 🍮
-        </h3>
-
-        <p class="work-sub">
-          AI-generated digital image, 2026
-        </p>
-      </article>
-
-       <!-- WORK 26 -->
-      <article
-        class="work-card"
-        data-category="soft-objects"
-      >
-        <img
-          class="work-img"
-          src="images/bread-friends.png"
-          alt="Fuwafuwa Bread friends 🍞"
-        >
-
-        <h3 class="work-title">
-          Fuwafuwa Bread friends 🍞
-        </h3>
-
-        <p class="work-sub">
-          AI-generated digital image, 2026
-        </p>
-      </article>
-
-       <!-- WORK 27 -->
-      <article
-        class="work-card"
-        data-category="soft-objects"
-      >
-        <img
-          class="work-img"
-          src="images/parfait.png"
-          alt="Choose your vibe 🍧 "
-        >
-
-        <h3 class="work-title">
-          Choose your vibe 🍧
-        </h3>
-
-        <p class="work-sub">
-          AI-generated digital image, 2026
-        </p>
-      </article>
-      
-      
-      <!-- =====================================
-           SOFT SPACES
-      ====================================== -->
+          <p class="note-lead">
+            작은 패브릭 조각들을 하나의 수집물처럼
+            배열하는 방식에 대해 실험했다.
+          </p>
 
 
-      <!-- WORK 05 -->
-      <article
-        class="work-card"
-        data-category="soft-spaces"
-      >
-        <img
-          class="work-img"
-          src="images/cute.jpg"
-          alt="A Soft Dwelling I"
-        >
-
-        <h3 class="work-title">
-          A Soft Dwelling I
-        </h3>
-
-        <p class="work-sub">
-          AI-generated digital image, 2026
-        </p>
-      </article>
+          <p class="note-text">
+            완성된 하나의 오브제를 만드는 것보다,
+            각기 다른 질감과 형태를 가진 조각들이
+            한 화면 안에서 어떤 관계를 만드는지 관찰했다.
+          </p>
 
 
-      <!-- WORK 06 -->
-      <article
-        class="work-card"
-        data-category="soft-spaces"
-      >
-        <img
-          class="work-img"
-          src="images/cutie.jpg"
-          alt="A Soft Dwelling II"
-        >
+          <p class="note-text">
+            자수와 패치워크, 셔링처럼 손의 흔적이 느껴지는
+            요소를 남기면서도 화면이 지나치게 장식적으로
+            보이지 않도록 형태와 색의 수를 조절했다.
+          </p>
 
-        <h3 class="work-title">
-          A Soft Dwelling II
-        </h3>
 
-        <p class="work-sub">
-          AI-generated digital image, 2026
-        </p>
+          <div class="note-tags">
+
+            <span class="note-tag">
+              textile study
+            </span>
+
+            <span class="note-tag">
+              patchwork
+            </span>
+
+            <span class="note-tag">
+              embroidery
+            </span>
+
+            <span class="note-tag">
+              visual research
+            </span>
+
+          </div>
+
+        </div>
+
       </article>
 
 
       <!-- =====================================
-           VISUAL STORIES
+           새 연구일지는 위의 article 전체를
+           복사해서 이 아래에 붙여넣기
       ====================================== -->
 
-
-      <!-- WORK 07 -->
-      <article
-        class="work-card"
-        data-category="visual-stories"
-      >
-        <img
-          class="work-img"
-          src="images/젤리곰.jpg"
-          alt="Gummy Bloom"
-        >
-
-        <h3 class="work-title">
-          Gummy Bloom
-        </h3>
-
-        <p class="work-sub">
-          AI-generated digital image, 2026
-        </p>
-      </article>
-
-
-      <!-- WORK 08 -->
-      <article
-        class="work-card"
-        data-category="visual-stories"
-      >
-        <img
-          class="work-img"
-          src="images/하리보.jpg"
-          alt="Gummy Candy Lab"
-        >
-
-        <h3 class="work-title">
-          Gummy Candy Lab
-        </h3>
-
-        <p class="work-sub">
-          AI-generated digital image, 2026
-        </p>
-      </article>
-
-
-      <!-- WORK 09 -->
-      <article
-        class="work-card"
-        data-category="visual-stories"
-      >
-        <img
-          class="work-img"
-          src="images/mushroom1.jpg"
-          alt="Be My Valentine"
-        >
-
-        <h3 class="work-title">
-          Be My Valentine ♡‧₊˚
-        </h3>
-
-        <p class="work-sub">
-          AI-generated digital image, 2026
-        </p>
-      </article>
-
- <!-- WORK 28 -->
-     <article
-        class="work-card"
-        data-category="visual-stories"
-      >
-        <img
-          class="work-img"
-          src="images/fuzzy-peach-01.png"
-          alt="Fuzzy Peach Objects"
-        >
-
-        <h3 class="work-title">
-          Fuzzy Peach Objects
-        </h3>
-
-        <p class="work-sub">
-          AI-generated digital image, 2026
-        </p>
-      </article>
-
-      <!-- WORK 29 -->
-      <article
-        class="work-card"
-        data-category="visual-stories"
-      >
-        <img
-          class="work-img"
-          src="images/fuzzy-peach-02.png"
-          alt="Fuzzy Peach Objects"
-        >
-
-        <h3 class="work-title">
-          Fuzzy Peach Objects
-        </h3>
-
-        <p class="work-sub">
-          AI-generated digital image, 2026
-        </p>
-      </article>
-
-      <!-- WORK 30 -->
-     <article
-        class="work-card"
-        data-category="visual-stories"
-      >
-        <img
-          class="work-img"
-          src="images/cake-cushion.png"
-          alt="Cake Cushion"
-        >
-
-        <h3 class="work-title">
-          Cake Cushion
-        </h3>
-
-        <p class="work-sub">
-          AI-generated digital image, 2026
-        </p>
-      </article>
-
-       <!-- WORK 31 -->
-      <article
-        class="work-card"
-        data-category="visual-stories"
-      >
-        <img
-          class="work-img"
-          src="images/textile-pieces.png"
-          alt="Textile Pieces"
-        >
-
-        <h3 class="work-title">
-          Textile Pieces
-        </h3>
-
-        <p class="work-sub">
-          AI-generated digital image, 2026
-        </p>
-      </article>
-
-      
-      <!-- =====================================
-           SOFT OBJECTS
-      ====================================== -->
-
-
-      <!-- WORK 10 -->
-      <article
-        class="work-card"
-        data-category="soft-objects"
-      >
-        <img
-          class="work-img"
-          src="images/sofa1.jpg"
-          alt="Sugarcoat Sofa"
-        >
-
-        <h3 class="work-title">
-          Sugarcoat Sofa
-        </h3>
-
-        <p class="work-sub">
-          AI-generated digital image, 2026
-        </p>
-      </article>
-
-
-      <!-- WORK 11 -->
-      <article
-        class="work-card"
-        data-category="soft-objects"
-      >
-        <img
-          class="work-img"
-          src="images/모빌.jpg"
-          alt="For Those Who Need Rest"
-        >
-
-        <h3 class="work-title">
-          For Those Who Need Rest
-        </h3>
-
-        <p class="work-sub">
-          AI-generated digital image, 2026
-        </p>
-      </article>
-
-
-      <!-- =====================================
-           VISUAL STORIES
-      ====================================== -->
-
-
-      <!-- WORK 12 -->
-      <article
-        class="work-card"
-        data-category="visual-stories"
-      >
-        <img
-          class="work-img"
-          src="images/앨범.png"
-          alt="A Sugar-lit Carnival"
-        >
-
-        <h3 class="work-title">
-          A Sugar-lit Carnival ⋆｡°✩
-        </h3>
-
-        <p class="work-sub">
-          AI-generated digital image, 2026
-        </p>
-      </article>
-
-
-      <!-- =====================================
-           SOFT SPACES
-      ====================================== -->
-
-
-      <!-- WORK 13 -->
-      <article
-        class="work-card"
-        data-category="soft-spaces"
-      >
-        <img
-          class="work-img"
-          src="images/스노우볼1.png"
-          alt="A Little House to Rest 1"
-        >
-
-        <h3 class="work-title">
-          A Little House to Rest ˚✧
-        </h3>
-
-        <p class="work-sub">
-          AI-generated digital image, 2026
-        </p>
-      </article>
-
-
-      <!-- WORK 14 -->
-      <article
-        class="work-card"
-        data-category="soft-spaces"
-      >
-        <img
-          class="work-img"
-          src="images/스노우볼2.png"
-          alt="A Little House to Rest 2"
-        >
-
-        <h3 class="work-title">
-          A Little House to Rest ˚✧
-        </h3>
-
-        <p class="work-sub">
-          AI-generated digital image, 2026
-        </p>
-      </article>
 
     </section>
 
   </main>
 
 
-  <!-- =========================================
-       IMAGE MODAL
-  ========================================== -->
-
-  <div
-    class="modal"
-    id="imgModal"
-    aria-hidden="true"
-  >
-
-    <div
-      class="modal-backdrop"
-      data-close="1"
-    ></div>
-
-
-    <div
-      class="modal-panel"
-      role="dialog"
-      aria-modal="true"
-    >
-
-      <button
-        class="modal-close"
-        type="button"
-        data-close="1"
-        aria-label="close image"
-      >
-        ×
-      </button>
-
-
-      <button
-        class="modal-nav prev"
-        type="button"
-        aria-label="previous image"
-      >
-        ‹
-      </button>
-
-
-      <button
-        class="modal-nav next"
-        type="button"
-        aria-label="next image"
-      >
-        ›
-      </button>
-
-
-      <img
-        class="modal-img"
-        id="modalImg"
-        alt=""
-      >
-
-
-      <div
-        class="modal-caption"
-        id="modalCaption"
-      ></div>
-
-    </div>
-
-  </div>
-
-
   <!-- 기존 사이트 JavaScript -->
-  <script src="script.js?v=20260722-filter-final-1"></script>
-
-
-  <!-- =========================================
-       CATEGORY FILTER SCRIPT
-  ========================================== -->
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const filterButtons =
-        document.querySelectorAll(".filter-button");
-
-      const workCards =
-        document.querySelectorAll("#worksGrid .work-card");
-
-
-      filterButtons.forEach(function (button) {
-
-        button.addEventListener("click", function () {
-
-          const selectedCategory =
-            button.dataset.filter;
-
-
-          /* 버튼 활성화 상태 변경 */
-          filterButtons.forEach(function (item) {
-            item.classList.remove("is-active");
-            item.setAttribute("aria-pressed", "false");
-          });
-
-
-          button.classList.add("is-active");
-          button.setAttribute("aria-pressed", "true");
-
-
-          /* 작품 필터링 */
-          workCards.forEach(function (card) {
-
-            const cardCategory =
-              card.dataset.category;
-
-            const shouldShow =
-              selectedCategory === "all" ||
-              cardCategory === selectedCategory;
-
-
-            card.classList.toggle(
-              "is-hidden",
-              !shouldShow
-            );
-
-
-            card.setAttribute(
-              "aria-hidden",
-              String(!shouldShow)
-            );
-
-          });
-
-        });
-
-      });
-
-    });
-  </script>
+  <script src="script.js?v=20260722-notes-final-1"></script>
 
 </body>
 
