@@ -7,51 +7,59 @@
 
   <title>Kwakcamole.archive — works</title>
 
-  <!-- 기존 공통 스타일 -->
- <link rel="stylesheet" href="style.css?v=works-4column-1" />
+  <!-- 기존 사이트 공통 스타일 -->
+  <link
+    rel="stylesheet"
+    href="style.css?v=20260722-works-4column-final"
+  />
 
-  <!-- WORKS 페이지 전용 스타일 -->
+  <!-- Works 페이지에서만 적용되는 스타일 -->
   <style>
     /* =========================================
-       WORKS PAGE — 4 COLUMN ARCHIVE
+       WORKS PAGE ONLY
+       HOME / ABOUT / CONTACT에는 영향 없음
     ========================================= */
 
     body.page-works {
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
 
-    .page-works .works-wrap {
+    body.page-works #worksPageWrap {
       width: 100% !important;
       max-width: none !important;
 
       margin: 0 !important;
-      padding: 165px 32px 120px !important;
+      padding: 150px 32px 140px !important;
 
-      box-sizing: border-box;
+      box-sizing: border-box !important;
     }
 
-    .page-works .works-grid {
+    body.page-works #worksGrid {
+      display: grid !important;
+
+      grid-template-columns:
+        repeat(4, minmax(0, 1fr)) !important;
+
+      column-gap: 24px !important;
+      row-gap: 56px !important;
+
       width: 100% !important;
-      max-width: 1700px !important;
+      max-width: 1800px !important;
 
       margin: 0 auto !important;
       padding: 0 !important;
 
-      display: grid !important;
-      grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-
-      column-gap: 24px !important;
-      row-gap: 58px !important;
-
       align-items: start !important;
+      justify-content: stretch !important;
       justify-items: stretch !important;
 
-      box-sizing: border-box;
+      box-sizing: border-box !important;
     }
 
-    .page-works .work-card {
+    body.page-works #worksGrid .work-card {
+      display: block !important;
+
       width: 100% !important;
       max-width: none !important;
       min-width: 0 !important;
@@ -59,98 +67,110 @@
       margin: 0 !important;
       padding: 0 !important;
 
-      display: block !important;
-      text-align: center;
+      text-align: center !important;
 
-      box-sizing: border-box;
+      box-sizing: border-box !important;
     }
 
-    .page-works .work-img {
+    body.page-works #worksGrid .work-img {
       display: block !important;
 
       width: 100% !important;
       max-width: none !important;
       height: auto !important;
 
-      margin: 0 !important;
+      margin: 0 0 15px !important;
       padding: 0 !important;
 
-      aspect-ratio: 3 / 2;
-      object-fit: cover;
+      aspect-ratio: 3 / 2 !important;
+      object-fit: cover !important;
 
-      border-radius: 12px;
-      cursor: pointer;
+      border-radius: 12px !important;
 
       transition:
         transform 0.25s ease,
         opacity 0.25s ease;
     }
 
-    .page-works .work-card:hover .work-img {
+    body.page-works #worksGrid .work-card:hover .work-img {
       transform: translateY(-3px);
       opacity: 0.96;
     }
 
-    .page-works .work-title {
-      margin: 15px 0 4px !important;
+    body.page-works #worksGrid .work-title {
+      margin: 0 0 4px !important;
       padding: 0 4px !important;
 
       font-size: 15px !important;
       line-height: 1.3 !important;
       font-weight: 700 !important;
 
-      text-align: center;
-      word-break: keep-all;
+      text-align: center !important;
+      word-break: keep-all !important;
     }
 
-    .page-works .work-sub {
+    body.page-works #worksGrid .work-sub {
       margin: 0 !important;
       padding: 0 4px !important;
+
+      color: #777 !important;
 
       font-size: 12px !important;
       line-height: 1.4 !important;
       font-weight: 400 !important;
 
-      text-align: center;
-      color: #777;
+      text-align: center !important;
+      opacity: 1 !important;
     }
 
-    /* 태블릿·모바일: 2열 */
-    @media screen and (max-width: 760px) {
-      .page-works .works-wrap {
-        padding: 125px 18px 80px !important;
+
+    /* 태블릿과 휴대폰: 2열 */
+    @media screen and (max-width: 700px) {
+      body.page-works #worksPageWrap {
+        padding: 105px 16px 80px !important;
       }
 
-      .page-works .works-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      body.page-works #worksGrid {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr)) !important;
 
         column-gap: 14px !important;
         row-gap: 42px !important;
       }
 
-      .page-works .work-img {
-        border-radius: 10px;
+      body.page-works #worksGrid .work-img {
+        margin-bottom: 12px !important;
+        border-radius: 10px !important;
       }
 
-      .page-works .work-title {
-        margin-top: 12px !important;
+      body.page-works #worksGrid .work-title {
         font-size: 13px !important;
       }
 
-      .page-works .work-sub {
+      body.page-works #worksGrid .work-sub {
         font-size: 11px !important;
       }
     }
 
-    /* 작은 모바일: 1열 */
+
+    /* 아주 작은 휴대폰: 1열 */
     @media screen and (max-width: 420px) {
-      .page-works .works-grid {
+      body.page-works #worksGrid {
         grid-template-columns: 1fr !important;
         row-gap: 44px !important;
+      }
+
+      body.page-works #worksGrid .work-title {
+        font-size: 14px !important;
+      }
+
+      body.page-works #worksGrid .work-sub {
+        font-size: 12px !important;
       }
     }
   </style>
 </head>
+
 
 <body class="page-works">
 
@@ -165,17 +185,30 @@
       Kwakcamole.archive
     </a>
 
-    <a class="top-right" href="index.html" aria-label="home">
-      <img src="images/집.png" alt="home icon">
+    <a
+      class="top-right"
+      href="index.html"
+      aria-label="home"
+    >
+      <img
+        src="images/집.png"
+        alt="home icon"
+      >
     </a>
 
   </header>
 
 
   <!-- WORKS -->
-  <main class="works-wrap">
+  <main
+    class="works-wrap"
+    id="worksPageWrap"
+  >
 
-    <section class="works-grid">
+    <section
+      class="works-grid"
+      id="worksGrid"
+    >
 
       <!-- WORK 01 -->
       <article class="work-card">
@@ -184,9 +217,11 @@
           src="images/doll house.jpg"
           alt="Doll House Soft Structure"
         >
+
         <h3 class="work-title">
           Doll House : Soft Structure
         </h3>
+
         <p class="work-sub">
           AI-generated digital image, 2026
         </p>
@@ -200,9 +235,11 @@
           src="images/딸기.jpg"
           alt="Strawberry House Soft Architecture"
         >
+
         <h3 class="work-title">
           Strawberry House : Soft Architecture
         </h3>
+
         <p class="work-sub">
           AI-generated digital image, 2026
         </p>
@@ -216,9 +253,11 @@
           src="images/cup.jpg"
           alt="A Soft Sculptural Cup"
         >
+
         <h3 class="work-title">
           A Soft Sculptural Cup
         </h3>
+
         <p class="work-sub">
           AI-generated digital image, 2026
         </p>
@@ -232,9 +271,11 @@
           src="images/A cup.jpg"
           alt="A Cup as Soft Object"
         >
+
         <h3 class="work-title">
           A Cup as Soft Object
         </h3>
+
         <p class="work-sub">
           AI-generated digital image, 2026
         </p>
@@ -248,9 +289,11 @@
           src="images/cute.jpg"
           alt="A Soft Dwelling I"
         >
+
         <h3 class="work-title">
           A Soft Dwelling I
         </h3>
+
         <p class="work-sub">
           AI-generated digital image, 2026
         </p>
@@ -264,9 +307,11 @@
           src="images/cutie.jpg"
           alt="A Soft Dwelling II"
         >
+
         <h3 class="work-title">
           A Soft Dwelling II
         </h3>
+
         <p class="work-sub">
           AI-generated digital image, 2026
         </p>
@@ -280,9 +325,11 @@
           src="images/젤리곰.jpg"
           alt="Gummy Bloom"
         >
+
         <h3 class="work-title">
           Gummy Bloom
         </h3>
+
         <p class="work-sub">
           AI-generated digital image, 2026
         </p>
@@ -296,9 +343,11 @@
           src="images/하리보.jpg"
           alt="Gummy Candy Lab"
         >
+
         <h3 class="work-title">
           Gummy Candy Lab
         </h3>
+
         <p class="work-sub">
           AI-generated digital image, 2026
         </p>
@@ -312,9 +361,11 @@
           src="images/mushroom1.jpg"
           alt="Be My Valentine"
         >
+
         <h3 class="work-title">
           Be My Valentine ♡‧₊˚
         </h3>
+
         <p class="work-sub">
           AI-generated digital image, 2026
         </p>
@@ -328,9 +379,11 @@
           src="images/sofa1.jpg"
           alt="Sugarcoat Sofa"
         >
+
         <h3 class="work-title">
           Sugarcoat Sofa
         </h3>
+
         <p class="work-sub">
           AI-generated digital image, 2026
         </p>
@@ -344,9 +397,11 @@
           src="images/모빌.jpg"
           alt="For Those Who Need Rest"
         >
+
         <h3 class="work-title">
           For Those Who Need Rest
         </h3>
+
         <p class="work-sub">
           AI-generated digital image, 2026
         </p>
@@ -360,9 +415,11 @@
           src="images/앨범.png"
           alt="A Sugar-lit Carnival"
         >
+
         <h3 class="work-title">
           A Sugar-lit Carnival ⋆｡°✩
         </h3>
+
         <p class="work-sub">
           AI-generated digital image, 2026
         </p>
@@ -376,9 +433,11 @@
           src="images/스노우볼1.png"
           alt="A Little House to Rest 1"
         >
+
         <h3 class="work-title">
           A Little House to Rest ˚✧
         </h3>
+
         <p class="work-sub">
           AI-generated digital image, 2026
         </p>
@@ -392,9 +451,11 @@
           src="images/스노우볼2.png"
           alt="A Little House to Rest 2"
         >
+
         <h3 class="work-title">
           A Little House to Rest ˚✧
         </h3>
+
         <p class="work-sub">
           AI-generated digital image, 2026
         </p>
@@ -462,7 +523,7 @@
 
 
   <!-- 기존 JavaScript -->
-  <script src="script.js?v=20260722-4"></script>
+  <script src="script.js?v=20260722-works-final"></script>
 
 </body>
 
