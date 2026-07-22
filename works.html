@@ -3,128 +3,425 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <title>Kwakcamole.archive — works</title>
+
+  <!-- 기존 공통 CSS -->
   <link rel="stylesheet" href="style.css" />
+
+  <!-- WORKS 페이지 전용 레이아웃 -->
+  <style>
+    /* ==============================
+       WORKS PAGE
+    ============================== */
+
+    .page-works .works-wrap {
+      width: 100%;
+      padding: 160px 40px 100px;
+      box-sizing: border-box;
+    }
+
+    .page-works .works-grid {
+      width: 100%;
+      max-width: 1600px;
+      margin: 0 auto;
+
+      display: grid !important;
+      grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+      column-gap: 28px;
+      row-gap: 60px;
+
+      align-items: start;
+      box-sizing: border-box;
+    }
+
+    .page-works .work-card {
+      width: 100% !important;
+      min-width: 0;
+      margin: 0 !important;
+      padding: 0;
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    .page-works .work-img {
+      display: block;
+      width: 100% !important;
+      height: auto;
+      aspect-ratio: 3 / 2;
+      object-fit: cover;
+
+      border-radius: 14px;
+      cursor: pointer;
+    }
+
+    .page-works .work-title {
+      margin: 16px 0 4px;
+      padding: 0 4px;
+
+      font-size: 16px;
+      line-height: 1.3;
+      font-weight: 700;
+      word-break: keep-all;
+    }
+
+    .page-works .work-sub {
+      margin: 0;
+      padding: 0 4px;
+
+      font-size: 13px;
+      line-height: 1.4;
+      color: #777;
+    }
+
+    /* 노트북: 3열 */
+    @media (max-width: 1200px) {
+      .page-works .works-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        column-gap: 24px;
+      }
+    }
+
+    /* 태블릿: 2열 */
+    @media (max-width: 850px) {
+      .page-works .works-wrap {
+        padding: 130px 24px 80px;
+      }
+
+      .page-works .works-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        column-gap: 18px;
+        row-gap: 48px;
+      }
+
+      .page-works .work-title {
+        margin-top: 13px;
+        font-size: 15px;
+      }
+
+      .page-works .work-sub {
+        font-size: 12px;
+      }
+    }
+
+    /* 모바일: 1열 */
+    @media (max-width: 520px) {
+      .page-works .works-wrap {
+        padding: 110px 18px 60px;
+      }
+
+      .page-works .works-grid {
+        grid-template-columns: 1fr !important;
+        row-gap: 44px;
+      }
+
+      .page-works .work-img {
+        border-radius: 12px;
+      }
+    }
+  </style>
 </head>
 
 <body class="page-works">
 
-  <!-- top fixed header -->
+  <!-- TOP FIXED HEADER -->
   <header class="top">
-    <div class="top-left" id="favHeart">fav ♥</div>
+    <div class="top-left" id="favHeart">
+      fav ♥
+    </div>
 
-    <a class="top-title" href="index.html">Kwakcamole.archive</a>
+    <a class="top-title" href="index.html">
+      Kwakcamole.archive
+    </a>
 
     <a class="top-right" href="index.html" aria-label="home">
       <img src="images/집.png" alt="home icon">
     </a>
   </header>
 
+
+  <!-- WORKS -->
   <main class="works-wrap">
     <section class="works-grid">
 
-      <!-- WORK ITEM -->
+      <!-- WORK 01 -->
       <article class="work-card">
-        <img class="work-img" src="images/doll house.jpg" alt="work 1">
-        <h3 class="work-title">Doll House : Soft Structure</h3>
-        <p class="work-sub">AI-generated digital image, 2026</p>
+        <img
+          class="work-img"
+          src="images/doll house.jpg"
+          alt="Doll House Soft Structure"
+        >
+        <h3 class="work-title">
+          Doll House : Soft Structure
+        </h3>
+        <p class="work-sub">
+          AI-generated digital image, 2026
+        </p>
       </article>
 
+
+      <!-- WORK 02 -->
       <article class="work-card">
-        <img class="work-img" src="images/딸기.jpg" alt="work 2">
-        <h3 class="work-title">Strawberry house : Soft Architecture</h3>
-        <p class="work-sub">AI-generated digital image, 2026</p>
+        <img
+          class="work-img"
+          src="images/딸기.jpg"
+          alt="Strawberry House Soft Architecture"
+        >
+        <h3 class="work-title">
+          Strawberry House : Soft Architecture
+        </h3>
+        <p class="work-sub">
+          AI-generated digital image, 2026
+        </p>
       </article>
 
+
+      <!-- WORK 03 -->
       <article class="work-card">
-        <img class="work-img" src="images/cup.jpg" alt="work 3">
-        <h3 class="work-title">A soft sculptural cup</h3>
-        <p class="work-sub">AI-generated digital image, 2026</p>
+        <img
+          class="work-img"
+          src="images/cup.jpg"
+          alt="A Soft Sculptural Cup"
+        >
+        <h3 class="work-title">
+          A Soft Sculptural Cup
+        </h3>
+        <p class="work-sub">
+          AI-generated digital image, 2026
+        </p>
       </article>
 
+
+      <!-- WORK 04 -->
       <article class="work-card">
-        <img class="work-img" src="images/A cup.jpg" alt="work 4">
-        <h3 class="work-title">A Cup as Soft Object</h3>
-        <p class="work-sub">AI-generated digital image, 2026</p>
+        <img
+          class="work-img"
+          src="images/A cup.jpg"
+          alt="A Cup as Soft Object"
+        >
+        <h3 class="work-title">
+          A Cup as Soft Object
+        </h3>
+        <p class="work-sub">
+          AI-generated digital image, 2026
+        </p>
       </article>
 
+
+      <!-- WORK 05 -->
       <article class="work-card">
-        <img class="work-img" src="images/cute.jpg" alt="work 5">
-        <h3 class="work-title">A Soft Dwelling I</h3>
-        <p class="work-sub">AI-generated digital image, 2026</p>
+        <img
+          class="work-img"
+          src="images/cute.jpg"
+          alt="A Soft Dwelling I"
+        >
+        <h3 class="work-title">
+          A Soft Dwelling I
+        </h3>
+        <p class="work-sub">
+          AI-generated digital image, 2026
+        </p>
       </article>
 
+
+      <!-- WORK 06 -->
       <article class="work-card">
-        <img class="work-img" src="images/cutie.jpg" alt="work 6">
-        <h3 class="work-title">A Soft Dwelling II</h3>
-        <p class="work-sub">AI-generated digital image, 2026</p>
+        <img
+          class="work-img"
+          src="images/cutie.jpg"
+          alt="A Soft Dwelling II"
+        >
+        <h3 class="work-title">
+          A Soft Dwelling II
+        </h3>
+        <p class="work-sub">
+          AI-generated digital image, 2026
+        </p>
       </article>
 
+
+      <!-- WORK 07 -->
       <article class="work-card">
-        <img class="work-img" src="images/젤리곰.jpg" alt="work 7">
-        <h3 class="work-title">Gummy Bloom</h3>
-        <p class="work-sub">AI-generated digital image, 2026</p>
+        <img
+          class="work-img"
+          src="images/젤리곰.jpg"
+          alt="Gummy Bloom"
+        >
+        <h3 class="work-title">
+          Gummy Bloom
+        </h3>
+        <p class="work-sub">
+          AI-generated digital image, 2026
+        </p>
       </article>
 
+
+      <!-- WORK 08 -->
       <article class="work-card">
-        <img class="work-img" src="images/하리보.jpg" alt="work 8">
-        <h3 class="work-title">Gummy Candy Lab</h3>
-        <p class="work-sub">AI-generated digital image, 2026</p>
+        <img
+          class="work-img"
+          src="images/하리보.jpg"
+          alt="Gummy Candy Lab"
+        >
+        <h3 class="work-title">
+          Gummy Candy Lab
+        </h3>
+        <p class="work-sub">
+          AI-generated digital image, 2026
+        </p>
       </article>
 
+
+      <!-- WORK 09 -->
       <article class="work-card">
-        <img class="work-img" src="images/mushroom1.jpg" alt="work 9">
-        <h3 class="work-title">Be My Valentine ♡‧₊˚</h3>
-        <p class="work-sub">AI-generated digital image, 2026</p>
+        <img
+          class="work-img"
+          src="images/mushroom1.jpg"
+          alt="Be My Valentine"
+        >
+        <h3 class="work-title">
+          Be My Valentine ♡‧₊˚
+        </h3>
+        <p class="work-sub">
+          AI-generated digital image, 2026
+        </p>
       </article>
 
+
+      <!-- WORK 10 -->
       <article class="work-card">
-        <img class="work-img" src="images/sofa1.jpg" alt="work 10">
-        <h3 class="work-title">Sugarcoat Sofa</h3>
-        <p class="work-sub">AI-generated digital image, 2026</p>
+        <img
+          class="work-img"
+          src="images/sofa1.jpg"
+          alt="Sugarcoat Sofa"
+        >
+        <h3 class="work-title">
+          Sugarcoat Sofa
+        </h3>
+        <p class="work-sub">
+          AI-generated digital image, 2026
+        </p>
       </article>
 
+
+      <!-- WORK 11 -->
       <article class="work-card">
-        <img class="work-img" src="images/모빌.jpg" alt="work 11">
-        <h3 class="work-title">For Those Who Need Rest</h3>
-        <p class="work-sub">AI-generated digital image, 2026</p>
+        <img
+          class="work-img"
+          src="images/모빌.jpg"
+          alt="For Those Who Need Rest"
+        >
+        <h3 class="work-title">
+          For Those Who Need Rest
+        </h3>
+        <p class="work-sub">
+          AI-generated digital image, 2026
+        </p>
       </article>
 
+
+      <!-- WORK 12 -->
       <article class="work-card">
-        <img class="work-img" src="images/앨범.png" alt="work 12">
-        <h3 class="work-title">A sugar-lit carnival ⋆｡°✩</h3>
-        <p class="work-sub">AI-generated digital image, 2026</p>
+        <img
+          class="work-img"
+          src="images/앨범.png"
+          alt="A Sugar-lit Carnival"
+        >
+        <h3 class="work-title">
+          A Sugar-lit Carnival ⋆｡°✩
+        </h3>
+        <p class="work-sub">
+          AI-generated digital image, 2026
+        </p>
       </article>
 
+
+      <!-- WORK 13 -->
       <article class="work-card">
-        <img class="work-img" src="images/스노우볼1.png" alt="work 13">
-        <h3 class="work-title">A Little House to Rest ˚✧</h3>
-        <p class="work-sub">AI-generated digital image, 2026</p>
+        <img
+          class="work-img"
+          src="images/스노우볼1.png"
+          alt="A Little House to Rest 1"
+        >
+        <h3 class="work-title">
+          A Little House to Rest ˚✧
+        </h3>
+        <p class="work-sub">
+          AI-generated digital image, 2026
+        </p>
       </article>
 
+
+      <!-- WORK 14 -->
       <article class="work-card">
-        <img class="work-img" src="images/스노우볼2.png" alt="work 14">
-        <h3 class="work-title">A Little House to Rest ˚✧</h3>
-        <p class="work-sub">AI-generated digital image, 2026</p>
+        <img
+          class="work-img"
+          src="images/스노우볼2.png"
+          alt="A Little House to Rest 2"
+        >
+        <h3 class="work-title">
+          A Little House to Rest ˚✧
+        </h3>
+        <p class="work-sub">
+          AI-generated digital image, 2026
+        </p>
       </article>
 
     </section>
   </main>
 
-  <!-- MODAL -->
+
+  <!-- IMAGE MODAL -->
   <div class="modal" id="imgModal" aria-hidden="true">
-    <div class="modal-backdrop" data-close="1"></div>
 
-    <div class="modal-panel" role="dialog" aria-modal="true">
-      <button class="modal-close" data-close="1">×</button>
-      <button class="modal-nav prev">‹</button>
-      <button class="modal-nav next">›</button>
+    <div
+      class="modal-backdrop"
+      data-close="1"
+    ></div>
 
-      <img class="modal-img" id="modalImg" alt="">
-      <div class="modal-caption" id="modalCaption"></div>
+    <div
+      class="modal-panel"
+      role="dialog"
+      aria-modal="true"
+    >
+      <button
+        class="modal-close"
+        data-close="1"
+        aria-label="close image"
+      >
+        ×
+      </button>
+
+      <button
+        class="modal-nav prev"
+        aria-label="previous image"
+      >
+        ‹
+      </button>
+
+      <button
+        class="modal-nav next"
+        aria-label="next image"
+      >
+        ›
+      </button>
+
+      <img
+        class="modal-img"
+        id="modalImg"
+        alt=""
+      >
+
+      <div
+        class="modal-caption"
+        id="modalCaption"
+      ></div>
     </div>
+
   </div>
 
+
+  <!-- 기존 JavaScript -->
   <script src="script.js"></script>
 
 </body>
