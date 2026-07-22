@@ -1,562 +1,68 @@
-<!doctype html>
-<html lang="ko">
+/* =========================================
+   SOFT NOTES DATA
 
-<head>
-  <meta charset="utf-8">
+   새 연구일지는 이 파일에만 추가합니다.
+========================================= */
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1"
-  >
+window.notesData = [
 
-  <title>Kwakcamole.archive — notes</title>
+  {
+    id: "001",
 
-  <!-- 기존 사이트 공통 스타일 -->
-  <link
-    rel="stylesheet"
-    href="style.css?v=notes-dynamic-final-1"
-  >
+    title: "Textile Pieces — Process Note",
 
-  <style>
-    /* =========================================
-       NOTES LIST PAGE ONLY
-    ========================================= */
+    date: "22 July 2026",
 
-    body.page-notes {
-      margin: 0;
-      padding: 0;
+    datetime: "2026-07-22",
 
-      background: #ffffff;
-      color: #111111;
-    }
+    image: "images/textile-pieces.png",
 
+    imageAlt: "Textile Pieces visual research",
 
-    body.page-notes * {
-      box-sizing: border-box;
-    }
+    caption: "Textile Pieces, visual experiment, 2026",
 
+    excerpt:
+      "작은 패브릭 조각과 서로 다른 질감이 한 화면 안에서 만드는 관계를 관찰한 기록입니다.",
 
-    /* 전체 영역 */
+    intro:
+      "작은 패브릭 조각들을 하나의 수집물처럼 배열하며, 서로 다른 질감과 형태가 한 화면 안에서 만드는 관계를 관찰했습니다.",
 
-    body.page-notes .notes-wrap {
-      width: calc(100% - 64px);
-      max-width: 980px;
-
-      margin: 0 auto;
-      padding: 145px 0 130px;
-
-      font-family: "Paperlogy", sans-serif;
-    }
-
-
-    /* =========================================
-       INTRO
-    ========================================= */
-
-    body.page-notes .notes-intro {
-      display: grid;
-
-      grid-template-columns:
-        minmax(0, 1fr)
-        minmax(280px, 380px);
-
-      align-items: end;
-      column-gap: 50px;
-
-      margin-bottom: 42px;
-      padding-bottom: 28px;
-
-      border-bottom: 1px solid #eeeeee;
-    }
-
-
-    body.page-notes .notes-label {
-      margin: 0 0 9px;
-
-      color: #ef94bd;
-
-      font-family: "Paperlogy", sans-serif;
-      font-size: 11px;
-      font-weight: 600;
-      line-height: 1.4;
-      letter-spacing: 0.08em;
-
-      text-transform: lowercase;
-    }
-
-
-    body.page-notes .notes-title {
-      margin: 0;
-
-      font-family: "Paperlogy", sans-serif;
-      font-size: 44px;
-      font-weight: 800;
-      line-height: 1;
-      letter-spacing: -0.045em;
-
-      word-break: keep-all;
-    }
-
-
-    body.page-notes .notes-description {
-      max-width: 380px;
-
-      margin: 0;
-      padding-bottom: 2px;
-
-      color: #555555;
-
-      font-family: "Paperlogy", sans-serif;
-      font-size: 13px;
-      font-weight: 400;
-      line-height: 1.8;
-
-      word-break: keep-all;
-    }
-
-
-    /* =========================================
-       NOTE LIST
-    ========================================= */
-
-    body.page-notes .note-list {
-      display: flex;
-      flex-direction: column;
-
-      width: 100%;
-    }
-
-
-    body.page-notes .note-card {
-      width: 100%;
-
-      margin: 0;
-      padding: 0;
-
-      border-bottom: 1px solid #eeeeee;
-    }
-
-
-    body.page-notes .note-link {
-      display: grid;
-
-      grid-template-columns:
-        280px
-        minmax(0, 1fr);
-
-      align-items: center;
-      column-gap: 36px;
-
-      width: 100%;
-
-      padding: 30px 0;
-
-      color: inherit;
-      text-decoration: none;
-    }
-
-
-    /* 썸네일 */
-
-    body.page-notes .note-thumbnail {
-      width: 280px;
-      overflow: hidden;
-
-      border-radius: 12px;
-    }
-
-
-    body.page-notes .note-image {
-      display: block;
-
-      width: 100%;
-      height: auto;
-
-      aspect-ratio: 4 / 3;
-      object-fit: cover;
-
-      transition:
-        transform 0.28s ease,
-        opacity 0.28s ease;
-    }
-
-
-    /* 카드 내용 */
-
-    body.page-notes .note-content {
-      min-width: 0;
-    }
-
-
-    body.page-notes .note-meta {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-
-      margin-bottom: 13px;
-
-      color: #999999;
-
-      font-family: "Paperlogy", sans-serif;
-      font-size: 10px;
-      font-weight: 400;
-      line-height: 1.4;
-      letter-spacing: 0.04em;
-    }
-
-
-    body.page-notes .note-number {
-      color: #ef94bd;
-      font-weight: 700;
-    }
-
-
-    body.page-notes .note-title {
-      margin: 0 0 13px;
-
-      font-family: "Paperlogy", sans-serif;
-      font-size: 22px;
-      font-weight: 700;
-      line-height: 1.3;
-      letter-spacing: -0.025em;
-
-      word-break: keep-all;
-
-      transition: color 0.2s ease;
-    }
-
-
-    body.page-notes .note-excerpt {
-      max-width: 520px;
-
-      margin: 0 0 18px;
-
-      color: #666666;
-
-      font-family: "Paperlogy", sans-serif;
-      font-size: 13px;
-      font-weight: 400;
-      line-height: 1.8;
-
-      word-break: keep-all;
-    }
-
-
-    body.page-notes .note-read {
-      display: inline-block;
-
-      color: #d97eaa;
-
-      font-family: "Paperlogy", sans-serif;
-      font-size: 10px;
-      font-weight: 600;
-      line-height: 1.4;
-      letter-spacing: 0.03em;
-    }
-
-
-    /* 마우스 효과 */
-
-    @media (hover: hover) {
-
-      body.page-notes .note-link:hover
-      .note-image {
-        transform: scale(1.025);
-        opacity: 0.94;
-      }
-
-
-      body.page-notes .note-link:hover
-      .note-title {
-        color: #d97eaa;
-      }
-
-    }
-
-
-    body.page-notes .note-link:focus-visible {
-      outline: 1px dashed #ef94bd;
-      outline-offset: 8px;
-    }
-
-
-    /* 목록이 없을 때 */
-
-    body.page-notes .notes-empty {
-      padding: 60px 0;
-
-      color: #999999;
-
-      font-family: "Paperlogy", sans-serif;
-      font-size: 13px;
-      line-height: 1.8;
-
-      text-align: center;
-    }
-
-
-    /* 모바일 */
-
-    @media screen and (max-width: 760px) {
-
-      body.page-notes .notes-wrap {
-        width: calc(100% - 32px);
-
-        padding: 105px 0 80px;
-      }
-
-
-      body.page-notes .notes-intro {
-        grid-template-columns: 1fr;
-
-        row-gap: 22px;
-
-        margin-bottom: 25px;
-        padding-bottom: 24px;
-      }
-
-
-      body.page-notes .notes-title {
-        font-size: 36px;
-      }
-
-
-      body.page-notes .notes-description {
-        max-width: 100%;
-
-        font-size: 12px;
-      }
-
-
-      body.page-notes .note-link {
-        grid-template-columns: 1fr;
-
-        row-gap: 20px;
-
-        padding: 25px 0 34px;
-      }
-
-
-      body.page-notes .note-thumbnail {
-        width: 100%;
-        max-width: 420px;
-      }
-
-
-      body.page-notes .note-title {
-        font-size: 20px;
-      }
-
-
-      body.page-notes .note-excerpt {
-        font-size: 12px;
-      }
-
-    }
-
-
-    @media screen and (max-width: 420px) {
-
-      body.page-notes .notes-title {
-        font-size: 32px;
-      }
-
-
-      body.page-notes .note-title {
-        font-size: 19px;
-      }
-
-    }
-  </style>
-</head>
-
-
-<body class="page-notes">
-
-  <!-- 기존 사이트 헤더 -->
-
-  <header class="top">
-
-    <div
-      class="top-left"
-      id="favHeart"
-    >
-      fav ♥
-    </div>
-
-
-    <a
-      class="top-title"
-      href="index.html"
-    >
-      Kwakcamole.archive
-    </a>
-
-
-    <a
-      class="top-right"
-      href="index.html"
-      aria-label="home"
-    >
-      <img
-        src="images/집.png"
-        alt="home icon"
-      >
-    </a>
-
-  </header>
-
-
-  <main class="notes-wrap">
-
-    <!-- 페이지 소개 -->
-
-    <section class="notes-intro">
-
-      <div>
-
-        <p class="notes-label">
-          research archive
-        </p>
-
-        <h1 class="notes-title">
-          Soft Notes
-        </h1>
-
-      </div>
-
-
-      <p class="notes-description">
-        작업이 완성되기 전의 생각과 이미지,
-        소재 실험과 실패의 흔적을 천천히 기록합니다.
-        완성된 결과보다 그 사이에서 발견한 감각을 모으는 공간입니다.
+    content: `
+      <p>
+        완성된 하나의 오브제를 만드는 것보다,
+        각기 다른 질감과 형태를 가진 조각들이 한 화면 안에서
+        어떤 관계를 만드는지 관찰했습니다.
       </p>
 
-    </section>
+      <p>
+        자수와 패치워크, 셔링처럼 손의 흔적이 느껴지는 요소를
+        남기면서도 화면이 지나치게 장식적으로 보이지 않도록
+        형태와 색의 수를 조절했습니다.
+      </p>
 
+      <h2>What I observed</h2>
 
-    <!-- 연구일지가 자동으로 생성되는 영역 -->
+      <p>
+        작은 조각들이 반복될수록 전체 이미지는 하나의 패턴처럼
+        보이기 시작했습니다. 각각의 조각이 가진 개성을 유지하면서도
+        하나의 수집물처럼 연결되도록 간격과 배열을 조정했습니다.
+      </p>
 
-    <section
-      class="note-list"
-      id="noteList"
-    ></section>
+      <h2>Next study</h2>
 
-  </main>
+      <p>
+        다음에는 평면적인 패브릭 조각 일부를 입체적인 오브제로
+        확장하고, 빛에 따라 달라지는 표면과 그림자를 함께
+        기록해보려고 합니다.
+      </p>
+    `,
 
+    tags: [
+      "textile study",
+      "patchwork",
+      "embroidery",
+      "visual research"
+    ]
+  }
 
-  <!-- 연구일지 데이터 -->
-
-  <script src="notes-data.js?v=20260722-1"></script>
-
-
-  <!-- 목록 자동 생성 -->
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-
-      const noteList =
-        document.getElementById("noteList");
-
-      const notes =
-        Array.isArray(window.notesData)
-          ? [...window.notesData]
-          : [];
-
-
-      if (notes.length === 0) {
-
-        noteList.innerHTML = `
-          <p class="notes-empty">
-            아직 작성된 연구일지가 없습니다.
-          </p>
-        `;
-
-        return;
-      }
-
-
-      /* 최신 글이 위로 오도록 날짜순 정렬 */
-
-      notes.sort(function (a, b) {
-
-        return new Date(b.datetime) -
-          new Date(a.datetime);
-
-      });
-
-
-      noteList.innerHTML =
-        notes
-          .map(function (note) {
-
-            return `
-              <article class="note-card">
-
-                <a
-                  class="note-link"
-                  href="note.html?id=${note.id}"
-                  aria-label="${note.title} 읽기"
-                >
-
-                  <div class="note-thumbnail">
-
-                    <img
-                      class="note-image"
-                      src="${note.image}"
-                      alt="${note.imageAlt || note.title}"
-                    >
-
-                  </div>
-
-
-                  <div class="note-content">
-
-                    <div class="note-meta">
-
-                      <span class="note-number">
-                        No. ${note.id}
-                      </span>
-
-                      <time datetime="${note.datetime}">
-                        ${note.date}
-                      </time>
-
-                    </div>
-
-
-                    <h2 class="note-title">
-                      ${note.title}
-                    </h2>
-
-
-                    <p class="note-excerpt">
-                      ${note.excerpt}
-                    </p>
-
-
-                    <span class="note-read">
-                      Read note →
-                    </span>
-
-                  </div>
-
-                </a>
-
-              </article>
-            `;
-
-          })
-          .join("");
-
-    });
-  </script>
-
-
-  <!-- 기존 사이트 JavaScript -->
-
-  <script src="script.js?v=20260722-notes-dynamic-final-1"></script>
-
-</body>
-
-</html>
+];
