@@ -1,1 +1,547 @@
+<!doctype html>
+<html lang="ko">
 
+<head>
+  <meta charset="utf-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <title>Soft Notes — Kwakcamole.archive</title>
+
+  <!-- 기존 사이트 공통 스타일 -->
+  <link
+    rel="stylesheet"
+    href="style.css?v=note-detail-final-1"
+  >
+
+  <style>
+    /* =========================================
+       NOTE DETAIL PAGE ONLY
+    ========================================= */
+
+    body.page-note-detail {
+      margin: 0;
+      padding: 0;
+
+      background: #ffffff;
+      color: #111111;
+    }
+
+
+    body.page-note-detail * {
+      box-sizing: border-box;
+    }
+
+
+    /* 전체 영역 */
+
+    body.page-note-detail .note-detail-wrap {
+      width: calc(100% - 64px);
+      max-width: 820px;
+
+      margin: 0 auto;
+      padding: 145px 0 140px;
+
+      font-family: "Paperlogy", sans-serif;
+    }
+
+
+    /* 목록으로 돌아가기 */
+
+    body.page-note-detail .back-to-notes {
+      display: inline-block;
+
+      margin-bottom: 46px;
+
+      color: #999999;
+
+      font-family: "Paperlogy", sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      line-height: 1.4;
+      letter-spacing: 0.02em;
+
+      text-decoration: none;
+    }
+
+
+    body.page-note-detail .back-to-notes:hover {
+      color: #d97eaa;
+    }
+
+
+    /* 글 상단 */
+
+    body.page-note-detail .note-detail-meta {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+
+      margin-bottom: 15px;
+
+      color: #999999;
+
+      font-family: "Paperlogy", sans-serif;
+      font-size: 10px;
+      font-weight: 400;
+      line-height: 1.4;
+      letter-spacing: 0.04em;
+    }
+
+
+    body.page-note-detail .note-detail-number {
+      color: #ef94bd;
+      font-weight: 700;
+    }
+
+
+    body.page-note-detail .note-detail-title {
+      margin: 0 0 22px;
+
+      font-family: "Paperlogy", sans-serif;
+      font-size: 36px;
+      font-weight: 800;
+      line-height: 1.25;
+      letter-spacing: -0.035em;
+
+      word-break: keep-all;
+    }
+
+
+    body.page-note-detail .note-detail-intro {
+      max-width: 650px;
+
+      margin: 0 0 44px;
+
+      color: #555555;
+
+      font-family: "Paperlogy", sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.9;
+
+      word-break: keep-all;
+    }
+
+
+    /* 메인 이미지 */
+
+    body.page-note-detail .note-figure {
+      margin: 0 0 48px;
+    }
+
+
+    body.page-note-detail .note-main-image {
+      display: block;
+
+      width: 100%;
+      max-width: 720px;
+      height: auto;
+
+      margin: 0 auto;
+
+      border-radius: 14px;
+    }
+
+
+    body.page-note-detail .note-image-caption {
+      width: 100%;
+      max-width: 720px;
+
+      margin: 10px auto 0;
+
+      color: #999999;
+
+      font-family: "Paperlogy", sans-serif;
+      font-size: 10px;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+
+
+    /* 본문 */
+
+    body.page-note-detail .note-body {
+      width: 100%;
+      max-width: 650px;
+
+      margin: 0 auto;
+    }
+
+
+    body.page-note-detail .note-body p {
+      margin: 0 0 24px;
+
+      color: #4f4f4f;
+
+      font-family: "Paperlogy", sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 2;
+
+      word-break: keep-all;
+    }
+
+
+    body.page-note-detail .note-body h2 {
+      margin: 52px 0 18px;
+
+      color: #111111;
+
+      font-family: "Paperlogy", sans-serif;
+      font-size: 19px;
+      font-weight: 700;
+      line-height: 1.4;
+
+      word-break: keep-all;
+    }
+
+
+    /* 태그 */
+
+    body.page-note-detail .note-tags {
+      display: flex;
+      flex-wrap: wrap;
+
+      gap: 7px;
+
+      width: 100%;
+      max-width: 650px;
+
+      margin: 48px auto 0;
+      padding-top: 28px;
+
+      border-top: 1px solid #eeeeee;
+    }
+
+
+    body.page-note-detail .note-tag {
+      display: inline-flex;
+      align-items: center;
+
+      min-height: 28px;
+
+      padding: 6px 11px;
+
+      border: 1px solid #f4bad4;
+      border-radius: 999px;
+
+      background: #fff7fb;
+      color: #d97eaa;
+
+      font-family: "Paperlogy", sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: 0.02em;
+    }
+
+
+    /* 글을 찾지 못했을 때 */
+
+    body.page-note-detail .note-error {
+      padding: 60px 0;
+
+      color: #777777;
+
+      font-family: "Paperlogy", sans-serif;
+      font-size: 14px;
+      line-height: 1.8;
+
+      text-align: center;
+    }
+
+
+    /* 모바일 */
+
+    @media screen and (max-width: 760px) {
+
+      body.page-note-detail .note-detail-wrap {
+        width: calc(100% - 32px);
+
+        padding: 105px 0 85px;
+      }
+
+
+      body.page-note-detail .back-to-notes {
+        margin-bottom: 34px;
+      }
+
+
+      body.page-note-detail .note-detail-title {
+        font-size: 28px;
+      }
+
+
+      body.page-note-detail .note-detail-intro {
+        margin-bottom: 32px;
+
+        font-size: 13px;
+      }
+
+
+      body.page-note-detail .note-main-image {
+        border-radius: 11px;
+      }
+
+
+      body.page-note-detail .note-figure {
+        margin-bottom: 36px;
+      }
+
+
+      body.page-note-detail .note-body p {
+        font-size: 13px;
+        line-height: 1.9;
+      }
+
+
+      body.page-note-detail .note-body h2 {
+        margin-top: 42px;
+        font-size: 18px;
+      }
+
+    }
+  </style>
+</head>
+
+
+<body class="page-note-detail">
+
+  <!-- 기존 사이트 헤더 -->
+
+  <header class="top">
+
+    <div
+      class="top-left"
+      id="favHeart"
+    >
+      fav ♥
+    </div>
+
+
+    <a
+      class="top-title"
+      href="index.html"
+    >
+      Kwakcamole.archive
+    </a>
+
+
+    <a
+      class="top-right"
+      href="index.html"
+      aria-label="home"
+    >
+      <img
+        src="images/집.png"
+        alt="home icon"
+      >
+    </a>
+
+  </header>
+
+
+  <!-- 글이 자동으로 들어오는 영역 -->
+
+  <main
+    class="note-detail-wrap"
+    id="noteDetail"
+  >
+
+    <a
+      class="back-to-notes"
+      href="notes.html"
+    >
+      ← Back to Soft Notes
+    </a>
+
+
+    <article id="noteArticle">
+
+      <div class="note-detail-meta">
+
+        <span
+          class="note-detail-number"
+          id="noteNumber"
+        ></span>
+
+        <time id="noteDate"></time>
+
+      </div>
+
+
+      <h1
+        class="note-detail-title"
+        id="noteTitle"
+      ></h1>
+
+
+      <p
+        class="note-detail-intro"
+        id="noteIntro"
+      ></p>
+
+
+      <figure class="note-figure">
+
+        <img
+          class="note-main-image"
+          id="noteImage"
+          src=""
+          alt=""
+        >
+
+        <figcaption
+          class="note-image-caption"
+          id="noteCaption"
+        ></figcaption>
+
+      </figure>
+
+
+      <div
+        class="note-body"
+        id="noteBody"
+      ></div>
+
+
+      <div
+        class="note-tags"
+        id="noteTags"
+      ></div>
+
+    </article>
+
+  </main>
+
+
+  <!-- 연구일지 데이터 -->
+
+  <script src="notes-data.js?v=20260722-1"></script>
+
+
+  <!-- 상세페이지 자동 표시 -->
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+      const params =
+        new URLSearchParams(window.location.search);
+
+      const requestedId =
+        params.get("id") || "001";
+
+      const notes =
+        Array.isArray(window.notesData)
+          ? window.notesData
+          : [];
+
+      const selectedNote =
+        notes.find(function (note) {
+          return note.id === requestedId;
+        });
+
+
+      const noteArticle =
+        document.getElementById("noteArticle");
+
+
+      if (!selectedNote) {
+
+        noteArticle.innerHTML = `
+          <div class="note-error">
+            해당 연구일지를 찾을 수 없습니다.<br>
+            목록 페이지로 돌아가 다시 선택해주세요.
+          </div>
+        `;
+
+        return;
+      }
+
+
+      document.title =
+        selectedNote.title +
+        " — Soft Notes";
+
+
+      document.getElementById(
+        "noteNumber"
+      ).textContent =
+        "No. " + selectedNote.id;
+
+
+      const noteDate =
+        document.getElementById("noteDate");
+
+      noteDate.textContent =
+        selectedNote.date;
+
+      noteDate.setAttribute(
+        "datetime",
+        selectedNote.datetime
+      );
+
+
+      document.getElementById(
+        "noteTitle"
+      ).textContent =
+        selectedNote.title;
+
+
+      document.getElementById(
+        "noteIntro"
+      ).textContent =
+        selectedNote.intro;
+
+
+      const noteImage =
+        document.getElementById("noteImage");
+
+      noteImage.src =
+        selectedNote.image;
+
+      noteImage.alt =
+        selectedNote.imageAlt || selectedNote.title;
+
+
+      document.getElementById(
+        "noteCaption"
+      ).textContent =
+        selectedNote.caption || "";
+
+
+      document.getElementById(
+        "noteBody"
+      ).innerHTML =
+        selectedNote.content;
+
+
+      const noteTags =
+        document.getElementById("noteTags");
+
+      noteTags.innerHTML =
+        selectedNote.tags
+          .map(function (tag) {
+            return `
+              <span class="note-tag">
+                ${tag}
+              </span>
+            `;
+          })
+          .join("");
+
+    });
+  </script>
+
+
+  <!-- 기존 사이트 JavaScript -->
+
+  <script src="script.js?v=20260722-note-detail-final-1"></script>
+
+</body>
+
+</html>
