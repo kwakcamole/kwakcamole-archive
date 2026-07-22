@@ -3,15 +3,20 @@
 
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  />
 
   <title>Kwakcamole.archive — works</title>
 
   <!-- 기존 사이트 공통 스타일 -->
   <link
     rel="stylesheet"
-    href="style.css?v=20260722-works-4column-final"
+    href="style.css?v=works-filter-final-1"
   />
+
 
   <!-- Works 페이지에서만 적용되는 스타일 -->
   <style>
@@ -25,15 +30,89 @@
       padding: 0;
     }
 
+
+    /* Works 전체 영역 */
     body.page-works #worksPageWrap {
       width: 100% !important;
       max-width: none !important;
 
       margin: 0 !important;
-      padding: 150px 32px 140px !important;
+      padding: 145px 32px 140px !important;
 
       box-sizing: border-box !important;
     }
+
+
+    /* =========================================
+       CATEGORY FILTER
+    ========================================= */
+
+    body.page-works .works-filter {
+      width: 100%;
+      max-width: 1800px;
+
+      margin: 0 auto 38px;
+      padding: 0;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      column-gap: 26px;
+      row-gap: 12px;
+
+      box-sizing: border-box;
+    }
+
+
+    body.page-works .filter-button {
+      position: relative;
+
+      margin: 0;
+      padding: 3px 0 5px;
+
+      border: 0;
+      border-bottom: 1px solid transparent;
+
+      background: transparent;
+      color: #999999;
+
+      font-family: "Paperlogy", sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 1.3;
+      letter-spacing: 0.02em;
+
+      cursor: pointer;
+
+      transition:
+        color 0.2s ease,
+        border-color 0.2s ease,
+        opacity 0.2s ease;
+    }
+
+
+    body.page-works .filter-button:hover {
+      color: #111111;
+    }
+
+
+    body.page-works .filter-button.is-active {
+      color: #111111;
+      border-bottom-color: #111111;
+    }
+
+
+    body.page-works .filter-button:focus-visible {
+      outline: 1px dashed #f6a1c6;
+      outline-offset: 6px;
+    }
+
+
+    /* =========================================
+       4 COLUMN WORK GRID
+    ========================================= */
 
     body.page-works #worksGrid {
       display: grid !important;
@@ -51,11 +130,11 @@
       padding: 0 !important;
 
       align-items: start !important;
-      justify-content: stretch !important;
       justify-items: stretch !important;
 
       box-sizing: border-box !important;
     }
+
 
     body.page-works #worksGrid .work-card {
       display: block !important;
@@ -70,7 +149,21 @@
       text-align: center !important;
 
       box-sizing: border-box !important;
+
+      opacity: 1;
+      transform: translateY(0);
+
+      transition:
+        opacity 0.22s ease,
+        transform 0.22s ease;
     }
+
+
+    /* 필터 선택 시 숨겨지는 카드 */
+    body.page-works #worksGrid .work-card.is-hidden {
+      display: none !important;
+    }
+
 
     body.page-works #worksGrid .work-img {
       display: block !important;
@@ -87,34 +180,45 @@
 
       border-radius: 12px !important;
 
+      cursor: pointer;
+
       transition:
         transform 0.25s ease,
         opacity 0.25s ease;
     }
 
-    body.page-works #worksGrid .work-card:hover .work-img {
+
+    body.page-works
+    #worksGrid
+    .work-card:hover
+    .work-img {
       transform: translateY(-3px);
       opacity: 0.96;
     }
+
 
     body.page-works #worksGrid .work-title {
       margin: 0 0 4px !important;
       padding: 0 4px !important;
 
+      font-family: "Paperlogy", sans-serif !important;
       font-size: 15px !important;
       line-height: 1.3 !important;
       font-weight: 700 !important;
+      letter-spacing: 0.01em !important;
 
       text-align: center !important;
       word-break: keep-all !important;
     }
 
+
     body.page-works #worksGrid .work-sub {
       margin: 0 !important;
       padding: 0 4px !important;
 
-      color: #777 !important;
+      color: #777777 !important;
 
+      font-family: "Paperlogy", sans-serif !important;
       font-size: 12px !important;
       line-height: 1.4 !important;
       font-weight: 400 !important;
@@ -124,11 +228,29 @@
     }
 
 
-    /* 태블릿과 휴대폰: 2열 */
+    /* =========================================
+       TABLET / MOBILE
+    ========================================= */
+
     @media screen and (max-width: 700px) {
+
       body.page-works #worksPageWrap {
-        padding: 105px 16px 80px !important;
+        padding: 100px 16px 80px !important;
       }
+
+
+      body.page-works .works-filter {
+        margin-bottom: 28px;
+
+        column-gap: 18px;
+        row-gap: 10px;
+      }
+
+
+      body.page-works .filter-button {
+        font-size: 12px;
+      }
+
 
       body.page-works #worksGrid {
         grid-template-columns:
@@ -138,14 +260,17 @@
         row-gap: 42px !important;
       }
 
+
       body.page-works #worksGrid .work-img {
         margin-bottom: 12px !important;
         border-radius: 10px !important;
       }
 
+
       body.page-works #worksGrid .work-title {
         font-size: 13px !important;
       }
+
 
       body.page-works #worksGrid .work-sub {
         font-size: 11px !important;
@@ -153,16 +278,19 @@
     }
 
 
-    /* 아주 작은 휴대폰: 1열 */
+    /* 아주 작은 휴대폰 */
     @media screen and (max-width: 420px) {
+
       body.page-works #worksGrid {
         grid-template-columns: 1fr !important;
         row-gap: 44px !important;
       }
 
+
       body.page-works #worksGrid .work-title {
         font-size: 14px !important;
       }
+
 
       body.page-works #worksGrid .work-sub {
         font-size: 12px !important;
@@ -174,16 +302,27 @@
 
 <body class="page-works">
 
-  <!-- TOP FIXED HEADER -->
+  <!-- =========================================
+       TOP FIXED HEADER
+  ========================================== -->
+
   <header class="top">
 
-    <div class="top-left" id="favHeart">
+    <div
+      class="top-left"
+      id="favHeart"
+    >
       fav ♥
     </div>
 
-    <a class="top-title" href="index.html">
+
+    <a
+      class="top-title"
+      href="index.html"
+    >
       Kwakcamole.archive
     </a>
+
 
     <a
       class="top-right"
@@ -199,19 +338,83 @@
   </header>
 
 
-  <!-- WORKS -->
+  <!-- =========================================
+       WORKS PAGE
+  ========================================== -->
+
   <main
     class="works-wrap"
     id="worksPageWrap"
   >
+
+
+    <!-- CATEGORY FILTER -->
+
+    <nav
+      class="works-filter"
+      aria-label="Filter works by category"
+    >
+
+      <button
+        class="filter-button is-active"
+        type="button"
+        data-filter="all"
+        aria-pressed="true"
+      >
+        All
+      </button>
+
+
+      <button
+        class="filter-button"
+        type="button"
+        data-filter="soft-spaces"
+        aria-pressed="false"
+      >
+        Soft Spaces
+      </button>
+
+
+      <button
+        class="filter-button"
+        type="button"
+        data-filter="soft-objects"
+        aria-pressed="false"
+      >
+        Soft Objects
+      </button>
+
+
+      <button
+        class="filter-button"
+        type="button"
+        data-filter="visual-stories"
+        aria-pressed="false"
+      >
+        Visual Stories
+      </button>
+
+    </nav>
+
+
+    <!-- WORK GRID -->
 
     <section
       class="works-grid"
       id="worksGrid"
     >
 
+
+      <!-- =====================================
+           SOFT SPACES
+      ====================================== -->
+
+
       <!-- WORK 01 -->
-      <article class="work-card">
+      <article
+        class="work-card"
+        data-category="soft-spaces"
+      >
         <img
           class="work-img"
           src="images/doll house.jpg"
@@ -229,7 +432,10 @@
 
 
       <!-- WORK 02 -->
-      <article class="work-card">
+      <article
+        class="work-card"
+        data-category="soft-spaces"
+      >
         <img
           class="work-img"
           src="images/딸기.jpg"
@@ -246,8 +452,16 @@
       </article>
 
 
+      <!-- =====================================
+           SOFT OBJECTS
+      ====================================== -->
+
+
       <!-- WORK 03 -->
-      <article class="work-card">
+      <article
+        class="work-card"
+        data-category="soft-objects"
+      >
         <img
           class="work-img"
           src="images/cup.jpg"
@@ -265,7 +479,10 @@
 
 
       <!-- WORK 04 -->
-      <article class="work-card">
+      <article
+        class="work-card"
+        data-category="soft-objects"
+      >
         <img
           class="work-img"
           src="images/A cup.jpg"
@@ -282,8 +499,16 @@
       </article>
 
 
+      <!-- =====================================
+           SOFT SPACES
+      ====================================== -->
+
+
       <!-- WORK 05 -->
-      <article class="work-card">
+      <article
+        class="work-card"
+        data-category="soft-spaces"
+      >
         <img
           class="work-img"
           src="images/cute.jpg"
@@ -301,7 +526,10 @@
 
 
       <!-- WORK 06 -->
-      <article class="work-card">
+      <article
+        class="work-card"
+        data-category="soft-spaces"
+      >
         <img
           class="work-img"
           src="images/cutie.jpg"
@@ -318,8 +546,16 @@
       </article>
 
 
+      <!-- =====================================
+           VISUAL STORIES
+      ====================================== -->
+
+
       <!-- WORK 07 -->
-      <article class="work-card">
+      <article
+        class="work-card"
+        data-category="visual-stories"
+      >
         <img
           class="work-img"
           src="images/젤리곰.jpg"
@@ -337,7 +573,10 @@
 
 
       <!-- WORK 08 -->
-      <article class="work-card">
+      <article
+        class="work-card"
+        data-category="visual-stories"
+      >
         <img
           class="work-img"
           src="images/하리보.jpg"
@@ -355,7 +594,10 @@
 
 
       <!-- WORK 09 -->
-      <article class="work-card">
+      <article
+        class="work-card"
+        data-category="visual-stories"
+      >
         <img
           class="work-img"
           src="images/mushroom1.jpg"
@@ -372,8 +614,16 @@
       </article>
 
 
+      <!-- =====================================
+           SOFT OBJECTS
+      ====================================== -->
+
+
       <!-- WORK 10 -->
-      <article class="work-card">
+      <article
+        class="work-card"
+        data-category="soft-objects"
+      >
         <img
           class="work-img"
           src="images/sofa1.jpg"
@@ -391,7 +641,10 @@
 
 
       <!-- WORK 11 -->
-      <article class="work-card">
+      <article
+        class="work-card"
+        data-category="soft-objects"
+      >
         <img
           class="work-img"
           src="images/모빌.jpg"
@@ -408,8 +661,16 @@
       </article>
 
 
+      <!-- =====================================
+           VISUAL STORIES
+      ====================================== -->
+
+
       <!-- WORK 12 -->
-      <article class="work-card">
+      <article
+        class="work-card"
+        data-category="visual-stories"
+      >
         <img
           class="work-img"
           src="images/앨범.png"
@@ -426,8 +687,16 @@
       </article>
 
 
+      <!-- =====================================
+           SOFT SPACES
+      ====================================== -->
+
+
       <!-- WORK 13 -->
-      <article class="work-card">
+      <article
+        class="work-card"
+        data-category="soft-spaces"
+      >
         <img
           class="work-img"
           src="images/스노우볼1.png"
@@ -445,7 +714,10 @@
 
 
       <!-- WORK 14 -->
-      <article class="work-card">
+      <article
+        class="work-card"
+        data-category="soft-spaces"
+      >
         <img
           class="work-img"
           src="images/스노우볼2.png"
@@ -466,7 +738,10 @@
   </main>
 
 
-  <!-- IMAGE MODAL -->
+  <!-- =========================================
+       IMAGE MODAL
+  ========================================== -->
+
   <div
     class="modal"
     id="imgModal"
@@ -478,6 +753,7 @@
       data-close="1"
     ></div>
 
+
     <div
       class="modal-panel"
       role="dialog"
@@ -486,31 +762,38 @@
 
       <button
         class="modal-close"
+        type="button"
         data-close="1"
         aria-label="close image"
       >
         ×
       </button>
 
+
       <button
         class="modal-nav prev"
+        type="button"
         aria-label="previous image"
       >
         ‹
       </button>
 
+
       <button
         class="modal-nav next"
+        type="button"
         aria-label="next image"
       >
         ›
       </button>
+
 
       <img
         class="modal-img"
         id="modalImg"
         alt=""
       >
+
 
       <div
         class="modal-caption"
@@ -522,8 +805,72 @@
   </div>
 
 
-  <!-- 기존 JavaScript -->
-  <script src="script.js?v=20260722-works-final"></script>
+  <!-- 기존 사이트 JavaScript -->
+  <script src="script.js?v=20260722-filter-final-1"></script>
+
+
+  <!-- =========================================
+       CATEGORY FILTER SCRIPT
+  ========================================== -->
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const filterButtons =
+        document.querySelectorAll(".filter-button");
+
+      const workCards =
+        document.querySelectorAll("#worksGrid .work-card");
+
+
+      filterButtons.forEach(function (button) {
+
+        button.addEventListener("click", function () {
+
+          const selectedCategory =
+            button.dataset.filter;
+
+
+          /* 버튼 활성화 상태 변경 */
+          filterButtons.forEach(function (item) {
+            item.classList.remove("is-active");
+            item.setAttribute("aria-pressed", "false");
+          });
+
+
+          button.classList.add("is-active");
+          button.setAttribute("aria-pressed", "true");
+
+
+          /* 작품 필터링 */
+          workCards.forEach(function (card) {
+
+            const cardCategory =
+              card.dataset.category;
+
+            const shouldShow =
+              selectedCategory === "all" ||
+              cardCategory === selectedCategory;
+
+
+            card.classList.toggle(
+              "is-hidden",
+              !shouldShow
+            );
+
+
+            card.setAttribute(
+              "aria-hidden",
+              String(!shouldShow)
+            );
+
+          });
+
+        });
+
+      });
+
+    });
+  </script>
 
 </body>
 
