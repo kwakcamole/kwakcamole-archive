@@ -2,25 +2,25 @@
 <html lang="ko">
 
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
 
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1"
-  />
+  >
 
   <title>Kwakcamole.archive — notes</title>
 
   <!-- 기존 사이트 공통 스타일 -->
   <link
     rel="stylesheet"
-    href="style.css?v=notes-final-1"
-  />
+    href="style.css?v=notes-blog-list-1"
+  >
 
   <!-- NOTES 페이지 전용 스타일 -->
   <style>
     /* =========================================
-       NOTES PAGE ONLY
+       NOTES LIST PAGE ONLY
        다른 페이지에는 영향을 주지 않음
     ========================================= */
 
@@ -44,10 +44,10 @@
 
     body.page-notes .notes-wrap {
       width: calc(100% - 64px);
-      max-width: 1180px;
+      max-width: 980px;
 
       margin: 0 auto;
-      padding: 150px 0 140px;
+      padding: 145px 0 130px;
 
       font-family: "Paperlogy", sans-serif;
     }
@@ -62,24 +62,25 @@
 
       grid-template-columns:
         minmax(0, 1fr)
-        minmax(280px, 420px);
+        minmax(280px, 380px);
 
       align-items: end;
-      column-gap: 60px;
+      column-gap: 50px;
 
-      margin-bottom: 72px;
-      padding-bottom: 36px;
+      margin-bottom: 42px;
+      padding-bottom: 28px;
 
       border-bottom: 1px solid #eeeeee;
     }
 
 
     body.page-notes .notes-label {
-      margin: 0 0 12px;
+      margin: 0 0 9px;
 
       color: #ef94bd;
 
-      font-size: 12px;
+      font-family: "Paperlogy", sans-serif;
+      font-size: 11px;
       font-weight: 600;
       line-height: 1.4;
       letter-spacing: 0.08em;
@@ -92,27 +93,27 @@
       margin: 0;
 
       font-family: "Paperlogy", sans-serif;
-      font-size: clamp(46px, 7vw, 88px);
+      font-size: 44px;
       font-weight: 800;
-      line-height: 0.95;
-      letter-spacing: -0.055em;
+      line-height: 1;
+      letter-spacing: -0.045em;
 
       word-break: keep-all;
     }
 
 
     body.page-notes .notes-description {
-      max-width: 420px;
+      max-width: 380px;
 
       margin: 0;
-      padding-bottom: 4px;
+      padding-bottom: 2px;
 
       color: #555555;
 
       font-family: "Paperlogy", sans-serif;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 400;
-      line-height: 1.85;
+      line-height: 1.8;
 
       word-break: keep-all;
     }
@@ -126,33 +127,50 @@
       display: flex;
       flex-direction: column;
 
-      gap: 82px;
+      width: 100%;
     }
 
 
-    body.page-notes .note-entry {
-      display: grid;
+    body.page-notes .note-card {
+      width: 100%;
 
-      grid-template-columns:
-        minmax(0, 1.25fr)
-        minmax(280px, 0.75fr);
-
-      align-items: start;
-      column-gap: 42px;
-
-      padding-bottom: 82px;
+      margin: 0;
+      padding: 0;
 
       border-bottom: 1px solid #eeeeee;
     }
 
 
+    /* 카드 전체 클릭 */
+
+    body.page-notes .note-link {
+      display: grid;
+
+      grid-template-columns:
+        280px
+        minmax(0, 1fr);
+
+      align-items: center;
+      column-gap: 36px;
+
+      width: 100%;
+
+      padding: 30px 0;
+
+      color: inherit;
+      text-decoration: none;
+    }
+
+
     /* =========================================
-       NOTE IMAGE
+       NOTE THUMBNAIL
     ========================================= */
 
-    body.page-notes .note-visual {
-      width: 100%;
-      min-width: 0;
+    body.page-notes .note-thumbnail {
+      width: 280px;
+      overflow: hidden;
+
+      border-radius: 12px;
     }
 
 
@@ -165,20 +183,9 @@
       aspect-ratio: 4 / 3;
       object-fit: cover;
 
-      border-radius: 16px;
-    }
-
-
-    body.page-notes .note-image-caption {
-      margin: 10px 2px 0;
-
-      color: #999999;
-
-      font-family: "Paperlogy", sans-serif;
-      font-size: 10px;
-      font-weight: 400;
-      line-height: 1.5;
-      letter-spacing: 0.02em;
+      transition:
+        transform 0.28s ease,
+        opacity 0.28s ease;
     }
 
 
@@ -187,22 +194,22 @@
     ========================================= */
 
     body.page-notes .note-content {
-      padding-top: 2px;
+      min-width: 0;
     }
 
 
     body.page-notes .note-meta {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 20px;
 
-      margin-bottom: 24px;
+      gap: 12px;
+
+      margin-bottom: 13px;
 
       color: #999999;
 
       font-family: "Paperlogy", sans-serif;
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 400;
       line-height: 1.4;
       letter-spacing: 0.04em;
@@ -216,33 +223,23 @@
 
 
     body.page-notes .note-title {
-      margin: 0 0 22px;
+      margin: 0 0 13px;
 
       font-family: "Paperlogy", sans-serif;
-      font-size: 29px;
+      font-size: 22px;
       font-weight: 700;
-      line-height: 1.25;
+      line-height: 1.3;
       letter-spacing: -0.025em;
 
       word-break: keep-all;
+
+      transition: color 0.2s ease;
     }
 
 
-    body.page-notes .note-lead {
-      margin: 0 0 18px;
+    body.page-notes .note-excerpt {
+      max-width: 520px;
 
-      color: #222222;
-
-      font-family: "Paperlogy", sans-serif;
-      font-size: 15px;
-      font-weight: 600;
-      line-height: 1.75;
-
-      word-break: keep-all;
-    }
-
-
-    body.page-notes .note-text {
       margin: 0 0 18px;
 
       color: #666666;
@@ -250,45 +247,49 @@
       font-family: "Paperlogy", sans-serif;
       font-size: 13px;
       font-weight: 400;
-      line-height: 1.9;
+      line-height: 1.8;
 
       word-break: keep-all;
     }
 
 
-    /* =========================================
-       KEYWORDS
-    ========================================= */
+    body.page-notes .note-read {
+      display: inline-block;
 
-    body.page-notes .note-tags {
-      display: flex;
-      flex-wrap: wrap;
-
-      gap: 7px;
-
-      margin-top: 28px;
-    }
-
-
-    body.page-notes .note-tag {
-      display: inline-flex;
-      align-items: center;
-
-      min-height: 28px;
-
-      padding: 6px 11px;
-
-      border: 1px solid #f4bad4;
-      border-radius: 999px;
-
-      background: #fff7fb;
       color: #d97eaa;
 
       font-family: "Paperlogy", sans-serif;
       font-size: 10px;
-      font-weight: 500;
-      line-height: 1;
-      letter-spacing: 0.02em;
+      font-weight: 600;
+      line-height: 1.4;
+      letter-spacing: 0.03em;
+    }
+
+
+    /* =========================================
+       HOVER
+    ========================================= */
+
+    @media (hover: hover) {
+
+      body.page-notes .note-link:hover
+      .note-image {
+        transform: scale(1.025);
+        opacity: 0.94;
+      }
+
+
+      body.page-notes .note-link:hover
+      .note-title {
+        color: #d97eaa;
+      }
+
+    }
+
+
+    body.page-notes .note-link:focus-visible {
+      outline: 1px dashed #ef94bd;
+      outline-offset: 8px;
     }
 
 
@@ -301,80 +302,70 @@
       body.page-notes .notes-wrap {
         width: calc(100% - 32px);
 
-        padding: 110px 0 90px;
+        padding: 105px 0 80px;
       }
 
 
       body.page-notes .notes-intro {
         grid-template-columns: 1fr;
 
-        row-gap: 28px;
+        row-gap: 22px;
 
-        margin-bottom: 50px;
-        padding-bottom: 28px;
+        margin-bottom: 25px;
+        padding-bottom: 24px;
       }
 
 
       body.page-notes .notes-title {
-        font-size: 52px;
+        font-size: 36px;
       }
 
 
       body.page-notes .notes-description {
         max-width: 100%;
+
+        font-size: 12px;
       }
 
 
-      body.page-notes .note-list {
-        gap: 58px;
-      }
-
-
-      body.page-notes .note-entry {
+      body.page-notes .note-link {
         grid-template-columns: 1fr;
 
-        row-gap: 25px;
+        row-gap: 20px;
 
-        padding-bottom: 58px;
+        padding: 25px 0 34px;
       }
 
 
-      body.page-notes .note-image {
-        border-radius: 12px;
-      }
-
-
-      body.page-notes .note-meta {
-        margin-bottom: 18px;
+      body.page-notes .note-thumbnail {
+        width: 100%;
+        max-width: 420px;
       }
 
 
       body.page-notes .note-title {
-        font-size: 24px;
+        font-size: 20px;
       }
+
+
+      body.page-notes .note-excerpt {
+        font-size: 12px;
+      }
+
     }
 
 
     @media screen and (max-width: 420px) {
 
       body.page-notes .notes-title {
-        font-size: 45px;
+        font-size: 32px;
       }
 
 
       body.page-notes .note-title {
-        font-size: 22px;
+        font-size: 19px;
       }
 
-
-      body.page-notes .note-lead {
-        font-size: 14px;
-      }
-
-
-      body.page-notes .note-text {
-        font-size: 12px;
-      }
     }
   </style>
 </head>
@@ -430,6 +421,7 @@
     <section class="notes-intro">
 
       <div>
+
         <p class="notes-label">
           research archive
         </p>
@@ -437,6 +429,7 @@
         <h1 class="notes-title">
           Soft Notes
         </h1>
+
       </div>
 
 
@@ -458,93 +451,74 @@
 
       <!-- =====================================
            NOTE 001
+           카드 전체를 누르면 note-001.html로 이동
       ====================================== -->
 
-      <article class="note-entry">
+      <article class="note-card">
 
-        <div class="note-visual">
+        <a
+          class="note-link"
+          href="note-001.html"
+          aria-label="Textile Pieces Process Note 읽기"
+        >
 
-          <img
-            class="note-image"
-            src="images/textile-pieces.png"
-            alt="Textile Pieces research process"
-          >
+          <!-- THUMBNAIL -->
 
-          <p class="note-image-caption">
-            Textile Pieces, visual experiment, 2026
-          </p>
+          <div class="note-thumbnail">
 
-        </div>
-
-
-        <div class="note-content">
-
-          <div class="note-meta">
-
-            <span class="note-number">
-              No. 001
-            </span>
-
-            <time datetime="2026-07-22">
-              22 July 2026
-            </time>
+            <img
+              class="note-image"
+              src="images/textile-pieces.png"
+              alt="Textile Pieces research process"
+            >
 
           </div>
 
 
-          <h2 class="note-title">
-            Textile Pieces — Process Note
-          </h2>
+          <!-- NOTE INFORMATION -->
+
+          <div class="note-content">
+
+            <div class="note-meta">
+
+              <span class="note-number">
+                No. 001
+              </span>
+
+              <time datetime="2026-07-22">
+                22 July 2026
+              </time>
+
+            </div>
 
 
-          <p class="note-lead">
-            작은 패브릭 조각들을 하나의 수집물처럼
-            배열하는 방식에 대해 실험했다.
-          </p>
+            <h2 class="note-title">
+              Textile Pieces — Process Note
+            </h2>
 
 
-          <p class="note-text">
-            완성된 하나의 오브제를 만드는 것보다,
-            각기 다른 질감과 형태를 가진 조각들이
-            한 화면 안에서 어떤 관계를 만드는지 관찰했다.
-          </p>
+            <p class="note-excerpt">
+              작은 패브릭 조각과 서로 다른 질감이
+              한 화면 안에서 만드는 관계를 관찰한 기록입니다.
+              현재 연구일지를 정리하고 있습니다.
+            </p>
 
 
-          <p class="note-text">
-            자수와 패치워크, 셔링처럼 손의 흔적이 느껴지는
-            요소를 남기면서도 화면이 지나치게 장식적으로
-            보이지 않도록 형태와 색의 수를 조절했다.
-          </p>
-
-
-          <div class="note-tags">
-
-            <span class="note-tag">
-              textile study
-            </span>
-
-            <span class="note-tag">
-              patchwork
-            </span>
-
-            <span class="note-tag">
-              embroidery
-            </span>
-
-            <span class="note-tag">
-              visual research
+            <span class="note-read">
+              Read note →
             </span>
 
           </div>
 
-        </div>
+        </a>
 
       </article>
 
 
       <!-- =====================================
-           새 연구일지는 위의 article 전체를
-           복사해서 이 아래에 붙여넣기
+           새로운 연구일지는
+           article.note-card 전체를 복사하여
+           이 아래에 붙여넣기
       ====================================== -->
 
 
@@ -554,7 +528,8 @@
 
 
   <!-- 기존 사이트 JavaScript -->
-  <script src="script.js?v=20260722-notes-final-1"></script>
+
+  <script src="script.js?v=20260722-notes-blog-list-1"></script>
 
 </body>
 
