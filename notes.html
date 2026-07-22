@@ -14,14 +14,12 @@
   <!-- 기존 사이트 공통 스타일 -->
   <link
     rel="stylesheet"
-    href="style.css?v=notes-blog-list-1"
+    href="style.css?v=notes-font-final-3"
   >
 
-  <!-- NOTES 페이지 전용 스타일 -->
   <style>
     /* =========================================
        NOTES LIST PAGE ONLY
-       다른 페이지에는 영향을 주지 않음
     ========================================= */
 
     body.page-notes {
@@ -48,8 +46,32 @@
 
       margin: 0 auto;
       padding: 145px 0 130px;
+    }
 
+
+    /* =========================================
+       영문 폰트
+       콘택트 페이지와 같은 Paperlogy
+    ========================================= */
+
+    body.page-notes .notes-label,
+    body.page-notes .notes-title,
+    body.page-notes .note-meta,
+    body.page-notes .note-title,
+    body.page-notes .note-read {
       font-family: "Paperlogy", sans-serif;
+    }
+
+
+    /* =========================================
+       한글 폰트
+       사이트에 등록된 LGGothic
+    ========================================= */
+
+    body.page-notes .notes-description,
+    body.page-notes .note-excerpt,
+    body.page-notes .notes-empty {
+      font-family: "LGGothic", sans-serif;
     }
 
 
@@ -79,7 +101,6 @@
 
       color: #ef94bd;
 
-      font-family: "Paperlogy", sans-serif;
       font-size: 11px;
       font-weight: 600;
       line-height: 1.4;
@@ -92,7 +113,6 @@
     body.page-notes .notes-title {
       margin: 0;
 
-      font-family: "Paperlogy", sans-serif;
       font-size: 44px;
       font-weight: 800;
       line-height: 1;
@@ -110,10 +130,10 @@
 
       color: #555555;
 
-      font-family: "Paperlogy", sans-serif;
-      font-size: 13px;
+      font-size: 15px;
       font-weight: 400;
-      line-height: 1.8;
+      line-height: 1.75;
+      letter-spacing: -0.015em;
 
       word-break: keep-all;
     }
@@ -140,8 +160,6 @@
       border-bottom: 1px solid #eeeeee;
     }
 
-
-    /* 카드 전체 클릭 */
 
     body.page-notes .note-link {
       display: grid;
@@ -201,14 +219,12 @@
     body.page-notes .note-meta {
       display: flex;
       align-items: center;
-
       gap: 12px;
 
       margin-bottom: 13px;
 
       color: #999999;
 
-      font-family: "Paperlogy", sans-serif;
       font-size: 10px;
       font-weight: 400;
       line-height: 1.4;
@@ -225,7 +241,6 @@
     body.page-notes .note-title {
       margin: 0 0 13px;
 
-      font-family: "Paperlogy", sans-serif;
       font-size: 22px;
       font-weight: 700;
       line-height: 1.3;
@@ -242,12 +257,12 @@
 
       margin: 0 0 18px;
 
-      color: #666666;
+      color: #555555;
 
-      font-family: "Paperlogy", sans-serif;
-      font-size: 13px;
+      font-size: 15px;
       font-weight: 400;
-      line-height: 1.8;
+      line-height: 1.75;
+      letter-spacing: -0.015em;
 
       word-break: keep-all;
     }
@@ -258,7 +273,6 @@
 
       color: #d97eaa;
 
-      font-family: "Paperlogy", sans-serif;
       font-size: 10px;
       font-weight: 600;
       line-height: 1.4;
@@ -294,6 +308,24 @@
 
 
     /* =========================================
+       EMPTY MESSAGE
+    ========================================= */
+
+    body.page-notes .notes-empty {
+      padding: 60px 0;
+
+      color: #999999;
+
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 1.7;
+
+      text-align: center;
+      word-break: keep-all;
+    }
+
+
+    /* =========================================
        MOBILE
     ========================================= */
 
@@ -324,7 +356,7 @@
       body.page-notes .notes-description {
         max-width: 100%;
 
-        font-size: 12px;
+        font-size: 14px;
       }
 
 
@@ -349,7 +381,7 @@
 
 
       body.page-notes .note-excerpt {
-        font-size: 12px;
+        font-size: 14px;
       }
 
     }
@@ -373,10 +405,7 @@
 
 <body class="page-notes">
 
-  <!-- =========================================
-       TOP FIXED HEADER
-       기존 사이트와 동일
-  ========================================== -->
+  <!-- 기존 사이트 헤더 -->
 
   <header class="top">
 
@@ -410,13 +439,9 @@
   </header>
 
 
-  <!-- =========================================
-       NOTES PAGE
-  ========================================== -->
-
   <main class="notes-wrap">
 
-    <!-- PAGE TITLE -->
+    <!-- 페이지 소개 -->
 
     <section class="notes-intro">
 
@@ -442,93 +467,126 @@
     </section>
 
 
-    <!-- =========================================
-         NOTE LIST
-    ========================================== -->
+    <!-- 연구일지 자동 목록 -->
 
-    <section class="note-list">
-
-
-      <!-- =====================================
-           NOTE 001
-           카드 전체를 누르면 note-001.html로 이동
-      ====================================== -->
-
-      <article class="note-card">
-
-       <a
-  class="note-link"
-  href="note.html?id=001"
-  aria-label="Textile Pieces Process Note 읽기"
->
-          <!-- THUMBNAIL -->
-
-          <div class="note-thumbnail">
-
-            <img
-              class="note-image"
-              src="images/textile-pieces.png"
-              alt="Textile Pieces research process"
-            >
-
-          </div>
-
-
-          <!-- NOTE INFORMATION -->
-
-          <div class="note-content">
-
-            <div class="note-meta">
-
-              <span class="note-number">
-                No. 001
-              </span>
-
-              <time datetime="2026-07-22">
-                22 July 2026
-              </time>
-
-            </div>
-
-
-            <h2 class="note-title">
-              Textile Pieces — Process Note
-            </h2>
-
-
-            <p class="note-excerpt">
-              작은 패브릭 조각과 서로 다른 질감이
-              한 화면 안에서 만드는 관계를 관찰한 기록입니다.
-              현재 연구일지를 정리하고 있습니다.
-            </p>
-
-
-            <span class="note-read">
-              Read note →
-            </span>
-
-          </div>
-
-        </a>
-
-      </article>
-
-
-      <!-- =====================================
-           새로운 연구일지는
-           article.note-card 전체를 복사하여
-           이 아래에 붙여넣기
-      ====================================== -->
-
-
-    </section>
+    <section
+      class="note-list"
+      id="noteList"
+    ></section>
 
   </main>
 
 
+  <!-- 연구일지 데이터 -->
+
+  <script src="notes-data.js?v=20260722-font-final-3"></script>
+
+
+  <!-- 목록 자동 생성 -->
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+      const noteList =
+        document.getElementById("noteList");
+
+
+      const notes =
+        Array.isArray(window.notesData)
+          ? [...window.notesData]
+          : [];
+
+
+      if (notes.length === 0) {
+
+        noteList.innerHTML = `
+          <p class="notes-empty">
+            아직 작성된 연구일지가 없습니다.
+          </p>
+        `;
+
+        return;
+      }
+
+
+      notes.sort(function (a, b) {
+
+        return new Date(b.datetime) -
+          new Date(a.datetime);
+
+      });
+
+
+      noteList.innerHTML =
+        notes
+          .map(function (note) {
+
+            return `
+              <article class="note-card">
+
+                <a
+                  class="note-link"
+                  href="note.html?id=${encodeURIComponent(note.id)}"
+                  aria-label="${note.title} 읽기"
+                >
+
+                  <div class="note-thumbnail">
+
+                    <img
+                      class="note-image"
+                      src="${note.image}"
+                      alt="${note.imageAlt || note.title}"
+                    >
+
+                  </div>
+
+
+                  <div class="note-content">
+
+                    <div class="note-meta">
+
+                      <span class="note-number">
+                        No. ${note.id}
+                      </span>
+
+                      <time datetime="${note.datetime}">
+                        ${note.date}
+                      </time>
+
+                    </div>
+
+
+                    <h2 class="note-title">
+                      ${note.title}
+                    </h2>
+
+
+                    <p class="note-excerpt">
+                      ${note.excerpt}
+                    </p>
+
+
+                    <span class="note-read">
+                      Read note →
+                    </span>
+
+                  </div>
+
+                </a>
+
+              </article>
+            `;
+
+          })
+          .join("");
+
+    });
+  </script>
+
+
   <!-- 기존 사이트 JavaScript -->
 
-  <script src="script.js?v=20260722-notes-blog-list-1"></script>
+  <script src="script.js?v=20260722-notes-font-final-3"></script>
 
 </body>
 
