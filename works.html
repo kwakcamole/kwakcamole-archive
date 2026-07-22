@@ -1,122 +1,152 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>Kwakcamole.archive — works</title>
 
-  <!-- 기존 공통 CSS -->
-  <link rel="stylesheet" href="style.css" />
+  <!-- 기존 공통 스타일 -->
+  <link rel="stylesheet" href="style.css?v=20260722-4" />
 
-  <!-- WORKS 페이지 전용 레이아웃 -->
+  <!-- WORKS 페이지 전용 스타일 -->
   <style>
-    /* ==============================
-       WORKS PAGE
-    ============================== */
+    /* =========================================
+       WORKS PAGE — 4 COLUMN ARCHIVE
+    ========================================= */
+
+    body.page-works {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     .page-works .works-wrap {
-      width: 100%;
-      padding: 160px 40px 100px;
+      width: 100% !important;
+      max-width: none !important;
+
+      margin: 0 !important;
+      padding: 165px 32px 120px !important;
+
       box-sizing: border-box;
     }
 
     .page-works .works-grid {
-      width: 100%;
-      max-width: 1600px;
-      margin: 0 auto;
+      width: 100% !important;
+      max-width: 1700px !important;
+
+      margin: 0 auto !important;
+      padding: 0 !important;
 
       display: grid !important;
       grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-      column-gap: 28px;
-      row-gap: 60px;
 
-      align-items: start;
+      column-gap: 24px !important;
+      row-gap: 58px !important;
+
+      align-items: start !important;
+      justify-items: stretch !important;
+
       box-sizing: border-box;
     }
 
     .page-works .work-card {
       width: 100% !important;
-      min-width: 0;
+      max-width: none !important;
+      min-width: 0 !important;
+
       margin: 0 !important;
-      padding: 0;
+      padding: 0 !important;
+
+      display: block !important;
       text-align: center;
+
       box-sizing: border-box;
     }
 
     .page-works .work-img {
-      display: block;
+      display: block !important;
+
       width: 100% !important;
-      height: auto;
+      max-width: none !important;
+      height: auto !important;
+
+      margin: 0 !important;
+      padding: 0 !important;
+
       aspect-ratio: 3 / 2;
       object-fit: cover;
 
-      border-radius: 14px;
+      border-radius: 12px;
       cursor: pointer;
+
+      transition:
+        transform 0.25s ease,
+        opacity 0.25s ease;
+    }
+
+    .page-works .work-card:hover .work-img {
+      transform: translateY(-3px);
+      opacity: 0.96;
     }
 
     .page-works .work-title {
-      margin: 16px 0 4px;
-      padding: 0 4px;
+      margin: 15px 0 4px !important;
+      padding: 0 4px !important;
 
-      font-size: 16px;
-      line-height: 1.3;
-      font-weight: 700;
+      font-size: 15px !important;
+      line-height: 1.3 !important;
+      font-weight: 700 !important;
+
+      text-align: center;
       word-break: keep-all;
     }
 
     .page-works .work-sub {
-      margin: 0;
-      padding: 0 4px;
+      margin: 0 !important;
+      padding: 0 4px !important;
 
-      font-size: 13px;
-      line-height: 1.4;
+      font-size: 12px !important;
+      line-height: 1.4 !important;
+      font-weight: 400 !important;
+
+      text-align: center;
       color: #777;
     }
 
-    /* 노트북: 3열 */
-    @media (max-width: 1200px) {
-      .page-works .works-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-        column-gap: 24px;
-      }
-    }
-
-    /* 태블릿: 2열 */
-    @media (max-width: 850px) {
+    /* 태블릿·모바일: 2열 */
+    @media screen and (max-width: 760px) {
       .page-works .works-wrap {
-        padding: 130px 24px 80px;
+        padding: 125px 18px 80px !important;
       }
 
       .page-works .works-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-        column-gap: 18px;
-        row-gap: 48px;
-      }
 
-      .page-works .work-title {
-        margin-top: 13px;
-        font-size: 15px;
-      }
-
-      .page-works .work-sub {
-        font-size: 12px;
-      }
-    }
-
-    /* 모바일: 1열 */
-    @media (max-width: 520px) {
-      .page-works .works-wrap {
-        padding: 110px 18px 60px;
-      }
-
-      .page-works .works-grid {
-        grid-template-columns: 1fr !important;
-        row-gap: 44px;
+        column-gap: 14px !important;
+        row-gap: 42px !important;
       }
 
       .page-works .work-img {
-        border-radius: 12px;
+        border-radius: 10px;
+      }
+
+      .page-works .work-title {
+        margin-top: 12px !important;
+        font-size: 13px !important;
+      }
+
+      .page-works .work-sub {
+        font-size: 11px !important;
+      }
+    }
+
+    /* 작은 모바일: 1열 */
+    @media screen and (max-width: 420px) {
+      .page-works .works-grid {
+        grid-template-columns: 1fr !important;
+        row-gap: 44px !important;
       }
     }
   </style>
@@ -126,6 +156,7 @@
 
   <!-- TOP FIXED HEADER -->
   <header class="top">
+
     <div class="top-left" id="favHeart">
       fav ♥
     </div>
@@ -137,11 +168,13 @@
     <a class="top-right" href="index.html" aria-label="home">
       <img src="images/집.png" alt="home icon">
     </a>
+
   </header>
 
 
   <!-- WORKS -->
   <main class="works-wrap">
+
     <section class="works-grid">
 
       <!-- WORK 01 -->
@@ -368,11 +401,16 @@
       </article>
 
     </section>
+
   </main>
 
 
   <!-- IMAGE MODAL -->
-  <div class="modal" id="imgModal" aria-hidden="true">
+  <div
+    class="modal"
+    id="imgModal"
+    aria-hidden="true"
+  >
 
     <div
       class="modal-backdrop"
@@ -384,6 +422,7 @@
       role="dialog"
       aria-modal="true"
     >
+
       <button
         class="modal-close"
         data-close="1"
@@ -416,13 +455,15 @@
         class="modal-caption"
         id="modalCaption"
       ></div>
+
     </div>
 
   </div>
 
 
   <!-- 기존 JavaScript -->
-  <script src="script.js"></script>
+  <script src="script.js?v=20260722-4"></script>
 
 </body>
+
 </html>
