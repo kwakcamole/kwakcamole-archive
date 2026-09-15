@@ -3,7 +3,7 @@
     "id": "001",
     "title": "Textile Pieces — Process Note",
     "datetime": "2026-07-22",
-    "image": "images/textile-pieces.png",
+    "image": "/images/textile-pieces.png",
     "imageAlt": "Textile Pieces visual research",
     "caption": "Textile Pieces, visual experiment, 2026",
     "excerpt": "작은 패브릭 조각에 서로 다른 기법을 적용해, 하나의 화면 안에서 조각들이 맺는 관계를 기록한 작업입니다.",
@@ -14,6 +14,24 @@
       "patchwork",
       "embroidery",
       "visual research"
+    ]
+  },
+  {
+    "id": "002",
+    "title": "Bread Girl’s Daily Life 빵순이의 일상... — Process Note",
+    "datetime": "2026-09-16",
+    "image": "/images/kwakcamolehttpssmjrung9fopuqnewstop-motionanimationsty74df822c-b04e-488c-9204-0f2ef745f1010.gif",
+    "imageAlt": "Bread doll character surrounded by playful bread-shaped everyday objects.",
+    "caption": "Bread Girl’s Daily Life, character and object study, 2026",
+    "excerpt": "빵을 좋아하는 인물의 일상을 상상하며, 익숙한 생활용품을 빵의 형태와 질감으로 바꿔 만든 캐릭터 기반 비주얼 시리즈입니다.",
+    "intro": "일상에서 사용하는 사물들이 모두 빵으로 만들어져 있다면 어떤 모습일지 상상하며, 빵 인형 캐릭터와 생활 오브제를 하나의 작은 세계 안에 구성했습니다.",
+    "content": "<p>처음에는 ‘빵을 좋아하는 사람의 일상’이라는 단순한 아이디어에서 시작했습니다. 전화기, 세탁기, 재봉틀, 메이크업 팔레트처럼 익숙한 사물들을 빵의 형태로 바꾸면서 (사실은 저의 일상에 익숙한 물건들을 생각하며 만든겁니다..!), </p><p>각각의 오브제가 실제로 사용할 수 있을 것처럼 보이면서도 장난감 같은 분위기를 유지하고 싶었습니다. </p><p>'From everyday objects'</p><p>크루아상 전화기, 토스트 재봉틀, 와플 메이크업 팔레트, 빵 세탁기, 베이글 시계처럼 오브제마다 원래 사물의 기능은 남기고 재료와 형태만 빵의 언어로 바꾸었습니다. </p><p>형태를 너무 사실적으로 만들면 음식 이미지처럼 보이고, 반대로 너무 단순하게 만들면 각 사물의 기능이 읽히지 않았습니다. 그래서 빵 특유의 굽기 자국과 부드러운 질감은 유지하면서 버튼, 문, 손잡이처럼 필요한 구조만 남겼습니다.</p><p>'Building the character'</p><p>빵순이는 이 세계를 연결하는 인물로 만들었습니다. 초기 이미지에서는 얼굴과 신체 비율이 조금 낯설게 느껴져, 얼굴을 더 둥글고 단순하게 조정하고 손 역시 사람 손보다는 봉제인형처럼 표현했습니다.</p><p>캐릭터의 움직임도 매끄러운 영상보다는 프레임마다 작은 동작이 끊겨 보이는 스톱모션 방식으로 설정했습니다. 전화벨을 듣고 수화기를 들거나, 세탁기에서 작은 빵 세탁물을 꺼내는 짧은 행동만으로도 캐릭터의 생활이 상상되도록 구성했습니다.</p><p>하나의 이미지보다 여러 오브제와 짧은 행동들이 반복되면서 ‘빵순이가 실제로 살아가는 세계’처럼 보이기 시작한 점이 이번 작업에서 가장 재미있었던 부분입니다.</p>",
+    "tags": [
+      "character design",
+      "stop motion",
+      "bread art",
+      "visual storytelling",
+      "ai visual"
     ]
   }
 ]
