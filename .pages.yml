@@ -1,7 +1,11 @@
 media:
-  input: images
-  output: /images
-  rename: safe
+  - name: images
+    label: Images
+    input: images
+    output: /images
+    rename: safe
+    categories:
+      - image
 
 content:
   - name: soft-notes
@@ -10,11 +14,13 @@ content:
     path: notes-data.json
     format: json
     list: true
+
     fields:
       - name: id
         label: No.
         type: string
         required: true
+        description: "예: 001, 002, 003"
 
       - name: title
         label: Title
@@ -25,36 +31,54 @@ content:
         label: Date
         type: date
         required: true
-        options:
-          format: yyyy-MM-dd
 
       - name: image
         label: Cover Image
         type: image
+        options:
+          media: images
+          rename: safe
+          categories:
+            - image
 
       - name: imageAlt
         label: Image Description
         type: string
+        description: "선택사항. 비워두면 제목을 대신 사용합니다."
 
       - name: caption
         label: Caption
         type: string
+        description: "선택사항. 대표 이미지 아래 작은 설명."
 
       - name: excerpt
         label: Short Description
         type: text
+        required: true
+        description: "Soft Notes 목록에 보이는 짧은 소개."
 
       - name: intro
         label: Intro
         type: text
+        description: "상세페이지 제목 아래에 보이는 짧은 소개."
 
       - name: content
         label: Body
         type: rich-text
+        required: true
         options:
           format: html
+          media: images
+          rename: safe
+          switcher: false
+          categories:
+            - image
 
       - name: tags
         label: Tags
         type: string
         list: true
+
+settings:
+  content:
+    merge: true
