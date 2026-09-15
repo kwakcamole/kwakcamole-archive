@@ -479,13 +479,6 @@
 
 
   <!-- =========================================
-       연구일지 데이터
-  ========================================== -->
-
-  <script src="/notes-data.js?v=20260722-soft-notes-8"></script>
-
-
-  <!-- =========================================
        목록 자동 생성
   ========================================== -->
 
@@ -496,12 +489,6 @@
 
         const noteList =
           document.getElementById("noteList");
-
-
-        const notes =
-          Array.isArray(window.notesData)
-            ? [...window.notesData]
-            : [];
 
 
         /*
@@ -529,104 +516,202 @@
         }
 
 
-        if (notes.length === 0) {
+        function formatNoteDate(note) {
 
-          noteList.innerHTML = `
-            <p class="notes-message">
-              아직 작성된 연구일지가 없습니다.
-            </p>
-          `;
+          if (
+            note &&
+            typeof note.date === "string" &&
+            note.date.trim()
+          ) {
+            return note.date;
+          }
 
-          return;
+
+          const value =
+            note && note.datetime
+              ? String(note.datetime)
+              : "";
+
+
+          const match =
+            value.match(/^(\d{4})-(\d{2})-(\d{2})/);
+
+
+          if (!match) {
+            return value;
+          }
+
+
+          const year =
+            Number(match[1]);
+
+          const monthIndex =
+            Number(match[2]) - 1;
+
+          const day =
+            Number(match[3]);
+
+
+          const months = [
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December"
+          ];
+
+
+          return (
+            day +
+            " " +
+            months[monthIndex] +
+            " " +
+            year
+          );
+
         }
 
 
-        /*
-          최신 날짜의 글이 위로 오도록 정렬
-        */
+        function renderNotes(notes) {
 
-        notes.sort(function (a, b) {
+          if (notes.length === 0) {
 
-          return (
-            new Date(b.datetime) -
-            new Date(a.datetime)
-          );
+            noteList.innerHTML = `
+              <p class="notes-message">
+                아직 작성된 연구일지가 없습니다.
+              </p>
+            `;
 
-        });
-
-
-        noteList.innerHTML =
-          notes
-            .map(function (note) {
-
-              const noteId =
-                encodeURIComponent(
-                  String(note.id)
-                );
+            return;
+          }
 
 
-              const imagePath =
-                getAssetPath(note.image);
+          /*
+            최신 날짜의 글이 위로 오도록 정렬
+          */
+
+          notes.sort(function (a, b) {
+
+            return (
+              new Date(b.datetime) -
+              new Date(a.datetime)
+            );
+
+          });
 
 
-              return `
-                <article class="note-card">
+          noteList.innerHTML =
+            notes
+              .map(function (note) {
 
-                  <a
-                    class="note-link"
-                    href="/note?id=${noteId}"
-                    aria-label="${note.title} 읽기"
-                  >
-
-                    <div class="note-thumbnail">
-
-                      <img
-                        class="note-image"
-                        src="${imagePath}"
-                        alt="${note.imageAlt || note.title}"
-                      >
-
-                    </div>
+                const noteId =
+                  encodeURIComponent(
+                    String(note.id)
+                  );
 
 
-                    <div class="note-content">
+                const imagePath =
+                  getAssetPath(note.image);
 
-                      <div class="note-meta">
 
-                        <span class="note-number">
-                          No. ${note.id}
-                        </span>
+                return `
+                  <article class="note-card">
 
-                        <time datetime="${note.datetime}">
-                          ${note.date}
-                        </time>
+                    <a
+                      class="note-link"
+                      href="/note?id=${noteId}"
+                      aria-label="${note.title} 읽기"
+                    >
+
+                      <div class="note-thumbnail">
+
+                        <img
+                          class="note-image"
+                          src="${imagePath}"
+                          alt="${note.imageAlt || note.title}"
+                        >
 
                       </div>
 
 
-                      <h2 class="note-title">
-                        ${note.title}
-                      </h2>
+                      <div class="note-content">
+
+                        <div class="note-meta">
+
+                          <span class="note-number">
+                            No. ${note.id}
+                          </span>
+
+                          <time datetime="${note.datetime}">
+                            ${formatNoteDate(note)}
+                          </time>
+
+                        </div>
 
 
-                      <p class="note-excerpt">
-                        ${note.excerpt}
-                      </p>
+                        <h2 class="note-title">
+                          ${note.title}
+                        </h2>
 
 
-                      <span class="note-read">
-                        Read note →
-                      </span>
+                        <p class="note-excerpt">
+                          ${note.excerpt}
+                        </p>
 
-                    </div>
 
-                  </a>
+                        <span class="note-read">
+                          Read note →
+                        </span>
 
-                </article>
-              `;
+                      </div>
 
-            })
-            .join("");
+                    </a>
+
+                  </article>
+                `;
+
+              })
+              .join("");
+
+        }
+
+
+        fetch("/notes-data.json")
+          .then(function (response) {
+
+            if (!response.ok) {
+              throw new Error("Failed to load notes");
+            }
+
+            return response.json();
+
+          })
+          .then(function (data) {
+
+            const notes =
+              Array.isArray(data)
+                ? [...data]
+                : [];
+
+            renderNotes(notes);
+
+          })
+          .catch(function () {
+
+            noteList.innerHTML = `
+              <p class="notes-message">
+                연구일지를 불러오지 못했습니다.
+              </p>
+            `;
+
+          });
 
       }
     );

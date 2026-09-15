@@ -415,13 +415,6 @@
 
 
   <!-- =========================================
-       연구일지 데이터
-  ========================================== -->
-
-  <script src="/notes-data.js?v=20260722-note-detail-8"></script>
-
-
-  <!-- =========================================
        선택한 글 자동 표시
   ========================================== -->
 
@@ -438,12 +431,6 @@
 
         const requestedId =
           params.get("id") || "001";
-
-
-        const notes =
-          Array.isArray(window.notesData)
-            ? window.notesData
-            : [];
 
 
         const noteArticle =
@@ -471,6 +458,71 @@
           return "/" + path;
         }
 
+
+        function formatNoteDate(note) {
+
+          if (
+            note &&
+            typeof note.date === "string" &&
+            note.date.trim()
+          ) {
+            return note.date;
+          }
+
+
+          const value =
+            note && note.datetime
+              ? String(note.datetime)
+              : "";
+
+
+          const match =
+            value.match(/^(\d{4})-(\d{2})-(\d{2})/);
+
+
+          if (!match) {
+            return value;
+          }
+
+
+          const year =
+            Number(match[1]);
+
+          const monthIndex =
+            Number(match[2]) - 1;
+
+          const day =
+            Number(match[3]);
+
+
+          const months = [
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December"
+          ];
+
+
+          return (
+            day +
+            " " +
+            months[monthIndex] +
+            " " +
+            year
+          );
+
+        }
+
+
+        function renderNote(notes) {
 
         const selectedNote =
           notes.find(function (note) {
@@ -565,7 +617,7 @@
             </span>
 
             <time datetime="${selectedNote.datetime}">
-              ${selectedNote.date}
+              ${formatNoteDate(selectedNote)}
             </time>
 
           </div>
@@ -593,6 +645,39 @@
             ${tagsHTML}
           </div>
         `;
+
+        }
+
+
+        fetch("/notes-data.json")
+          .then(function (response) {
+
+            if (!response.ok) {
+              throw new Error("Failed to load notes");
+            }
+
+            return response.json();
+
+          })
+          .then(function (data) {
+
+            const notes =
+              Array.isArray(data)
+                ? data
+                : [];
+
+            renderNote(notes);
+
+          })
+          .catch(function () {
+
+            noteArticle.innerHTML = `
+              <div class="note-message">
+                연구일지를 불러오지 못했습니다.
+              </div>
+            `;
+
+          });
 
       }
     );
