@@ -1,0 +1,60 @@
+media:
+  input: images
+  output: /images
+  rename: safe
+
+content:
+  - name: soft-notes
+    label: Soft Notes
+    type: file
+    path: notes-data.json
+    format: json
+    list: true
+    fields:
+      - name: id
+        label: No.
+        type: string
+        required: true
+
+      - name: title
+        label: Title
+        type: string
+        required: true
+
+      - name: datetime
+        label: Date
+        type: date
+        required: true
+        options:
+          format: yyyy-MM-dd
+
+      - name: image
+        label: Cover Image
+        type: image
+
+      - name: imageAlt
+        label: Image Description
+        type: string
+
+      - name: caption
+        label: Caption
+        type: string
+
+      - name: excerpt
+        label: Short Description
+        type: text
+
+      - name: intro
+        label: Intro
+        type: text
+
+      - name: content
+        label: Body
+        type: rich-text
+        options:
+          format: html
+
+      - name: tags
+        label: Tags
+        type: string
+        list: true
