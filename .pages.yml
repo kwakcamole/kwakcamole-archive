@@ -86,7 +86,7 @@ content:
         list: true
 
 
-  # =========================================
+   # =========================================
   # WORKS
   # =========================================
 
@@ -114,15 +114,17 @@ content:
           categories:
             - image
 
-      # 화면에는 안 보임.
-      # 새 작품은 자동으로 Visual Stories로 저장.
       - name: category
         label: Category
-        type: string
-        hidden: true
-        default: visual-stories
+        type: select
+        required: true
+        options:
+          values:
+            - name: soft-spaces
+              label: Soft Spaces
 
+            - name: soft-objects
+              label: Soft Objects
 
-settings:
-  content:
-    merge: true
+            - name: visual-stories
+              label: Visual Stories
