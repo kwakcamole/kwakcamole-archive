@@ -1,0 +1,854 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <title>Say Hi! — Kwakcamole.archive</title>
+
+  <link
+    rel="stylesheet"
+    href="style.css?v=say-hi-1"
+  >
+
+  <style>
+    /* =========================================
+       SAY HI PAGE ONLY
+    ========================================= */
+
+    body.page-say-hi {
+      margin: 0;
+      padding: 0;
+    }
+
+    .say-hi-wrap {
+      width: min(760px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 145px 0 120px;
+      box-sizing: border-box;
+    }
+
+    .say-hi-heading {
+      margin: 0 0 8px;
+
+      font-family: "Paperlogy", sans-serif;
+      font-size: 25px;
+      font-weight: 700;
+      line-height: 1.2;
+
+      text-align: center;
+    }
+
+    .say-hi-intro {
+      margin: 0 auto 42px;
+
+      color: #929292;
+
+      font-family: "Paperlogy", sans-serif;
+      font-size: 12px;
+      line-height: 1.7;
+      font-weight: 400;
+
+      text-align: center;
+    }
+
+
+    /* =========================================
+       FORM
+    ========================================= */
+
+    .say-hi-form {
+      padding: 24px;
+
+      border: 1px solid #eeeeee;
+      border-radius: 18px;
+
+      background: rgba(255, 255, 255, 0.72);
+
+      box-sizing: border-box;
+    }
+
+    .say-hi-field {
+      margin-bottom: 18px;
+    }
+
+    .say-hi-label {
+      display: block;
+
+      margin-bottom: 8px;
+
+      font-family: "Paperlogy", sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+
+      color: #555555;
+    }
+
+    .say-hi-input,
+    .say-hi-textarea {
+      display: block;
+
+      width: 100%;
+
+      padding: 12px 14px;
+
+      border: 1px solid #dedede;
+      border-radius: 12px;
+
+      background: #ffffff;
+      color: #222222;
+
+      font-family: "Paperlogy", sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 1.5;
+
+      outline: none;
+      box-sizing: border-box;
+
+      transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .say-hi-textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .say-hi-input:focus,
+    .say-hi-textarea:focus {
+      border-color: #f3b3ce;
+      box-shadow: 0 0 0 3px rgba(246, 161, 198, 0.1);
+    }
+
+    .say-hi-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 12px;
+    }
+
+    .say-hi-count {
+      font-family: "Paperlogy", sans-serif;
+      font-size: 10px;
+      color: #aaaaaa;
+    }
+
+    .say-hi-submit {
+      padding: 9px 16px;
+
+      border: 1px solid #222222;
+      border-radius: 999px;
+
+      background: #ffffff;
+      color: #111111;
+
+      font-family: "Paperlogy", sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+
+      cursor: pointer;
+
+      transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        opacity 0.2s ease;
+    }
+
+    .say-hi-submit:hover {
+      background: #111111;
+      color: #ffffff;
+    }
+
+    .say-hi-submit:disabled {
+      opacity: 0.45;
+      cursor: default;
+    }
+
+    .say-hi-status {
+      min-height: 20px;
+
+      margin: 12px 0 0;
+
+      font-family: "Paperlogy", sans-serif;
+      font-size: 11px;
+      text-align: right;
+
+      color: #999999;
+    }
+
+
+    /* =========================================
+       NOTES
+    ========================================= */
+
+    .guestbook {
+      margin-top: 48px;
+    }
+
+    .guestbook-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      margin-bottom: 12px;
+    }
+
+    .guestbook-title {
+      margin: 0;
+
+      font-family: "Paperlogy", sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+
+      color: #555555;
+    }
+
+    .guestbook-count {
+      font-family: "Paperlogy", sans-serif;
+      font-size: 10px;
+      color: #aaaaaa;
+    }
+
+    .guest-note {
+      padding: 20px 4px;
+
+      border-top: 1px solid #eeeeee;
+    }
+
+    .guest-note:last-child {
+      border-bottom: 1px solid #eeeeee;
+    }
+
+    .guest-note-top {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+
+      gap: 20px;
+
+      margin-bottom: 8px;
+    }
+
+    .guest-note-name {
+      font-family: "Paperlogy", sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+
+      color: #222222;
+    }
+
+    .guest-note-name::after {
+      content: " ♡";
+      color: #f3a7c5;
+      font-weight: 400;
+    }
+
+    .guest-note-date {
+      flex-shrink: 0;
+
+      font-family: "Paperlogy", sans-serif;
+      font-size: 9px;
+
+      color: #b1b1b1;
+    }
+
+    .guest-note-message {
+      margin: 0;
+
+      font-family: "Paperlogy", sans-serif;
+      font-size: 12px;
+      line-height: 1.7;
+      font-weight: 400;
+
+      color: #555555;
+
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .say-hi-empty,
+    .say-hi-loading {
+      padding: 50px 0;
+
+      font-family: "Paperlogy", sans-serif;
+      font-size: 11px;
+      text-align: center;
+
+      color: #aaaaaa;
+    }
+
+
+    /* 스팸봇용 숨김 필드 */
+    .say-hi-honeypot {
+      position: absolute;
+      left: -9999px;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+
+    @media screen and (max-width: 700px) {
+
+      .say-hi-wrap {
+        width: calc(100% - 32px);
+        padding: 105px 0 80px;
+      }
+
+      .say-hi-heading {
+        font-size: 22px;
+      }
+
+      .say-hi-intro {
+        margin-bottom: 30px;
+      }
+
+      .say-hi-form {
+        padding: 18px;
+        border-radius: 15px;
+      }
+
+      .guestbook {
+        margin-top: 38px;
+      }
+
+    }
+  </style>
+</head>
+
+
+<body class="page-say-hi">
+
+  <!-- =========================================
+       HEADER
+  ========================================== -->
+
+  <header class="top">
+
+    <div
+      class="top-left"
+      id="favHeart"
+    >
+      fav ♥
+    </div>
+
+    <a
+      class="top-title"
+      href="index.html"
+    >
+      Kwakcamole.archive
+    </a>
+
+    <a
+      class="top-right"
+      href="https://www.instagram.com/kwakcamole.archive/"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Kwakcamole archive Instagram"
+    >
+      <img
+        src="/images/집.png"
+        alt="Instagram"
+      >
+    </a>
+
+  </header>
+
+
+  <!-- =========================================
+       SAY HI
+  ========================================== -->
+
+  <main class="say-hi-wrap">
+
+    <h1 class="say-hi-heading">
+      Say Hi! ♡
+    </h1>
+
+    <p class="say-hi-intro">
+      leave a tiny note before you go.<br>
+      i'd love to know you were here.
+    </p>
+
+
+    <form
+      class="say-hi-form"
+      id="sayHiForm"
+    >
+
+      <div class="say-hi-field">
+
+        <label
+          class="say-hi-label"
+          for="nickname"
+        >
+          nickname
+        </label>
+
+        <input
+          class="say-hi-input"
+          id="nickname"
+          name="nickname"
+          type="text"
+          maxlength="30"
+          autocomplete="off"
+          required
+          placeholder="your name"
+        >
+
+      </div>
+
+
+      <div class="say-hi-field">
+
+        <label
+          class="say-hi-label"
+          for="message"
+        >
+          message
+        </label>
+
+        <textarea
+          class="say-hi-textarea"
+          id="message"
+          name="message"
+          maxlength="300"
+          required
+          placeholder="leave a tiny note..."
+        ></textarea>
+
+      </div>
+
+
+      <!-- 봇이 주로 채우는 숨김 필드 -->
+      <div
+        class="say-hi-honeypot"
+        aria-hidden="true"
+      >
+        <label for="website">
+          website
+        </label>
+
+        <input
+          id="website"
+          name="website"
+          type="text"
+          tabindex="-1"
+          autocomplete="off"
+        >
+      </div>
+
+
+      <div class="say-hi-bottom">
+
+        <div
+          class="say-hi-count"
+          id="messageCount"
+        >
+          0 / 300
+        </div>
+
+        <button
+          class="say-hi-submit"
+          id="submitButton"
+          type="submit"
+        >
+          leave a note
+        </button>
+
+      </div>
+
+      <p
+        class="say-hi-status"
+        id="sayHiStatus"
+        aria-live="polite"
+      ></p>
+
+    </form>
+
+
+    <!-- =========================================
+         GUEST NOTES
+    ========================================== -->
+
+    <section class="guestbook">
+
+      <div class="guestbook-top">
+
+        <h2 class="guestbook-title">
+          little notes
+        </h2>
+
+        <span
+          class="guestbook-count"
+          id="guestbookCount"
+        ></span>
+
+      </div>
+
+
+      <div id="guestbookList">
+
+        <div class="say-hi-loading">
+          loading tiny notes...
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================================
+       SUPABASE
+  ========================================== -->
+
+  <script type="module">
+
+    import {
+      createClient
+    } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+
+
+    const SUPABASE_URL =
+      "https://vxjimkwgdtfpcsafpots.supabase.co";
+
+
+    const SUPABASE_PUBLISHABLE_KEY =
+      "sb_publishable_DsW-3X-U5Od2r8EkfXaLLg_MHE02KVd";
+
+
+    const supabase =
+      createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+      );
+
+
+    const form =
+      document.getElementById("sayHiForm");
+
+    const nicknameInput =
+      document.getElementById("nickname");
+
+    const messageInput =
+      document.getElementById("message");
+
+    const websiteInput =
+      document.getElementById("website");
+
+    const submitButton =
+      document.getElementById("submitButton");
+
+    const status =
+      document.getElementById("sayHiStatus");
+
+    const list =
+      document.getElementById("guestbookList");
+
+    const count =
+      document.getElementById("guestbookCount");
+
+    const messageCount =
+      document.getElementById("messageCount");
+
+
+    /* 글자수 */
+
+    messageInput.addEventListener(
+      "input",
+      function () {
+
+        messageCount.textContent =
+          messageInput.value.length +
+          " / 300";
+
+      }
+    );
+
+
+    /* 날짜 */
+
+    function formatDate(dateString) {
+
+      const date =
+        new Date(dateString);
+
+      return new Intl.DateTimeFormat(
+        "ko-KR",
+        {
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+          timeZone: "Asia/Seoul"
+        }
+      ).format(date);
+
+    }
+
+
+    /* 방명록 한 개 만들기 */
+
+    function createGuestNote(item) {
+
+      const article =
+        document.createElement("article");
+
+      article.className =
+        "guest-note";
+
+
+      const top =
+        document.createElement("div");
+
+      top.className =
+        "guest-note-top";
+
+
+      const name =
+        document.createElement("span");
+
+      name.className =
+        "guest-note-name";
+
+      name.textContent =
+        item.nickname;
+
+
+      const date =
+        document.createElement("span");
+
+      date.className =
+        "guest-note-date";
+
+      date.textContent =
+        formatDate(item.created_at);
+
+
+      const message =
+        document.createElement("p");
+
+      message.className =
+        "guest-note-message";
+
+      /*
+        innerHTML을 쓰지 않고
+        textContent로 넣어서
+        방문자가 HTML / script를 넣어도
+        실행되지 않도록 합니다.
+      */
+
+      message.textContent =
+        item.message;
+
+
+      top.appendChild(name);
+
+      top.appendChild(date);
+
+      article.appendChild(top);
+
+      article.appendChild(message);
+
+
+      return article;
+    }
+
+
+    /* 방명록 불러오기 */
+
+    async function loadMessages() {
+
+      const {
+        data,
+        error
+      } =
+        await supabase
+
+          .from("say_hi_messages")
+
+          .select(
+            "id, nickname, message, created_at"
+          )
+
+          .order(
+            "created_at",
+            {
+              ascending: false
+            }
+          )
+
+          .limit(50);
+
+
+      if (error) {
+
+        console.error(error);
+
+        list.innerHTML =
+          '<div class="say-hi-empty">notes could not be loaded.</div>';
+
+        return;
+
+      }
+
+
+      list.innerHTML = "";
+
+
+      if (!data.length) {
+
+        list.innerHTML =
+          '<div class="say-hi-empty">be the first to say hi ♡</div>';
+
+        count.textContent =
+          "0 notes";
+
+        return;
+
+      }
+
+
+      data.forEach(
+        function (item) {
+
+          list.appendChild(
+            createGuestNote(item)
+          );
+
+        }
+      );
+
+
+      count.textContent =
+        data.length +
+        (
+          data.length === 1
+            ? " note"
+            : " notes"
+        );
+
+    }
+
+
+    /* 글 남기기 */
+
+    form.addEventListener(
+      "submit",
+      async function (event) {
+
+        event.preventDefault();
+
+
+        const nickname =
+          nicknameInput.value.trim();
+
+        const message =
+          messageInput.value.trim();
+
+
+        /* honeypot */
+        if (
+          websiteInput.value.trim() !== ""
+        ) {
+          return;
+        }
+
+
+        if (
+          !nickname ||
+          !message
+        ) {
+
+          status.textContent =
+            "please fill in both fields ♡";
+
+          return;
+
+        }
+
+
+        submitButton.disabled =
+          true;
+
+        status.textContent =
+          "leaving your note...";
+
+
+        const {
+          error
+        } =
+          await supabase
+
+            .from("say_hi_messages")
+
+            .insert({
+              nickname: nickname,
+              message: message
+            });
+
+
+        if (error) {
+
+          console.error(error);
+
+          status.textContent =
+            "something went wrong. please try again.";
+
+          submitButton.disabled =
+            false;
+
+          return;
+
+        }
+
+
+        form.reset();
+
+        messageCount.textContent =
+          "0 / 300";
+
+
+        status.textContent =
+          "your note is here ♡";
+
+
+        await loadMessages();
+
+
+        submitButton.disabled =
+          false;
+
+
+        setTimeout(
+          function () {
+
+            status.textContent = "";
+
+          },
+          3000
+        );
+
+      }
+    );
+
+
+    loadMessages();
+
+  </script>
+
+
+  <script
+    src="script.js?v=20260916-say-hi"
+  ></script>
+
+</body>
+</html>
