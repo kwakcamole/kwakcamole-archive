@@ -14,19 +14,17 @@
   <!-- 기존 사이트 공통 스타일 -->
   <link
     rel="stylesheet"
-    href="/style.css?v=20260916-soft-notes-say-hi"
+    href="/style.css?v=20260916-soft-notes"
   >
 
   <style>
     /* =========================================
        SOFT NOTES — LIST PAGE
-       notes.html 전용
     ========================================= */
 
     body.page-notes {
       margin: 0;
       padding: 0;
-
       background: #ffffff;
       color: #111111;
     }
@@ -46,14 +44,10 @@
       max-width: 980px;
 
       margin: 0 auto;
+
       padding: 145px 0 130px;
     }
 
-
-    /*
-      상단 로고는 기존 MiniPizza 유지
-      Notes 안쪽 글자는 모두 Contact와 같은 Paperlogy
-    */
 
     body.page-notes .notes-wrap,
     body.page-notes .notes-wrap * {
@@ -73,9 +67,11 @@
         minmax(280px, 380px);
 
       align-items: end;
+
       column-gap: 50px;
 
       margin-bottom: 42px;
+
       padding-bottom: 28px;
 
       border-bottom: 1px solid #eeeeee;
@@ -90,6 +86,7 @@
       font-size: 11px;
       font-weight: 600;
       line-height: 1.4;
+
       letter-spacing: 0.08em;
 
       text-transform: lowercase;
@@ -101,19 +98,12 @@
 
       font-size: 44px;
       font-weight: 800;
+
       line-height: 1;
+
       letter-spacing: -0.045em;
 
       word-break: keep-all;
-    }
-
-
-    /* 오른쪽 소개 + Say Hi */
-
-    body.page-notes .notes-side {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
     }
 
 
@@ -121,52 +111,19 @@
       max-width: 380px;
 
       margin: 0;
+
       padding-bottom: 2px;
 
       color: #555555;
 
       font-size: 14px;
       font-weight: 400;
+
       line-height: 1.8;
+
       letter-spacing: -0.025em;
 
       word-break: keep-all;
-    }
-
-
-    /* =========================================
-       SAY HI LINK
-    ========================================= */
-
-    body.page-notes .say-hi-link {
-      display: inline-block;
-
-      margin-top: 16px;
-
-      color: #d97eaa;
-
-      font-size: 11px;
-      font-weight: 600;
-      line-height: 1.4;
-      letter-spacing: 0.02em;
-
-      text-decoration: none;
-
-      transition:
-        color 0.2s ease,
-        transform 0.2s ease;
-    }
-
-
-    body.page-notes .say-hi-link:hover {
-      color: #ef94bd;
-      transform: translateX(3px);
-    }
-
-
-    body.page-notes .say-hi-link:focus-visible {
-      outline: 1px dashed #ef94bd;
-      outline-offset: 5px;
     }
 
 
@@ -192,11 +149,6 @@
     }
 
 
-    /*
-      이미지, 제목, Read note를 포함한
-      카드 전체가 클릭되는 구조
-    */
-
     body.page-notes .note-link {
       display: grid;
 
@@ -205,6 +157,7 @@
         minmax(0, 1fr);
 
       align-items: center;
+
       column-gap: 36px;
 
       width: 100%;
@@ -212,6 +165,7 @@
       padding: 30px 0;
 
       color: inherit;
+
       text-decoration: none;
     }
 
@@ -222,6 +176,7 @@
 
     body.page-notes .note-thumbnail {
       width: 280px;
+
       overflow: hidden;
 
       border-radius: 12px;
@@ -235,6 +190,7 @@
       height: auto;
 
       aspect-ratio: 4 / 3;
+
       object-fit: cover;
 
       transition:
@@ -254,7 +210,9 @@
 
     body.page-notes .note-meta {
       display: flex;
+
       align-items: center;
+
       gap: 12px;
 
       margin-bottom: 13px;
@@ -263,13 +221,16 @@
 
       font-size: 11px;
       font-weight: 400;
+
       line-height: 1.4;
+
       letter-spacing: 0.02em;
     }
 
 
     body.page-notes .note-number {
       color: #ef94bd;
+
       font-weight: 700;
     }
 
@@ -279,7 +240,9 @@
 
       font-size: 22px;
       font-weight: 700;
+
       line-height: 1.35;
+
       letter-spacing: -0.035em;
 
       word-break: keep-all;
@@ -297,7 +260,9 @@
 
       font-size: 14px;
       font-weight: 400;
+
       line-height: 1.85;
+
       letter-spacing: -0.025em;
 
       word-break: keep-all;
@@ -311,26 +276,26 @@
 
       font-size: 11px;
       font-weight: 600;
+
       line-height: 1.4;
+
       letter-spacing: 0.02em;
     }
 
 
     /* =========================================
-       마우스 효과
+       HOVER
     ========================================= */
 
     @media (hover: hover) {
 
-      body.page-notes .note-link:hover
-      .note-image {
+      body.page-notes .note-link:hover .note-image {
         transform: scale(1.025);
         opacity: 0.94;
       }
 
 
-      body.page-notes .note-link:hover
-      .note-title {
+      body.page-notes .note-link:hover .note-title {
         color: #d97eaa;
       }
 
@@ -344,7 +309,7 @@
 
 
     /* =========================================
-       데이터가 없거나 오류가 있을 때
+       메시지
     ========================================= */
 
     body.page-notes .notes-message {
@@ -354,15 +319,17 @@
 
       font-size: 14px;
       font-weight: 400;
+
       line-height: 1.8;
 
       text-align: center;
+
       word-break: keep-all;
     }
 
 
     /* =========================================
-       모바일
+       MOBILE
     ========================================= */
 
     @media screen and (max-width: 760px) {
@@ -380,6 +347,7 @@
         row-gap: 22px;
 
         margin-bottom: 25px;
+
         padding-bottom: 24px;
       }
 
@@ -393,11 +361,6 @@
         max-width: 100%;
 
         font-size: 13px;
-      }
-
-
-      body.page-notes .say-hi-link {
-        margin-top: 13px;
       }
 
 
@@ -440,14 +403,16 @@
       }
 
     }
+
   </style>
+
 </head>
 
 
 <body class="page-notes">
 
   <!-- =========================================
-       기존 사이트 헤더
+       HEADER
   ========================================== -->
 
   <header class="top">
@@ -483,10 +448,11 @@
 
 
   <!-- =========================================
-       NOTES LIST PAGE
+       SOFT NOTES
   ========================================== -->
 
   <main class="notes-wrap">
+
 
     <!-- 페이지 소개 -->
 
@@ -505,46 +471,37 @@
       </div>
 
 
-      <div class="notes-side">
-
-        <p class="notes-description">
-          작업이 완성되기 전의 생각과 이미지,
-          소재 실험과 실패의 흔적을 천천히 기록합니다.
-          완성된 결과보다 그 사이에서 발견한 감각을 모으는 공간입니다.
-        </p>
-
-
-        <a
-          class="say-hi-link"
-          href="/say-hi.html"
-        >
-          Say Hi! ♡ →
-        </a>
-
-      </div>
+      <p class="notes-description">
+        작업이 완성되기 전의 생각과 이미지,
+        소재 실험과 실패의 흔적을 천천히 기록합니다.
+        완성된 결과보다 그 사이에서 발견한 감각을 모으는 공간입니다.
+      </p>
 
     </section>
 
 
-    <!-- 데이터로 자동 생성되는 목록 -->
+    <!-- 연구일지 목록 -->
 
     <section
       class="note-list"
       id="noteList"
     >
+
       <p class="notes-message">
         연구일지를 불러오는 중입니다.
       </p>
+
     </section>
 
   </main>
 
 
   <!-- =========================================
-       목록 자동 생성
+       NOTES DATA
   ========================================== -->
 
   <script>
+
     document.addEventListener(
       "DOMContentLoaded",
       function () {
@@ -553,10 +510,9 @@
           document.getElementById("noteList");
 
 
-        /*
-          이미지 주소가 images/example.png처럼
-          작성되어 있어도 항상 정상 작동하도록 정리
-        */
+        /* =========================================
+           이미지 경로 정리
+        ========================================== */
 
         function getAssetPath(path) {
 
@@ -575,8 +531,13 @@
 
 
           return "/" + path;
+
         }
 
+
+        /* =========================================
+           날짜 표시
+        ========================================== */
 
         function formatNoteDate(note) {
 
@@ -596,7 +557,9 @@
 
 
           const match =
-            value.match(/^(\d{4})-(\d{2})-(\d{2})/);
+            value.match(
+              /^(\d{4})-(\d{2})-(\d{2})/
+            );
 
 
           if (!match) {
@@ -641,6 +604,10 @@
         }
 
 
+        /* =========================================
+           연구일지 렌더링
+        ========================================== */
+
         function renderNotes(notes) {
 
           if (notes.length === 0) {
@@ -652,131 +619,162 @@
             `;
 
             return;
+
           }
 
 
-          /*
-            최신 날짜의 글이 위로 오도록 정렬
-          */
+          /* 최신 날짜가 위로 */
 
-          notes.sort(function (a, b) {
+          notes.sort(
+            function (a, b) {
 
-            return (
-              new Date(b.datetime) -
-              new Date(a.datetime)
-            );
+              return (
+                new Date(b.datetime) -
+                new Date(a.datetime)
+              );
 
-          });
+            }
+          );
 
 
           noteList.innerHTML =
             notes
-              .map(function (note) {
 
-                const noteId =
-                  encodeURIComponent(
-                    String(note.id)
-                  );
+              .map(
+                function (note) {
 
-
-                const imagePath =
-                  getAssetPath(note.image);
+                  const noteId =
+                    encodeURIComponent(
+                      String(note.id)
+                    );
 
 
-                return `
-                  <article class="note-card">
-
-                    <a
-                      class="note-link"
-                      href="/note?id=${noteId}"
-                      aria-label="${note.title} 읽기"
-                    >
-
-                      <div class="note-thumbnail">
-
-                        <img
-                          class="note-image"
-                          src="${imagePath}"
-                          alt="${note.imageAlt || note.title}"
-                        >
-
-                      </div>
+                  const imagePath =
+                    getAssetPath(
+                      note.image
+                    );
 
 
-                      <div class="note-content">
+                  return `
 
-                        <div class="note-meta">
+                    <article class="note-card">
 
-                          <span class="note-number">
-                            No. ${note.id}
-                          </span>
+                      <a
+                        class="note-link"
+                        href="/note?id=${noteId}"
+                        aria-label="${note.title} 읽기"
+                      >
 
-                          <time datetime="${note.datetime}">
-                            ${formatNoteDate(note)}
-                          </time>
+                        <div class="note-thumbnail">
+
+                          <img
+                            class="note-image"
+                            src="${imagePath}"
+                            alt="${note.imageAlt || note.title}"
+                          >
 
                         </div>
 
 
-                        <h2 class="note-title">
-                          ${note.title}
-                        </h2>
+                        <div class="note-content">
+
+                          <div class="note-meta">
+
+                            <span class="note-number">
+                              No. ${note.id}
+                            </span>
 
 
-                        <p class="note-excerpt">
-                          ${note.excerpt}
-                        </p>
+                            <time datetime="${note.datetime}">
+                              ${formatNoteDate(note)}
+                            </time>
+
+                          </div>
 
 
-                        <span class="note-read">
-                          Read note →
-                        </span>
+                          <h2 class="note-title">
+                            ${note.title}
+                          </h2>
 
-                      </div>
 
-                    </a>
+                          <p class="note-excerpt">
+                            ${note.excerpt}
+                          </p>
 
-                  </article>
-                `;
 
-              })
+                          <span class="note-read">
+                            Read note →
+                          </span>
+
+                        </div>
+
+                      </a>
+
+                    </article>
+
+                  `;
+
+                }
+              )
+
               .join("");
 
         }
 
 
-        fetch("/notes-data.json")
-          .then(function (response) {
+        /* =========================================
+           JSON 불러오기
+        ========================================== */
 
-            if (!response.ok) {
-              throw new Error("Failed to load notes");
+        fetch(
+          "/notes-data.json?v=" +
+          Date.now()
+        )
+
+          .then(
+            function (response) {
+
+              if (!response.ok) {
+                throw new Error(
+                  "Failed to load notes"
+                );
+              }
+
+
+              return response.json();
+
             }
+          )
 
-            return response.json();
+          .then(
+            function (data) {
 
-          })
-          .then(function (data) {
+              const notes =
+                Array.isArray(data)
+                  ? [...data]
+                  : [];
 
-            const notes =
-              Array.isArray(data)
-                ? [...data]
-                : [];
 
-            renderNotes(notes);
+              renderNotes(notes);
 
-          })
-          .catch(function () {
+            }
+          )
 
-            noteList.innerHTML = `
-              <p class="notes-message">
-                연구일지를 불러오지 못했습니다.
-              </p>
-            `;
+          .catch(
+            function () {
 
-          });
+              noteList.innerHTML = `
+                <p class="notes-message">
+                  연구일지를 불러오지 못했습니다.
+                </p>
+              `;
+
+            }
+          );
 
       }
     );
+
   </script>
 
 </body>
