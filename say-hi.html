@@ -13,7 +13,7 @@
 
   <link
     rel="stylesheet"
-    href="style.css?v=say-hi-1"
+    href="style.css?v=say-hi-delete-1"
   >
 
   <style>
@@ -26,12 +26,16 @@
       padding: 0;
     }
 
+
     .say-hi-wrap {
       width: min(760px, calc(100% - 40px));
+
       margin: 0 auto;
       padding: 145px 0 120px;
+
       box-sizing: border-box;
     }
+
 
     .say-hi-heading {
       margin: 0 0 8px;
@@ -43,6 +47,7 @@
 
       text-align: center;
     }
+
 
     .say-hi-intro {
       margin: 0 auto 42px;
@@ -68,14 +73,17 @@
       border: 1px solid #eeeeee;
       border-radius: 18px;
 
-      background: rgba(255, 255, 255, 0.72);
+      background:
+        rgba(255, 255, 255, 0.72);
 
       box-sizing: border-box;
     }
 
+
     .say-hi-field {
       margin-bottom: 18px;
     }
+
 
     .say-hi-label {
       display: block;
@@ -88,6 +96,7 @@
 
       color: #555555;
     }
+
 
     .say-hi-input,
     .say-hi-textarea {
@@ -109,6 +118,7 @@
       line-height: 1.5;
 
       outline: none;
+
       box-sizing: border-box;
 
       transition:
@@ -116,30 +126,41 @@
         box-shadow 0.2s ease;
     }
 
+
     .say-hi-textarea {
       min-height: 110px;
+
       resize: vertical;
     }
+
 
     .say-hi-input:focus,
     .say-hi-textarea:focus {
       border-color: #f3b3ce;
-      box-shadow: 0 0 0 3px rgba(246, 161, 198, 0.1);
+
+      box-shadow:
+        0 0 0 3px
+        rgba(246, 161, 198, 0.1);
     }
+
 
     .say-hi-bottom {
       display: flex;
+
       align-items: center;
       justify-content: space-between;
 
       gap: 12px;
     }
 
+
     .say-hi-count {
       font-family: "Paperlogy", sans-serif;
       font-size: 10px;
+
       color: #aaaaaa;
     }
+
 
     .say-hi-submit {
       padding: 9px 16px;
@@ -162,15 +183,19 @@
         opacity 0.2s ease;
     }
 
+
     .say-hi-submit:hover {
       background: #111111;
       color: #ffffff;
     }
 
+
     .say-hi-submit:disabled {
       opacity: 0.45;
+
       cursor: default;
     }
+
 
     .say-hi-status {
       min-height: 20px;
@@ -179,6 +204,7 @@
 
       font-family: "Paperlogy", sans-serif;
       font-size: 11px;
+
       text-align: right;
 
       color: #999999;
@@ -186,20 +212,23 @@
 
 
     /* =========================================
-       NOTES
+       GUEST NOTES
     ========================================= */
 
     .guestbook {
       margin-top: 48px;
     }
 
+
     .guestbook-top {
       display: flex;
+
       align-items: center;
       justify-content: space-between;
 
       margin-bottom: 12px;
     }
+
 
     .guestbook-title {
       margin: 0;
@@ -211,11 +240,14 @@
       color: #555555;
     }
 
+
     .guestbook-count {
       font-family: "Paperlogy", sans-serif;
       font-size: 10px;
+
       color: #aaaaaa;
     }
+
 
     .guest-note {
       padding: 20px 4px;
@@ -223,12 +255,16 @@
       border-top: 1px solid #eeeeee;
     }
 
+
     .guest-note:last-child {
-      border-bottom: 1px solid #eeeeee;
+      border-bottom:
+        1px solid #eeeeee;
     }
+
 
     .guest-note-top {
       display: flex;
+
       align-items: baseline;
       justify-content: space-between;
 
@@ -236,6 +272,7 @@
 
       margin-bottom: 8px;
     }
+
 
     .guest-note-name {
       font-family: "Paperlogy", sans-serif;
@@ -245,20 +282,72 @@
       color: #222222;
     }
 
+
     .guest-note-name::after {
       content: " ♡";
+
       color: #f3a7c5;
+
       font-weight: 400;
     }
 
-    .guest-note-date {
-      flex-shrink: 0;
 
+    .guest-note-right {
+      display: flex;
+
+      align-items: center;
+
+      gap: 11px;
+
+      flex-shrink: 0;
+    }
+
+
+    .guest-note-date {
       font-family: "Paperlogy", sans-serif;
       font-size: 9px;
 
       color: #b1b1b1;
     }
+
+
+    /* =========================================
+       DELETE
+    ========================================= */
+
+    .guest-note-delete {
+      margin: 0;
+      padding: 0;
+
+      border: 0;
+
+      background: transparent;
+
+      color: #c7c7c7;
+
+      font-family: "Paperlogy", sans-serif;
+      font-size: 9px;
+      font-weight: 400;
+
+      cursor: pointer;
+
+      transition:
+        color 0.2s ease,
+        opacity 0.2s ease;
+    }
+
+
+    .guest-note-delete:hover {
+      color: #e38cb4;
+    }
+
+
+    .guest-note-delete:disabled {
+      opacity: 0.45;
+
+      cursor: default;
+    }
+
 
     .guest-note-message {
       margin: 0;
@@ -271,8 +360,10 @@
       color: #555555;
 
       white-space: pre-wrap;
+
       word-break: break-word;
     }
+
 
     .say-hi-empty,
     .say-hi-loading {
@@ -280,6 +371,7 @@
 
       font-family: "Paperlogy", sans-serif;
       font-size: 11px;
+
       text-align: center;
 
       color: #aaaaaa;
@@ -287,40 +379,62 @@
 
 
     /* 스팸봇용 숨김 필드 */
+
     .say-hi-honeypot {
       position: absolute;
+
       left: -9999px;
+
       opacity: 0;
+
       pointer-events: none;
     }
 
 
+    /* =========================================
+       MOBILE
+    ========================================= */
+
     @media screen and (max-width: 700px) {
 
       .say-hi-wrap {
-        width: calc(100% - 32px);
-        padding: 105px 0 80px;
+        width:
+          calc(100% - 32px);
+
+        padding:
+          105px 0 80px;
       }
+
 
       .say-hi-heading {
         font-size: 22px;
       }
 
+
       .say-hi-intro {
         margin-bottom: 30px;
       }
 
+
       .say-hi-form {
         padding: 18px;
+
         border-radius: 15px;
       }
+
 
       .guestbook {
         margin-top: 38px;
       }
 
+
+      .guest-note-top {
+        gap: 10px;
+      }
+
     }
   </style>
+
 </head>
 
 
@@ -339,12 +453,14 @@
       fav ♥
     </div>
 
+
     <a
       class="top-title"
       href="index.html"
     >
       Kwakcamole.archive
     </a>
+
 
     <a
       class="top-right"
@@ -372,6 +488,7 @@
       Say Hi! ♡
     </h1>
 
+
     <p class="say-hi-intro">
       leave a tiny note before you go.<br>
       i'd love to know you were here.
@@ -391,6 +508,7 @@
         >
           nickname
         </label>
+
 
         <input
           class="say-hi-input"
@@ -415,6 +533,7 @@
           message
         </label>
 
+
         <textarea
           class="say-hi-textarea"
           id="message"
@@ -427,14 +546,17 @@
       </div>
 
 
-      <!-- 봇이 주로 채우는 숨김 필드 -->
+      <!-- 봇이 채우는 숨김 필드 -->
+
       <div
         class="say-hi-honeypot"
         aria-hidden="true"
       >
+
         <label for="website">
           website
         </label>
+
 
         <input
           id="website"
@@ -443,6 +565,7 @@
           tabindex="-1"
           autocomplete="off"
         >
+
       </div>
 
 
@@ -455,6 +578,7 @@
           0 / 300
         </div>
 
+
         <button
           class="say-hi-submit"
           id="submitButton"
@@ -464,6 +588,7 @@
         </button>
 
       </div>
+
 
       <p
         class="say-hi-status"
@@ -485,6 +610,7 @@
         <h2 class="guestbook-title">
           little notes
         </h2>
+
 
         <span
           class="guestbook-count"
@@ -515,7 +641,8 @@
 
     import {
       createClient
-    } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+    } from
+      "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 
 
     const SUPABASE_URL =
@@ -534,34 +661,167 @@
 
 
     const form =
-      document.getElementById("sayHiForm");
+      document.getElementById(
+        "sayHiForm"
+      );
+
 
     const nicknameInput =
-      document.getElementById("nickname");
+      document.getElementById(
+        "nickname"
+      );
+
 
     const messageInput =
-      document.getElementById("message");
+      document.getElementById(
+        "message"
+      );
+
 
     const websiteInput =
-      document.getElementById("website");
+      document.getElementById(
+        "website"
+      );
+
 
     const submitButton =
-      document.getElementById("submitButton");
+      document.getElementById(
+        "submitButton"
+      );
+
 
     const status =
-      document.getElementById("sayHiStatus");
+      document.getElementById(
+        "sayHiStatus"
+      );
+
 
     const list =
-      document.getElementById("guestbookList");
+      document.getElementById(
+        "guestbookList"
+      );
+
 
     const count =
-      document.getElementById("guestbookCount");
+      document.getElementById(
+        "guestbookCount"
+      );
+
 
     const messageCount =
-      document.getElementById("messageCount");
+      document.getElementById(
+        "messageCount"
+      );
 
 
-    /* 글자수 */
+    /* =========================================
+       TOKEN STORAGE
+    ========================================= */
+
+    function tokenStorageKey(id) {
+
+      return (
+        "kwakcamole-say-hi-delete:" +
+        id
+      );
+
+    }
+
+
+    function saveDeleteToken(
+      id,
+      token
+    ) {
+
+      try {
+
+        localStorage.setItem(
+          tokenStorageKey(id),
+          token
+        );
+
+      } catch (error) {
+
+        console.warn(
+          "Could not store delete token."
+        );
+
+      }
+
+    }
+
+
+    function getDeleteToken(id) {
+
+      try {
+
+        return localStorage.getItem(
+          tokenStorageKey(id)
+        );
+
+      } catch (error) {
+
+        return null;
+
+      }
+
+    }
+
+
+    function removeDeleteToken(id) {
+
+      try {
+
+        localStorage.removeItem(
+          tokenStorageKey(id)
+        );
+
+      } catch (error) {
+
+        console.warn(
+          "Could not remove delete token."
+        );
+
+      }
+
+    }
+
+
+    /* =========================================
+       CREATE SECURE RANDOM TOKEN
+    ========================================= */
+
+    function createDeleteToken() {
+
+      const bytes =
+        new Uint8Array(32);
+
+
+      crypto.getRandomValues(
+        bytes
+      );
+
+
+      return Array.from(bytes)
+
+        .map(
+          function (byte) {
+
+            return byte
+              .toString(16)
+              .padStart(2, "0");
+
+          }
+        )
+
+        .join("");
+
+    }
+
+
+    /* =========================================
+       CHARACTER COUNT
+    ========================================= */
 
     messageInput.addEventListener(
       "input",
@@ -575,12 +835,17 @@
     );
 
 
-    /* 날짜 */
+    /* =========================================
+       DATE
+    ========================================= */
 
-    function formatDate(dateString) {
+    function formatDate(
+      dateString
+    ) {
 
       const date =
         new Date(dateString);
+
 
       return new Intl.DateTimeFormat(
         "ko-KR",
@@ -595,75 +860,276 @@
     }
 
 
-    /* 방명록 한 개 만들기 */
+    /* =========================================
+       DELETE OWN MESSAGE
+    ========================================= */
 
-    function createGuestNote(item) {
+    async function deleteOwnMessage(
+      item,
+      button
+    ) {
+
+      const token =
+        getDeleteToken(
+          item.id
+        );
+
+
+      if (!token) {
+        return;
+      }
+
+
+      const confirmed =
+        window.confirm(
+          "delete this note?"
+        );
+
+
+      if (!confirmed) {
+        return;
+      }
+
+
+      button.disabled =
+        true;
+
+
+      button.textContent =
+        "deleting...";
+
+
+      const {
+        data,
+        error
+      } =
+        await supabase.rpc(
+          "delete_own_say_hi_message",
+          {
+            p_id:
+              item.id,
+
+            p_token:
+              token
+          }
+        );
+
+
+      if (
+        error ||
+        data !== true
+      ) {
+
+        console.error(
+          error
+        );
+
+
+        button.disabled =
+          false;
+
+
+        button.textContent =
+          "delete";
+
+
+        window.alert(
+          "couldn't delete this note."
+        );
+
+
+        return;
+
+      }
+
+
+      removeDeleteToken(
+        item.id
+      );
+
+
+      await loadMessages();
+
+    }
+
+
+    /* =========================================
+       CREATE NOTE ELEMENT
+    ========================================= */
+
+    function createGuestNote(
+      item
+    ) {
 
       const article =
-        document.createElement("article");
+        document.createElement(
+          "article"
+        );
+
 
       article.className =
         "guest-note";
 
 
       const top =
-        document.createElement("div");
+        document.createElement(
+          "div"
+        );
+
 
       top.className =
         "guest-note-top";
 
 
       const name =
-        document.createElement("span");
+        document.createElement(
+          "span"
+        );
+
 
       name.className =
         "guest-note-name";
+
 
       name.textContent =
         item.nickname;
 
 
+      const right =
+        document.createElement(
+          "div"
+        );
+
+
+      right.className =
+        "guest-note-right";
+
+
       const date =
-        document.createElement("span");
+        document.createElement(
+          "span"
+        );
+
 
       date.className =
         "guest-note-date";
 
+
       date.textContent =
-        formatDate(item.created_at);
+        formatDate(
+          item.created_at
+        );
+
+
+      right.appendChild(
+        date
+      );
+
+
+      /*
+        이 브라우저에서 작성한 글이면
+        delete 버튼 표시
+      */
+
+      const token =
+        getDeleteToken(
+          item.id
+        );
+
+
+      if (token) {
+
+        const deleteButton =
+          document.createElement(
+            "button"
+          );
+
+
+        deleteButton.className =
+          "guest-note-delete";
+
+
+        deleteButton.type =
+          "button";
+
+
+        deleteButton.textContent =
+          "delete";
+
+
+        deleteButton.setAttribute(
+          "aria-label",
+          "delete this note"
+        );
+
+
+        deleteButton.addEventListener(
+          "click",
+          function () {
+
+            deleteOwnMessage(
+              item,
+              deleteButton
+            );
+
+          }
+        );
+
+
+        right.appendChild(
+          deleteButton
+        );
+
+      }
 
 
       const message =
-        document.createElement("p");
+        document.createElement(
+          "p"
+        );
+
 
       message.className =
         "guest-note-message";
 
+
       /*
-        innerHTML을 쓰지 않고
-        textContent로 넣어서
-        방문자가 HTML / script를 넣어도
-        실행되지 않도록 합니다.
+        방문자가 넣은 HTML이
+        실행되지 않도록 textContent 사용
       */
 
       message.textContent =
         item.message;
 
 
-      top.appendChild(name);
+      top.appendChild(
+        name
+      );
 
-      top.appendChild(date);
 
-      article.appendChild(top);
+      top.appendChild(
+        right
+      );
 
-      article.appendChild(message);
+
+      article.appendChild(
+        top
+      );
+
+
+      article.appendChild(
+        message
+      );
 
 
       return article;
+
     }
 
 
-    /* 방명록 불러오기 */
+    /* =========================================
+       LOAD MESSAGES
+    ========================================= */
 
     async function loadMessages() {
 
@@ -673,7 +1139,9 @@
       } =
         await supabase
 
-          .from("say_hi_messages")
+          .from(
+            "say_hi_messages"
+          )
 
           .select(
             "id, nickname, message, created_at"
@@ -691,17 +1159,22 @@
 
       if (error) {
 
-        console.error(error);
+        console.error(
+          error
+        );
+
 
         list.innerHTML =
           '<div class="say-hi-empty">notes could not be loaded.</div>';
+
 
         return;
 
       }
 
 
-      list.innerHTML = "";
+      list.innerHTML =
+        "";
 
 
       if (!data.length) {
@@ -709,8 +1182,10 @@
         list.innerHTML =
           '<div class="say-hi-empty">be the first to say hi ♡</div>';
 
+
         count.textContent =
           "0 notes";
+
 
         return;
 
@@ -721,7 +1196,9 @@
         function (item) {
 
           list.appendChild(
-            createGuestNote(item)
+            createGuestNote(
+              item
+            )
           );
 
         }
@@ -739,7 +1216,9 @@
     }
 
 
-    /* 글 남기기 */
+    /* =========================================
+       SUBMIT MESSAGE
+    ========================================= */
 
     form.addEventListener(
       "submit",
@@ -749,15 +1228,23 @@
 
 
         const nickname =
-          nicknameInput.value.trim();
+          nicknameInput
+            .value
+            .trim();
+
 
         const message =
-          messageInput.value.trim();
+          messageInput
+            .value
+            .trim();
 
 
         /* honeypot */
+
         if (
-          websiteInput.value.trim() !== ""
+          websiteInput
+            .value
+            .trim() !== ""
         ) {
           return;
         }
@@ -771,6 +1258,7 @@
           status.textContent =
             "please fill in both fields ♡";
 
+
           return;
 
         }
@@ -779,39 +1267,79 @@
         submitButton.disabled =
           true;
 
+
         status.textContent =
           "leaving your note...";
 
 
+        const deleteToken =
+          createDeleteToken();
+
+
         const {
+          data,
           error
         } =
           await supabase
 
-            .from("say_hi_messages")
+            .from(
+              "say_hi_messages"
+            )
 
             .insert({
-              nickname: nickname,
-              message: message
-            });
+              nickname:
+                nickname,
+
+              message:
+                message,
+
+              delete_token:
+                deleteToken
+            })
+
+            .select(
+              "id"
+            )
+
+            .single();
 
 
-        if (error) {
+        if (
+          error ||
+          !data
+        ) {
 
-          console.error(error);
+          console.error(
+            error
+          );
+
 
           status.textContent =
             "something went wrong. please try again.";
 
+
           submitButton.disabled =
             false;
+
 
           return;
 
         }
 
 
+        /*
+          글 ID와 삭제 토큰을
+          이 브라우저에 저장
+        */
+
+        saveDeleteToken(
+          data.id,
+          deleteToken
+        );
+
+
         form.reset();
+
 
         messageCount.textContent =
           "0 / 300";
@@ -831,7 +1359,8 @@
         setTimeout(
           function () {
 
-            status.textContent = "";
+            status.textContent =
+              "";
 
           },
           3000
@@ -847,8 +1376,9 @@
 
 
   <script
-    src="script.js?v=20260916-say-hi"
+    src="script.js?v=20260916-say-hi-delete"
   ></script>
 
 </body>
+
 </html>
