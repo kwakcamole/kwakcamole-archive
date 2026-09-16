@@ -13,7 +13,7 @@
 
   <link
     rel="stylesheet"
-    href="style.css?v=works-data-1"
+    href="style.css?v=works-json-1"
   />
 
   <style>
@@ -108,7 +108,7 @@
 
 
     /* =========================================
-       4 COLUMN WORK GRID
+       WORK GRID
     ========================================= */
 
     body.page-works #worksGrid {
@@ -146,13 +146,6 @@
       text-align: center !important;
 
       box-sizing: border-box !important;
-
-      opacity: 1;
-      transform: translateY(0);
-
-      transition:
-        opacity 0.22s ease,
-        transform 0.22s ease;
     }
 
 
@@ -224,6 +217,20 @@
     }
 
 
+    .works-error {
+      grid-column: 1 / -1;
+
+      padding: 80px 20px;
+
+      font-family: "Paperlogy", sans-serif;
+      font-size: 14px;
+
+      text-align: center;
+
+      color: #999999;
+    }
+
+
     /* =========================================
        TABLET / MOBILE
     ========================================= */
@@ -274,7 +281,6 @@
     }
 
 
-    /* 아주 작은 휴대폰 */
     @media screen and (max-width: 420px) {
 
       body.page-works #worksGrid {
@@ -299,7 +305,10 @@
 
 <body class="page-works">
 
-  <!-- TOP FIXED HEADER -->
+
+  <!-- =========================================
+       TOP FIXED HEADER
+  ========================================== -->
 
   <header class="top">
 
@@ -335,12 +344,16 @@
   </header>
 
 
-  <!-- WORKS PAGE -->
+
+  <!-- =========================================
+       WORKS PAGE
+  ========================================== -->
 
   <main
     class="works-wrap"
     id="worksPageWrap"
   >
+
 
     <!-- CATEGORY FILTER -->
 
@@ -391,7 +404,11 @@
     </nav>
 
 
-    <!-- 작품 카드는 works-data.js가 자동 생성 -->
+
+    <!--
+      작품은 works-data.json에서
+      자동으로 생성됩니다.
+    -->
 
     <section
       class="works-grid"
@@ -401,7 +418,10 @@
   </main>
 
 
-  <!-- IMAGE MODAL -->
+
+  <!-- =========================================
+       IMAGE MODAL
+  ========================================== -->
 
   <div
     class="modal"
@@ -466,11 +486,502 @@
   </div>
 
 
-  <!-- 작품 데이터 -->
-  <script src="works-data.js?v=works-data-1"></script>
 
-  <!-- 기존 사이트 JavaScript -->
-  <script src="script.js?v=20260722-filter-final-1"></script>
+  <!-- =========================================
+       WORKS JSON
+  ========================================== -->
+
+  <script>
+
+    const DEFAULT_DESCRIPTION =
+      "AI-generated digital image, 2026";
+
+
+    let allWorks = [];
+
+    let visibleWorks = [];
+
+    let currentModalIndex = 0;
+
+
+
+    /* =========================================
+       작품 카드 생성
+    ========================================= */
+
+    function createWorkCard(work) {
+
+      const article =
+        document.createElement("article");
+
+
+      article.className =
+        "work-card";
+
+
+      article.dataset.category =
+        work.category || "visual-stories";
+
+
+
+      const image =
+        document.createElement("img");
+
+
+      image.className =
+        "work-img";
+
+
+      image.src =
+        work.image;
+
+
+      image.alt =
+        work.title || "Kwakcamole archive work";
+
+
+      image.loading =
+        "lazy";
+
+
+
+      const title =
+        document.createElement("h3");
+
+
+      title.className =
+        "work-title";
+
+
+      title.textContent =
+        work.title || "Untitled";
+
+
+
+      const description =
+        document.createElement("p");
+
+
+      description.className =
+        "work-sub";
+
+
+      description.textContent =
+        work.description ||
+        DEFAULT_DESCRIPTION;
+
+
+
+      article.appendChild(image);
+
+      article.appendChild(title);
+
+      article.appendChild(description);
+
+
+
+      image.addEventListener(
+        "click",
+        function () {
+
+          openModal(work);
+
+        }
+      );
+
+
+      return article;
+    }
+
+
+
+    /* =========================================
+       작품 렌더링
+    ========================================= */
+
+    function renderWorks(filter = "all") {
+
+      const grid =
+        document.getElementById("worksGrid");
+
+
+      grid.innerHTML = "";
+
+
+      visibleWorks =
+        allWorks.filter(
+          function (work) {
+
+            return (
+              filter === "all" ||
+              work.category === filter
+            );
+
+          }
+        );
+
+
+      visibleWorks.forEach(
+        function (work) {
+
+          grid.appendChild(
+            createWorkCard(work)
+          );
+
+        }
+      );
+
+    }
+
+
+
+    /* =========================================
+       CATEGORY FILTER
+    ========================================= */
+
+    function setupFilters() {
+
+      const filterButtons =
+        document.querySelectorAll(
+          ".filter-button"
+        );
+
+
+      filterButtons.forEach(
+        function (button) {
+
+          button.addEventListener(
+            "click",
+            function () {
+
+              const selectedCategory =
+                button.dataset.filter;
+
+
+              filterButtons.forEach(
+                function (item) {
+
+                  item.classList.remove(
+                    "is-active"
+                  );
+
+
+                  item.setAttribute(
+                    "aria-pressed",
+                    "false"
+                  );
+
+                }
+              );
+
+
+              button.classList.add(
+                "is-active"
+              );
+
+
+              button.setAttribute(
+                "aria-pressed",
+                "true"
+              );
+
+
+              renderWorks(
+                selectedCategory
+              );
+
+            }
+          );
+
+        }
+      );
+
+    }
+
+
+
+    /* =========================================
+       MODAL
+    ========================================= */
+
+    const modal =
+      document.getElementById(
+        "imgModal"
+      );
+
+
+    const modalImg =
+      document.getElementById(
+        "modalImg"
+      );
+
+
+    const modalCaption =
+      document.getElementById(
+        "modalCaption"
+      );
+
+
+    function openModal(work) {
+
+      currentModalIndex =
+        visibleWorks.indexOf(work);
+
+
+      showModalWork(
+        currentModalIndex
+      );
+
+
+      modal.classList.add(
+        "is-open"
+      );
+
+
+      modal.setAttribute(
+        "aria-hidden",
+        "false"
+      );
+
+    }
+
+
+
+    function showModalWork(index) {
+
+      if (
+        !visibleWorks.length
+      ) {
+        return;
+      }
+
+
+      if (
+        index < 0
+      ) {
+        index =
+          visibleWorks.length - 1;
+      }
+
+
+      if (
+        index >= visibleWorks.length
+      ) {
+        index = 0;
+      }
+
+
+      currentModalIndex =
+        index;
+
+
+      const work =
+        visibleWorks[index];
+
+
+      modalImg.src =
+        work.image;
+
+
+      modalImg.alt =
+        work.title || "";
+
+
+      modalCaption.textContent =
+        work.title || "";
+
+    }
+
+
+
+    function closeModal() {
+
+      modal.classList.remove(
+        "is-open"
+      );
+
+
+      modal.setAttribute(
+        "aria-hidden",
+        "true"
+      );
+
+    }
+
+
+
+    document
+      .querySelectorAll(
+        "[data-close='1']"
+      )
+      .forEach(
+        function (element) {
+
+          element.addEventListener(
+            "click",
+            closeModal
+          );
+
+        }
+      );
+
+
+
+    document
+      .querySelector(
+        ".modal-nav.prev"
+      )
+      .addEventListener(
+        "click",
+        function () {
+
+          showModalWork(
+            currentModalIndex - 1
+          );
+
+        }
+      );
+
+
+
+    document
+      .querySelector(
+        ".modal-nav.next"
+      )
+      .addEventListener(
+        "click",
+        function () {
+
+          showModalWork(
+            currentModalIndex + 1
+          );
+
+        }
+      );
+
+
+
+    document.addEventListener(
+      "keydown",
+      function (event) {
+
+        if (
+          !modal.classList.contains(
+            "is-open"
+          )
+        ) {
+          return;
+        }
+
+
+        if (
+          event.key === "Escape"
+        ) {
+          closeModal();
+        }
+
+
+        if (
+          event.key === "ArrowLeft"
+        ) {
+          showModalWork(
+            currentModalIndex - 1
+          );
+        }
+
+
+        if (
+          event.key === "ArrowRight"
+        ) {
+          showModalWork(
+            currentModalIndex + 1
+          );
+        }
+
+      }
+    );
+
+
+
+    /* =========================================
+       JSON 불러오기
+    ========================================= */
+
+    fetch(
+      "works-data.json?v=" +
+      Date.now()
+    )
+
+      .then(
+        function (response) {
+
+          if (
+            !response.ok
+          ) {
+            throw new Error(
+              "works-data.json could not be loaded"
+            );
+          }
+
+
+          return response.json();
+
+        }
+      )
+
+      .then(
+        function (data) {
+
+          if (
+            !Array.isArray(data)
+          ) {
+            throw new Error(
+              "works-data.json must be an array"
+            );
+          }
+
+
+          allWorks =
+            data;
+
+
+          renderWorks("all");
+
+          setupFilters();
+
+        }
+      )
+
+      .catch(
+        function (error) {
+
+          console.error(
+            error
+          );
+
+
+          const grid =
+            document.getElementById(
+              "worksGrid"
+            );
+
+
+          grid.innerHTML =
+            '<p class="works-error">Works could not be loaded.</p>';
+
+        }
+      );
+
+  </script>
+
+
+
+  <!-- 기존 사이트 공통 JavaScript -->
+
+  <script
+    src="script.js?v=20260916-works-json"
+  ></script>
+
 
 </body>
 
