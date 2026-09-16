@@ -14,7 +14,7 @@
   <!-- 기존 사이트 공통 스타일 -->
   <link
     rel="stylesheet"
-    href="/style.css?v=20260722-note-detail-8"
+    href="/style.css?v=20260916-note-reactions"
   >
 
   <style>
@@ -272,6 +272,139 @@
 
 
     /* =========================================
+       SOFT NOTE REACTIONS
+    ========================================= */
+
+    body.page-note-detail .note-reactions {
+      width: 100%;
+      max-width: 650px;
+
+      margin: 38px auto 0;
+      padding-top: 30px;
+
+      border-top: 1px solid #eeeeee;
+
+      text-align: center;
+    }
+
+
+    body.page-note-detail .reaction-question {
+      margin: 0 0 5px;
+
+      color: #333333;
+
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.5;
+      letter-spacing: 0.01em;
+    }
+
+
+    body.page-note-detail .reaction-sub {
+      margin: 0 0 18px;
+
+      color: #aaaaaa;
+
+      font-size: 10px;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+
+
+    body.page-note-detail .reaction-buttons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      gap: 30px;
+    }
+
+
+    body.page-note-detail .note-reaction-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      gap: 6px;
+
+      min-width: 48px;
+
+      margin: 0;
+      padding: 6px 4px;
+
+      border: 0;
+
+      background: transparent;
+      color: #999999;
+
+      font-family: "Paperlogy", sans-serif;
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 1;
+
+      cursor: pointer;
+
+      transition:
+        color 0.2s ease,
+        transform 0.2s ease,
+        opacity 0.2s ease;
+    }
+
+
+    body.page-note-detail .note-reaction-button:hover {
+      color: #d97eaa;
+      transform: translateY(-2px);
+    }
+
+
+    body.page-note-detail .note-reaction-button.is-selected {
+      color: #ef94bd;
+    }
+
+
+    body.page-note-detail .note-reaction-button:disabled {
+      cursor: default;
+      opacity: 0.7;
+    }
+
+
+    body.page-note-detail .note-reaction-button:focus-visible {
+      outline: 1px dashed #ef94bd;
+      outline-offset: 5px;
+    }
+
+
+    body.page-note-detail .reaction-symbol {
+      font-size: 17px;
+      line-height: 1;
+    }
+
+
+    body.page-note-detail .reaction-count {
+      min-width: 12px;
+
+      font-size: 10px;
+      font-weight: 500;
+      line-height: 1;
+
+      color: inherit;
+    }
+
+
+    body.page-note-detail .reaction-status {
+      min-height: 18px;
+
+      margin: 12px 0 0;
+
+      color: #d97eaa;
+
+      font-size: 9px;
+      font-weight: 400;
+      line-height: 1.4;
+    }
+
+
+    /* =========================================
        오류 메시지
     ========================================= */
 
@@ -340,6 +473,17 @@
         font-size: 18px;
       }
 
+
+      body.page-note-detail .note-reactions {
+        margin-top: 32px;
+        padding-top: 26px;
+      }
+
+
+      body.page-note-detail .reaction-buttons {
+        gap: 24px;
+      }
+
     }
   </style>
 </head>
@@ -369,18 +513,18 @@
     </a>
 
 
-   <a
-  class="top-right"
-  href="https://www.instagram.com/kwakcamole.archive/"
-  target="_blank"
-  rel="noopener noreferrer"
-  aria-label="Kwakcamole archive Instagram"
->
-  <img
-    src="/images/집.png"
-    alt="Instagram"
-  >
-</a>
+    <a
+      class="top-right"
+      href="https://www.instagram.com/kwakcamole.archive/"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Kwakcamole archive Instagram"
+    >
+      <img
+        src="/images/집.png"
+        alt="Instagram"
+      >
+    </a>
 
   </header>
 
@@ -415,10 +559,39 @@
 
 
   <!-- =========================================
-       선택한 글 자동 표시
+       NOTE + REACTIONS
   ========================================== -->
 
-  <script>
+  <script type="module">
+
+    import {
+      createClient
+    } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+
+
+    /* =========================================
+       SUPABASE
+    ========================================= */
+
+    const SUPABASE_URL =
+      "https://vxjimkwgdtfpcsafpots.supabase.co";
+
+
+    const SUPABASE_PUBLISHABLE_KEY =
+      "sb_publishable_DsW-3X-U5Od2r8EkfXaLLg_MHE02KVd";
+
+
+    const supabase =
+      createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+      );
+
+
+    /* =========================================
+       PAGE START
+    ========================================= */
+
     document.addEventListener(
       "DOMContentLoaded",
       function () {
@@ -438,6 +611,10 @@
             "noteArticle"
           );
 
+
+        /* =========================================
+           IMAGE PATH
+        ========================================= */
 
         function getAssetPath(path) {
 
@@ -459,6 +636,10 @@
         }
 
 
+        /* =========================================
+           DATE
+        ========================================= */
+
         function formatNoteDate(note) {
 
           if (
@@ -477,7 +658,9 @@
 
 
           const match =
-            value.match(/^(\d{4})-(\d{2})-(\d{2})/);
+            value.match(
+              /^(\d{4})-(\d{2})-(\d{2})/
+            );
 
 
           if (!match) {
@@ -488,8 +671,10 @@
           const year =
             Number(match[1]);
 
+
           const monthIndex =
             Number(match[2]) - 1;
+
 
           const day =
             Number(match[3]);
@@ -522,165 +707,641 @@
         }
 
 
-        function renderNote(notes) {
+        /* =========================================
+           LOCAL REACTION CHECK
+           같은 브라우저에서 같은 반응 반복 방지
+        ========================================= */
 
-        const selectedNote =
-          notes.find(function (note) {
+        function reactionStorageKey(
+          noteId,
+          reaction
+        ) {
 
-            return (
-              String(note.id) ===
-              String(requestedId)
-            );
+          return (
+            "kwakcamole-note-reaction:" +
+            noteId +
+            ":" +
+            reaction
+          );
 
-          });
-
-
-        if (!selectedNote) {
-
-          noteArticle.innerHTML = `
-            <div class="note-message">
-
-              해당 연구일지를 찾을 수 없습니다.<br>
-
-              <a href="/notes">
-                Soft Notes 목록으로 돌아가기
-              </a>
-
-            </div>
-          `;
-
-          return;
         }
 
 
-        /*
-          브라우저 탭 제목 변경
-        */
+        function hasReacted(
+          noteId,
+          reaction
+        ) {
 
-        document.title =
-          selectedNote.title +
-          " — Soft Notes";
+          try {
+
+            return (
+              localStorage.getItem(
+                reactionStorageKey(
+                  noteId,
+                  reaction
+                )
+              ) === "1"
+            );
+
+          } catch (error) {
+
+            return false;
+
+          }
+
+        }
 
 
-        const imagePath =
-          getAssetPath(
-            selectedNote.image
+        function saveReactionLocally(
+          noteId,
+          reaction
+        ) {
+
+          try {
+
+            localStorage.setItem(
+              reactionStorageKey(
+                noteId,
+                reaction
+              ),
+              "1"
+            );
+
+          } catch (error) {
+
+            console.warn(
+              "Could not save reaction locally."
+            );
+
+          }
+
+        }
+
+
+        /* =========================================
+           LOAD REACTION COUNTS
+        ========================================= */
+
+        async function loadReactionCounts(
+          noteId
+        ) {
+
+          const buttons =
+            document.querySelectorAll(
+              ".note-reaction-button"
+            );
+
+
+          const {
+            data,
+            error
+          } =
+            await supabase
+
+              .from(
+                "soft_note_reactions"
+              )
+
+              .select(
+                "reaction"
+              )
+
+              .eq(
+                "note_id",
+                String(noteId)
+              );
+
+
+          if (error) {
+
+            console.error(error);
+
+            return;
+
+          }
+
+
+          const counts = {
+            heart: 0,
+            star: 0,
+            cloud: 0
+          };
+
+
+          data.forEach(
+            function (item) {
+
+              if (
+                Object.prototype.hasOwnProperty.call(
+                  counts,
+                  item.reaction
+                )
+              ) {
+
+                counts[
+                  item.reaction
+                ] += 1;
+
+              }
+
+            }
           );
 
 
-        const tags =
-          Array.isArray(selectedNote.tags)
-            ? selectedNote.tags
-            : [];
+          buttons.forEach(
+            function (button) {
+
+              const reaction =
+                button.dataset.reaction;
 
 
-        const tagsHTML =
-          tags
-            .map(function (tag) {
-
-              return `
-                <span class="note-tag">
-                  ${tag}
-                </span>
-              `;
-
-            })
-            .join("");
+              const countElement =
+                button.querySelector(
+                  ".reaction-count"
+                );
 
 
-        const figureHTML =
-          imagePath
-            ? `
-              <figure class="note-figure">
-
-                <img
-                  class="note-main-image"
-                  src="${imagePath}"
-                  alt="${selectedNote.imageAlt || selectedNote.title}"
-                >
-
-                <figcaption class="note-image-caption">
-                  ${selectedNote.caption || ""}
-                </figcaption>
-
-              </figure>
-            `
-            : "";
+              countElement.textContent =
+                counts[reaction] || 0;
 
 
-        noteArticle.innerHTML = `
+              if (
+                hasReacted(
+                  noteId,
+                  reaction
+                )
+              ) {
 
-          <div class="note-detail-meta">
-
-            <span class="note-detail-number">
-              No. ${selectedNote.id}
-            </span>
-
-            <time datetime="${selectedNote.datetime}">
-              ${formatNoteDate(selectedNote)}
-            </time>
-
-          </div>
+                button.classList.add(
+                  "is-selected"
+                );
 
 
-          <h1 class="note-detail-title">
-            ${selectedNote.title}
-          </h1>
+                button.setAttribute(
+                  "aria-pressed",
+                  "true"
+                );
 
 
-          <p class="note-detail-intro">
-            ${selectedNote.intro || ""}
-          </p>
+                button.disabled =
+                  true;
 
+              }
 
-          ${figureHTML}
-
-
-          <div class="note-body">
-            ${selectedNote.content || ""}
-          </div>
-
-
-          <div class="note-tags">
-            ${tagsHTML}
-          </div>
-        `;
+            }
+          );
 
         }
 
 
-        fetch("/notes-data.json")
-          .then(function (response) {
+        /* =========================================
+           REACTION BUTTONS
+        ========================================= */
 
-            if (!response.ok) {
-              throw new Error("Failed to load notes");
+        function setupReactions(
+          noteId
+        ) {
+
+          const buttons =
+            document.querySelectorAll(
+              ".note-reaction-button"
+            );
+
+
+          const status =
+            document.getElementById(
+              "reactionStatus"
+            );
+
+
+          buttons.forEach(
+            function (button) {
+
+              button.addEventListener(
+                "click",
+                async function () {
+
+                  const reaction =
+                    button.dataset.reaction;
+
+
+                  if (
+                    hasReacted(
+                      noteId,
+                      reaction
+                    )
+                  ) {
+
+                    status.textContent =
+                      "you already left this feeling ♡";
+
+                    return;
+
+                  }
+
+
+                  button.disabled =
+                    true;
+
+
+                  status.textContent =
+                    "saving your feeling...";
+
+
+                  const {
+                    error
+                  } =
+                    await supabase
+
+                      .from(
+                        "soft_note_reactions"
+                      )
+
+                      .insert({
+                        note_id:
+                          String(noteId),
+
+                        reaction:
+                          reaction
+                      });
+
+
+                  if (error) {
+
+                    console.error(error);
+
+
+                    button.disabled =
+                      false;
+
+
+                    status.textContent =
+                      "couldn't save it. try again ♡";
+
+
+                    return;
+
+                  }
+
+
+                  saveReactionLocally(
+                    noteId,
+                    reaction
+                  );
+
+
+                  const countElement =
+                    button.querySelector(
+                      ".reaction-count"
+                    );
+
+
+                  const currentCount =
+                    Number(
+                      countElement.textContent
+                    ) || 0;
+
+
+                  countElement.textContent =
+                    currentCount + 1;
+
+
+                  button.classList.add(
+                    "is-selected"
+                  );
+
+
+                  button.setAttribute(
+                    "aria-pressed",
+                    "true"
+                  );
+
+
+                  button.disabled =
+                    true;
+
+
+                  status.textContent =
+                    "thank you for leaving a feeling ♡";
+
+
+                  setTimeout(
+                    function () {
+
+                      status.textContent =
+                        "";
+
+                    },
+                    2500
+                  );
+
+                }
+              );
+
             }
+          );
 
-            return response.json();
 
-          })
-          .then(function (data) {
+          loadReactionCounts(
+            noteId
+          );
 
-            const notes =
-              Array.isArray(data)
-                ? data
-                : [];
+        }
 
-            renderNote(notes);
 
-          })
-          .catch(function () {
+        /* =========================================
+           NOTE RENDER
+        ========================================= */
+
+        function renderNote(notes) {
+
+          const selectedNote =
+            notes.find(
+              function (note) {
+
+                return (
+                  String(note.id) ===
+                  String(requestedId)
+                );
+
+              }
+            );
+
+
+          if (!selectedNote) {
 
             noteArticle.innerHTML = `
               <div class="note-message">
-                연구일지를 불러오지 못했습니다.
+
+                해당 연구일지를 찾을 수 없습니다.<br>
+
+                <a href="/notes">
+                  Soft Notes 목록으로 돌아가기
+                </a>
+
               </div>
             `;
 
-          });
+            return;
+
+          }
+
+
+          /*
+            브라우저 탭 제목 변경
+          */
+
+          document.title =
+            selectedNote.title +
+            " — Soft Notes";
+
+
+          const imagePath =
+            getAssetPath(
+              selectedNote.image
+            );
+
+
+          const tags =
+            Array.isArray(
+              selectedNote.tags
+            )
+              ? selectedNote.tags
+              : [];
+
+
+          const tagsHTML =
+            tags
+
+              .map(
+                function (tag) {
+
+                  return `
+                    <span class="note-tag">
+                      ${tag}
+                    </span>
+                  `;
+
+                }
+              )
+
+              .join("");
+
+
+          const figureHTML =
+            imagePath
+              ? `
+                <figure class="note-figure">
+
+                  <img
+                    class="note-main-image"
+                    src="${imagePath}"
+                    alt="${selectedNote.imageAlt || selectedNote.title}"
+                  >
+
+                  <figcaption class="note-image-caption">
+                    ${selectedNote.caption || ""}
+                  </figcaption>
+
+                </figure>
+              `
+              : "";
+
+
+          noteArticle.innerHTML = `
+
+            <div class="note-detail-meta">
+
+              <span class="note-detail-number">
+                No. ${selectedNote.id}
+              </span>
+
+              <time datetime="${selectedNote.datetime}">
+                ${formatNoteDate(selectedNote)}
+              </time>
+
+            </div>
+
+
+            <h1 class="note-detail-title">
+              ${selectedNote.title}
+            </h1>
+
+
+            <p class="note-detail-intro">
+              ${selectedNote.intro || ""}
+            </p>
+
+
+            ${figureHTML}
+
+
+            <div class="note-body">
+              ${selectedNote.content || ""}
+            </div>
+
+
+            <div class="note-tags">
+              ${tagsHTML}
+            </div>
+
+
+            <!-- =================================
+                 REACTIONS
+            ================================== -->
+
+            <section
+              class="note-reactions"
+              aria-label="Soft Note reactions"
+            >
+
+              <p class="reaction-question">
+                did this stay with you?
+              </p>
+
+              <p class="reaction-sub">
+                leave a tiny feeling
+              </p>
+
+
+              <div class="reaction-buttons">
+
+                <button
+                  class="note-reaction-button"
+                  type="button"
+                  data-reaction="heart"
+                  aria-label="leave a heart"
+                  aria-pressed="false"
+                >
+                  <span class="reaction-symbol">
+                    ♡
+                  </span>
+
+                  <span class="reaction-count">
+                    0
+                  </span>
+                </button>
+
+
+                <button
+                  class="note-reaction-button"
+                  type="button"
+                  data-reaction="star"
+                  aria-label="leave a star"
+                  aria-pressed="false"
+                >
+                  <span class="reaction-symbol">
+                    ☆
+                  </span>
+
+                  <span class="reaction-count">
+                    0
+                  </span>
+                </button>
+
+
+                <button
+                  class="note-reaction-button"
+                  type="button"
+                  data-reaction="cloud"
+                  aria-label="leave a cloud"
+                  aria-pressed="false"
+                >
+                  <span class="reaction-symbol">
+                    ☁
+                  </span>
+
+                  <span class="reaction-count">
+                    0
+                  </span>
+                </button>
+
+              </div>
+
+
+              <p
+                class="reaction-status"
+                id="reactionStatus"
+                aria-live="polite"
+              ></p>
+
+            </section>
+
+          `;
+
+
+          /*
+            HTML이 만들어진 다음
+            반응 기능 연결
+          */
+
+          setupReactions(
+            selectedNote.id
+          );
+
+        }
+
+
+        /* =========================================
+           LOAD NOTE DATA
+        ========================================= */
+
+        fetch(
+          "/notes-data.json?v=" +
+          Date.now()
+        )
+
+          .then(
+            function (response) {
+
+              if (!response.ok) {
+
+                throw new Error(
+                  "Failed to load notes"
+                );
+
+              }
+
+
+              return response.json();
+
+            }
+          )
+
+          .then(
+            function (data) {
+
+              const notes =
+                Array.isArray(data)
+                  ? data
+                  : [];
+
+
+              renderNote(
+                notes
+              );
+
+            }
+          )
+
+          .catch(
+            function (error) {
+
+              console.error(error);
+
+
+              noteArticle.innerHTML = `
+                <div class="note-message">
+                  연구일지를 불러오지 못했습니다.
+                </div>
+              `;
+
+            }
+          );
 
       }
     );
+
   </script>
 
 </body>
