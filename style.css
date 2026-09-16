@@ -2236,3 +2236,122 @@ img {
   }
 
 }
+/* =========================================
+   HOME DESKTOP — ORIGINAL LAYOUT RESTORE
+   기존 홈 배치 복원 + SAY HI 유지
+========================================= */
+
+@media screen and (min-width: 1101px) {
+
+  body.page-home .stage {
+    position: relative !important;
+    height: 100vh !important;
+    min-height: 100vh !important;
+    padding-top: 110px !important;
+    padding-bottom: 240px !important;
+  }
+
+  body.page-home .folder-cluster {
+    position: absolute !important;
+    width: 420px !important;
+    height: 380px !important;
+    margin: 200px auto 0 !important;
+  }
+
+  body.page-home .folder-item {
+    position: absolute !important;
+    width: 110px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 0 !important;
+  }
+
+  body.page-home .folder-img {
+    width: 76px !important;
+    height: auto !important;
+    display: block !important;
+  }
+
+  body.page-home .folder-name,
+  body.page-home .folder-label {
+    margin-top: -10px !important;
+    font-family: "LGGothic", sans-serif !important;
+    font-size: 17px !important;
+    line-height: 1.2 !important;
+    text-align: center !important;
+  }
+
+  body.page-home .p1 {
+    top: 30px !important;
+    left: 380px !important;
+  }
+
+  body.page-home .p2 {
+    top: 30px !important;
+    left: 560px !important;
+  }
+
+  body.page-home .p3 {
+    top: 30px !important;
+    left: 200px !important;
+  }
+
+  body.page-home .p4 {
+    top: -70px !important;
+    left: 470px !important;
+  }
+
+  body.page-home .p5 {
+    top: -70px !important;
+    left: 290px !important;
+  }
+
+  body.page-home .p6 {
+    top: 130px !important;
+    left: 290px !important;
+  }
+
+  body.page-home .p7 {
+    top: 130px !important;
+    left: 470px !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+  }
+
+  body.page-home .p8 {
+    top: 230px !important;
+    left: 380px !important;
+  }
+
+  body.page-home .intro {
+    position: absolute !important;
+    right: 240px !important;
+    top: 250px !important;
+    width: 420px !important;
+    font-family: "LGGothic", monospace !important;
+    font-size: 17px !important;
+    line-height: 1.7 !important;
+    text-align: left !important;
+  }
+
+  body.page-home .mascot-area {
+    position: absolute !important;
+    right: 300px !important;
+    bottom: 90px !important;
+    display: flex !important;
+    align-items: flex-end !important;
+    gap: 15px !important;
+  }
+
+  body.page-home .mascot-area .me {
+    width: 80px !important;
+    height: auto !important;
+    max-width: none !important;
+  }
+
+  body.page-home .bubble {
+    margin-bottom: 150px !important;
+  }
+}
