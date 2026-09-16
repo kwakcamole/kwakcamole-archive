@@ -14,7 +14,7 @@
   <!-- 기존 사이트 공통 스타일 -->
   <link
     rel="stylesheet"
-    href="/style.css?v=20260722-soft-notes-8"
+    href="/style.css?v=20260916-soft-notes-say-hi"
   >
 
   <style>
@@ -108,6 +108,15 @@
     }
 
 
+    /* 오른쪽 소개 + Say Hi */
+
+    body.page-notes .notes-side {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+
     body.page-notes .notes-description {
       max-width: 380px;
 
@@ -122,6 +131,42 @@
       letter-spacing: -0.025em;
 
       word-break: keep-all;
+    }
+
+
+    /* =========================================
+       SAY HI LINK
+    ========================================= */
+
+    body.page-notes .say-hi-link {
+      display: inline-block;
+
+      margin-top: 16px;
+
+      color: #d97eaa;
+
+      font-size: 11px;
+      font-weight: 600;
+      line-height: 1.4;
+      letter-spacing: 0.02em;
+
+      text-decoration: none;
+
+      transition:
+        color 0.2s ease,
+        transform 0.2s ease;
+    }
+
+
+    body.page-notes .say-hi-link:hover {
+      color: #ef94bd;
+      transform: translateX(3px);
+    }
+
+
+    body.page-notes .say-hi-link:focus-visible {
+      outline: 1px dashed #ef94bd;
+      outline-offset: 5px;
     }
 
 
@@ -351,6 +396,11 @@
       }
 
 
+      body.page-notes .say-hi-link {
+        margin-top: 13px;
+      }
+
+
       body.page-notes .note-link {
         grid-template-columns: 1fr;
 
@@ -455,11 +505,23 @@
       </div>
 
 
-      <p class="notes-description">
-        작업이 완성되기 전의 생각과 이미지,
-        소재 실험과 실패의 흔적을 천천히 기록합니다.
-        완성된 결과보다 그 사이에서 발견한 감각을 모으는 공간입니다.
-      </p>
+      <div class="notes-side">
+
+        <p class="notes-description">
+          작업이 완성되기 전의 생각과 이미지,
+          소재 실험과 실패의 흔적을 천천히 기록합니다.
+          완성된 결과보다 그 사이에서 발견한 감각을 모으는 공간입니다.
+        </p>
+
+
+        <a
+          class="say-hi-link"
+          href="/say-hi.html"
+        >
+          Say Hi! ♡ →
+        </a>
+
+      </div>
 
     </section>
 
